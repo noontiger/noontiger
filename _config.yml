@@ -82,7 +82,8 @@ analytics:
 author:
   name             : "Jiawen Wu"
   avatar           : "avatar.png"
-  bio              : "[wujiawen.smail.nju.edu.cn](wujiawen.smail.nju.edu.cn)"
+  bio              : "wujiawen.smail.nju.edu.cn"
+  email            : "wujiawen.smail.nju.edu.cn"
   github           : "noontiger"
 
 # Reading Files
