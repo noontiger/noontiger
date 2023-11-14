@@ -1,5 +1,5 @@
 ---
-title: "Digital Humanity and Visualization"
+title: "6 Digital Humanity and Visualization"
 excerpt: "Building a Knowledge Base for the National List of Rare Ancient Books<br>
 <img src='/images/15.jpg'>
 <br>Interstate Warfare during the Spring and Autumn and Warring States Periods<br><img src='/images/11.jpg'>
