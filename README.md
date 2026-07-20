@@ -1,14 +1,27 @@
-# Hi there 👋, I'm **noontiger**
+<img align='right' src='https://komarev.com/ghpvc/?username=noontiger&color=blueviolet&label=Profile+Views' alt='visitor'/>
 
-<img align='right' src='https://komarev.com/ghpvc/?username=noontiger&color=blueviolet&label=Profile+Views' alt='visitor count'/>
+<p align='center'>
+  <img src='https://avatars.githubusercontent.com/u/36270805?v=4' width='120' style='border-radius:12px;border:3px solid #3fb950;' alt='avatar'/>
+</p>
+<pre style='background:#0d1117;color:#3fb950;padding:16px 20px;border-radius:10px;font-family:monospace;font-size:14px;line-height:1.18;overflow:auto;'>
+<span style='color:#58a6ff;'>noontiger@github</span>:<span style='color:#a371f7;'>~</span>$ ./boot.sh
+[ OK ] initializing profile............ done
+[ OK ] loading repositories (157)...... done
+[ OK ] welcome, @noontiger ✨
 
-> 🚀 A passionate developer · 157 public repositories on GitHub
+█   █   ███    ███   █   █  █████  █████   ███   █████  ████   
+██  █  █   █  █   █  ██  █    █      █    █   █  █      █   █  
+█ █ █  █   █  █   █  █ █ █    █      █    █      █      █   █  
+█  ██  █   █  █   █  █  ██    █      █    █ ███  ████   ████   
+█   █  █   █  █   █  █   █    █      █    █   █  █      █ █    
+█   █  █   █  █   █  █   █    █      █    █   █  █      █  █   
+█   █   ███    ███   █   █    █    █████   ███   █████  █   █  
 
-- 🔭 我目前在做各种有趣的小项目(共 **157** 个公开仓库)
-- 📫 联系方式:**hidiamond@outlook.com**
-- ⚡ 热爱开源，用代码把想法变成现实 ✨
-
----
+<span style='color:#8b949e;'># a passionate developer · 157 public repositories on GitHub</span>
+<span style='color:#58a6ff;'>noontiger@github</span>:<span style='color:#a371f7;'>~</span>$ cat about.txt
+> 热爱开源，用代码把想法变成现实 ✨
+> 📫 hidiamond@outlook.com
+</pre>
 
 ## 📊 GitHub 数据总览
 
@@ -28,60 +41,54 @@
 
 **📈 关键指标**:公开仓库 **157** · 获得 Star **7** · Fork **0**
 
----
+## 🛠️ ./tech.stack
 
-## 🛠️ 技术栈
+<pre style='background:#0d1117;color:#3fb950;padding:16px 20px;border-radius:10px;font-family:monospace;font-size:14px;line-height:1.18;overflow:auto;'>
+<span style='color:#58a6ff;'>noontiger@github</span>:<span style='color:#a371f7;'>~</span>$ cat ./tech.stack
+<span style='color:#8b949e;'># languages by repo count</span>
+  CSS          ▓▓  2 repos
+  Astro        ▓▓  2 repos
+  JavaScript   ▓░  1 repos
+  TypeScript   ▓░  1 repos
+</pre>
 
-![CSS](https://img.shields.io/badge/CSS-563d7c?style=for-the-badge&logo=css3&logoColor=white) ![Astro](https://img.shields.io/badge/Astro-ff5d01?style=for-the-badge&logo=astro&logoColor=white) ![JavaScript](https://img.shields.io/badge/JavaScript-f1e05a?style=for-the-badge&logo=javascript&logoColor=white) ![TypeScript](https://img.shields.io/badge/TypeScript-3178c6?style=for-the-badge&logo=typescript&logoColor=white)
+## 🌟 ./projects --sort=stars
 
-<details>
-<summary>📚 仓库语言分布(按仓库数量)</summary>
+<pre style='background:#0d1117;color:#3fb950;padding:16px 20px;border-radius:10px;font-family:monospace;font-size:14px;line-height:1.18;overflow:auto;'>
+<span style='color:#58a6ff;'>noontiger@github</span>:<span style='color:#a371f7;'>~</span>$ ls -la ./projects
+  jiaowolian  ·  JavaScript  ·  ★ 4  ·  交我练是一个以AI个性化推荐为核心的刷题工具，通过动态学习路径、错题分析和拍照搜题等功能，帮助用户高效备考。其双模型设计既满足复杂场景需求，又兼顾响应速度与隐私性，适合在线教育平台中“精准提分”的场景需求。
+  internfinding  ·  TypeScript  ·  ★ 1  ·  实习信息整理工具
+  weread-scraper  ·  —  ·  ★ 1  ·  将微信读书书籍内容导出为 HTML 文件
+  avg-game  ·  —  ·  ★ 1  ·  _(暂无描述)_
+</pre>
 
-| 语言 | 仓库数 |
-|------|--------|
-| CSS | 2 |
-| Astro | 2 |
-| JavaScript | 1 |
-| TypeScript | 1 |
+## 🔥 ~/activity.log (tail)
 
-</details>
+<pre style='background:#0d1117;color:#3fb950;padding:16px 20px;border-radius:10px;font-family:monospace;font-size:14px;line-height:1.18;overflow:auto;'>
+<span style='color:#58a6ff;'>noontiger@github</span>:<span style='color:#a371f7;'>~</span>$ tail -n 8 ~/activity.log
+  ▸ speech-to-text  —  Browser-based speech-to-text (Whisper) with model vendored in repo
+  ▸ video  —  Video gallery built with Astro
+  ▸ hh  —  Personal portfolio built with Astro (v4-inspired)
+  ▸ tts  —  _(暂无描述)_
+  ▸ noontiger.github.io  —  _(暂无描述)_
+  ▸ OpenCut  —  The open-source CapCut alternative
+  ▸ OpenSecurity  —  AI 驱动的多领域安全分析 Agent 平台 —— 让 LLM 端到端完成安全分析
+  ▸ Artemis  —  Openclaw+Local LLM+GPT-SoVITS+ComfyUI image+Live2D+desktop pet+SilllyTavern Character
+</pre>
 
----
+## 🔗 ./connect.sh
 
-## 🌟 精选仓库
-
-| 仓库 | 描述 | 语言 | Star |
-|------|------|------|------|
-| [jiaowolian](https://github.com/noontiger/jiaowolian) | 交我练是一个以AI个性化推荐为核心的刷题工具，通过动态学习路径、错题分析和拍照搜题等功能，帮助用户高效备考。其双模型设计既满足复杂场景需求，又兼顾响应速度与隐私性，适合在线教育平台中“精准提分”的场景需求。 | JavaScript | ★ 4 |
-| [internfinding](https://github.com/noontiger/internfinding) | 实习信息整理工具 | TypeScript | ★ 1 |
-| [weread-scraper](https://github.com/noontiger/weread-scraper) | 将微信读书书籍内容导出为 HTML 文件 | — | ★ 1 |
-| [avg-game](https://github.com/noontiger/avg-game) | _(暂无描述)_ | — | ★ 1 |
-
----
-
-## 🔥 最近更新
-
-- [speech-to-text](https://github.com/noontiger/speech-to-text) — Browser-based speech-to-text (Whisper) with model vendored in repo
-- [video](https://github.com/noontiger/video) — Video gallery built with Astro
-- [hh](https://github.com/noontiger/hh) — Personal portfolio built with Astro (v4-inspired)
-- [tts](https://github.com/noontiger/tts) — _(暂无描述)_
-- [noontiger.github.io](https://github.com/noontiger/noontiger.github.io) — _(暂无描述)_
-- [OpenCut](https://github.com/noontiger/OpenCut) — The open-source CapCut alternative
-- [OpenSecurity](https://github.com/noontiger/OpenSecurity) — AI 驱动的多领域安全分析 Agent 平台 —— 让 LLM 端到端完成安全分析
-- [Artemis](https://github.com/noontiger/Artemis) — Openclaw+Local LLM+GPT-SoVITS+ComfyUI image+Live2D+desktop pet+SilllyTavern Character
-
----
-
-## 🤝 连接我
+<pre style='background:#0d1117;color:#3fb950;padding:16px 20px;border-radius:10px;font-family:monospace;font-size:14px;line-height:1.18;overflow:auto;'>
+<span style='color:#58a6ff;'>noontiger@github</span>:<span style='color:#a371f7;'>~</span>$ ./connect.sh
+  → github.com/noontiger
+  → hidiamond@outlook.com
+</pre>
 
 <p align='left'>
   <a href='https://github.com/noontiger'><img src='https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white' alt='GitHub'/></a>
   <a href='mailto:hidiamond@outlook.com'><img src='https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white' alt='Email'/></a>
 </p>
 
----
-
 <div align='center'>
-  <img src='https://capsule-render.vercel.app/api?type=waving&color=0:0969da,100:1f6feb&height=120&section=footer' alt='footer'/>
   <p><sub>⚡ 用代码与热爱构建 · Powered by GitHub REST API</sub></p>
 </div>
