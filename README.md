@@ -6,7 +6,7 @@
 
 - 🔭 我目前在做各种有趣的小项目(共 **157** 个公开仓库)
 - 📫 联系方式:**hidiamond@outlook.com**
-- ⚡ 有趣的事:这个 README 由 WorkBuddy 自动生成 ✨
+- ⚡ 热爱开源，用代码把想法变成现实 ✨
 
 ---
 
@@ -18,7 +18,9 @@
 </p>
 
 <p align='center'>
-  <img src='https://github-profile-trophy.vercel.app/?username=noontiger&theme=tokyonight&no-frame=true&column=4&margin-w=10' alt='Trophies'/>
+  <img src='https://github-readme-streak-stats.herokuapp.com/?user=noontiger&theme=tokyonight&hide_border=true' alt='Streak'/>
+  <br/>
+  <img src='https://github-readme-activity-graph.vercel.app/graph?username=noontiger&theme=tokyo-night&hide_border=true&area=true&radius=12' alt='Contribution Graph'/>
 </p>
 
 **📈 关键指标**:公开仓库 **157** · 获得 Star **7** · Fork **0**
@@ -78,5 +80,5 @@
 
 <div align='center'>
   <img src='https://capsule-render.vercel.app/api?type=waving&color=0:0969da,100:1f6feb&height=120&section=footer' alt='footer'/>
-  <p><sub>⚡ 由 <b>WorkBuddy</b> 自动生成 · 数据来自 GitHub REST API</sub></p>
+  <p><sub>⚡ 用代码与热爱构建 · Powered by GitHub REST API</sub></p>
 </div>
