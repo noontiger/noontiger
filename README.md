@@ -1,10 +1,6 @@
 <img align='right' src='https://komarev.com/ghpvc/?username=noontiger&color=blueviolet&label=Profile+Views' alt='visitor'/>
 
-<div align='center'>
-  <img src='https://avatars.githubusercontent.com/u/36270805?v=4' width='120' style='border-radius:12px;border:3px solid #3fb950;' alt='avatar'/>
-  <h1>noontiger</h1>
-  <p>热爱开源，用代码把想法变成现实 ✨</p>
-</div>
+<p align='center'>热爱开源，用代码把想法变成现实 ✨</p>
 
 ## 📊 GitHub 数据总览
 
@@ -26,7 +22,7 @@
 
 ## 🚀 交互式作品集
 
-> 一个真正能"玩"的作品集页面 —— 搜索、按语言筛选、排序你全部 158 个仓库。
+> 一个真正能"玩"的作品集页面 —— 搜索、按语言筛选、排序全部 158 个仓库。
 
 <p align='center'>
   <a href='https://1fb16b04fee34140a84394680a8966db.app.codebuddy.work'><img src='https://img.shields.io/badge/🔥%20打开交互式作品集-3fb950?style=for-the-badge' alt='Interactive Portfolio'/></a>
