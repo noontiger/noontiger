@@ -13,8 +13,11 @@
 ## 📊 GitHub 数据总览
 
 <p align='center'>
-  <img src='https://github-readme-stats.vercel.app/api?username=noontiger&show_icons=true&theme=tokyonight&hide_border=true&count_private=false' alt='GitHub Stats' height='170'/>
-  <img src='https://github-readme-stats.vercel.app/api/top-langs/?username=noontiger&layout=compact&theme=tokyonight&hide_border=true' alt='Top Languages' height='170'/>
+  <img src='https://img.shields.io/badge/Public%20Repos-157-blue?style=for-the-badge' alt='Public Repos'/>
+  <img src='https://img.shields.io/badge/Total%20Stars-7-yellow?style=for-the-badge' alt='Total Stars'/>
+  <img src='https://img.shields.io/badge/Forks-0-lightgrey?style=for-the-badge' alt='Forks'/>
+  <img src='https://img.shields.io/github/followers/noontiger?label=Followers&style=for-the-badge&color=blue' alt='Followers'/>
+  <img src='https://img.shields.io/badge/Following-79-blue?style=for-the-badge' alt='Following'/>
 </p>
 
 <p align='center'>
