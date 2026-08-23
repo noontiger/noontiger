@@ -4,7 +4,7 @@
 
 ### 💻 Full-Stack Developer · Open Source Enthusiast · AI/ML Explorer
 
-*Turning ideas into reality with code • 158 public repos • 7.1k+ total stars*
+*Turning ideas into reality with code • 172 public repos • 7.1k+ total stars*
 
 </div>
 
@@ -13,7 +13,7 @@
 ## 🎯 Typing Animation
 
 <div align="center">
-  <img src="https://readme-typing-svg.herokuapp.com/?font=Fira+Code&size=22&duration=3000&pause=1000&color=00D4AA&center=true&vCenter=true&width=600&lines=Full-Stack+Developer;Open+Source+Enthusiast;AI%2FML+Explorer;Building+Cool+Things+🚀" alt="Typing Animation" />
+  <img src="https://readme-typing-svg.herokuapp.com/?font=Fira+Code&size=22&duration=3000&pause=1000&color=0078D4&center=true&vCenter=true&width=600&lines=Full-Stack+Developer;Open+Source+Enthusiast;AI%2FML+Explorer;Building+Cool+Things+🚀" alt="Typing Animation" />
 </div>
 
 ---
@@ -22,24 +22,24 @@
 
 <div align="center">
   
-![Profile Views](https://komarev.com/ghpvc/?username=noontiger&color=00d4aa&style=flat-square&label=Profile+Views)
-![GitHub Followers](https://img.shields.io/github/followers/noontiger?style=flat-square&color=00d4aa&logo=github)
-![GitHub Stars](https://img.shields.io/github/stars/noontiger?style=flat-square&color=f7c948&logo=github)
+![Profile Views](https://komarev.com/ghpvc/?username=noontiger&color=0078D4&style=flat-square&label=Profile+Views)
+![GitHub Followers](https://img.shields.io/github/followers/noontiger?style=flat-square&color=0078D4&logo=github)
+![GitHub Stars](https://img.shields.io/github/stars/noontiger?style=flat-square&color=F7C948&logo=github)
 ![Total Commits](https://img.shields.io/badge/Commits-32K+-blue?style=flat-square&logo=git)
 
 </div>
 
 <div align="center">
-  <img height="180em" src="https://github-readme-stats.vercel.app/api?username=noontiger&show_icons=true&theme=tokyonight&include_all_commits=true&count_private=true&hide_border=true&bg_color=1a1b27&title_color=00d4aa&icon_color=00d4aa&text_color=c0caf5" alt="noontiger's GitHub Stats" />
-  <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=noontiger&layout=compact&theme=tokyonight&hide_border=true&bg_color=1a1b27&title_color=00d4aa&text_color=c0caf5&langs_count=10" alt="Top Languages" />
+  <img height="180em" src="https://github-readme-stats.vercel.app/api?username=noontiger&show_icons=true&theme=github&include_all_commits=true&count_private=true&hide_border=true&title_color=0078D4&icon_color=0078D4&text_color=24292E" alt="noontiger's GitHub Stats" />
+  <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=noontiger&layout=compact&theme=github&hide_border=true&title_color=0078D4&text_color=24292E&langs_count=10" alt="Top Languages" />
 </div>
 
 <div align="center">
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=noontiger&theme=tokyonight&hide_border=true&background=1a1b27&stroke=00d4aa&ring=00d4aa&fire=00d4aa&currStreakLabel=00d4aa" alt="GitHub Streak" />
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=noontiger&theme=github&hide_border=true&background=FFFFFF&stroke=0078D4&ring=0078D4&fire=0078D4&currStreakLabel=0078D4" alt="GitHub Streak" />
 </div>
 
 <div align="center">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=noontiger&theme=tokyo-night&hide_border=true&area=true&radius=16&color=00d4aa&bg_color=1a1b27" alt="Contribution Graph" />
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=noontiger&theme=github&hide_border=true&area=true&radius=16&color=0078D4&bg_color=FFFFFF" alt="Contribution Graph" />
 </div>
 
 ---
@@ -54,18 +54,10 @@
 
 ---
 
-## 🏆 GitHub Trophies
-
-<div align="center">
-  <img src="https://github-profile-trophy.vercel.app/?username=noontiger&theme=tokyonight&no-frame=true&no-bg=true&margin-w=4&margin-h=4&column=7" alt="GitHub Trophies" />
-</div>
-
----
-
 ## 🃏 Random Dev Joke
 
 <div align="center">
-  <img src="https://readme-jokes.vercel.app/api?theme=tokyonight&hideBorder=true" alt="Random Dev Joke" />
+  <img src="https://readme-jokes.vercel.app/api?theme=github&hideBorder=true" alt="Random Dev Joke" />
 </div>
 
 ---
@@ -73,60 +65,7 @@
 ## 💬 Dynamic Quote
 
 <div align="center">
-  <img src="https://github-readme-quotes.vercel.app/api?theme=tokyonight&hideBorder=true" alt="Dynamic Quote" />
-</div>
-
----
-
-## 💼 Featured Projects
-
-| Project | Description | Tech Stack | Stars |
-|---------|-------------|------------|-------|
-| [**jiaowolian**](https://github.com/noontiger/jiaowolian) | AI-powered personalized quiz tool with dynamic learning paths, mistake analysis & photo search | `Python` `AI/ML` `FastAPI` | ⭐ 4 |
-| [**OpenCut**](https://github.com/noontiger/OpenCut) | Open-source CapCut alternative for video editing | `TypeScript` `React` `FFmpeg` | ⭐ 0 |
-| [**OpenSecurity**](https://github.com/noontiger/OpenSecurity) | AI-driven multi-domain security analysis agent platform | `Python` `LLM` `Agents` | ⭐ 0 |
-| [**Artemis**](https://github.com/noontiger/Artemis) | Multi-agent OS with Local LLM, GPT-SoVITS, ComfyUI, Live2D | `Python` `AI` `Desktop` | ⭐ 0 |
-| [**HiClaw**](https://github.com/noontiger/HiClaw) | Collaborative Multi-Agent OS via Matrix rooms | `Python` `Matrix` `Agents` | ⭐ 0 |
-| [**mesh2motion-app**](https://github.com/noontiger/mesh2motion-app) | Auto-rig & animate 3D models | `Python` `3D` `Animation` | ⭐ 0 |
-
-<div align="center">
-  <a href="https://github.com/noontiger?tab=repositories">
-    <img src="https://img.shields.io/badge/View_All_158_Repos-00d4aa?style=for-the-badge&logo=github&logoColor=white" alt="View All Repos" />
-  </a>
-</div>
-
----
-
-## 🛠️ Tech Stack
-
-### Languages
-<div align="center">
-  <img src="https://skillicons.dev/icons?i=python,javascript,typescript,rust,go,java,cpp,c,html,css" alt="Languages" />
-</div>
-
-### Frontend & UI
-<div align="center">
-  <img src="https://skillicons.dev/icons?i=react,vue,astro,svelte,nextjs,nuxtjs,tailwind,bootstrap,sass" alt="Frontend" />
-</div>
-
-### Backend & APIs
-<div align="center">
-  <img src="https://skillicons.dev/icons?i=fastapi,django,flask,nodejs,express,spring,graphql,restapi" alt="Backend" />
-</div>
-
-### Databases & Data
-<div align="center">
-  <img src="https://skillicons.dev/icons?i=postgresql,mysql,mongodb,redis,sqlite,elasticsearch" alt="Databases" />
-</div>
-
-### DevOps & Tools
-<div align="center">
-  <img src="https://skillicons.dev/icons?i=docker,kubernetes,github,git,githubactions,jenkins,linux,vscode,vim" alt="DevOps" />
-</div>
-
-### AI / ML / Data Science
-<div align="center">
-  <img src="https://skillicons.dev/icons?i=pytorch,tensorflow,opencv,numpy,pandas,matplotlib,jupyter" alt="AI/ML" />
+  <img src="https://github-readme-quotes.vercel.app/api?theme=github&hideBorder=true" alt="Dynamic Quote" />
 </div>
 
 ---
@@ -137,20 +76,22 @@
 
 | Language | Repos | Percentage |
 |:---|:---:|---:|
-| **Other** | 151 | 95.6% |
-| **Astro** | 3 | 1.9% |
-| **JavaScript** | 2 | 1.3% |
-| **CSS** | 1 | 0.6% |
-| **TypeScript** | 1 | 0.6% |
+| **JavaScript** | 4 | 36.4% |
+| **TypeScript** | 3 | 27.3% |
+| **Astro** | 2 | 18.2% |
+| **HTML** | 1 | 9.1% |
+| **CSS** | 1 | 9.1% |
 
 </div>
+
+*Data from 11 original repos with language detected (158 forks excluded)*
 
 ---
 
 ## 🎴 DevCard
 
 <div align="center">
-  <img src="https://devcard.vercel.app/api/noontiger?theme=tokyonight&border_radius=16&hide_border=true" alt="DevCard" />
+  <img src="https://devcard.vercel.app/api/noontiger?theme=github&border_radius=16&hide_border=true" alt="DevCard" />
 </div>
 
 ---
@@ -158,15 +99,7 @@
 ## 🧩 Bento Grid Overview
 
 <div align="center">
-  <img src="https://bento.vercel.app/api/noontiger?theme=tokyonight&hide_border=true" alt="Bento Grid" />
-</div>
-
----
-
-## 📈 Comprehensive Metrics Dashboard
-
-<div align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=noontiger&show_icons=true&theme=tokyonight&include_all_commits=true&count_private=true&hide_border=true&bg_color=1a1b27&title_color=00d4aa&icon_color=00d4aa&text_color=c0caf5&custom_title=Comprehensive%20Metrics" alt="Metrics Dashboard" />
+  <img src="https://bento.vercel.app/api/noontiger?theme=github&hide_border=true" alt="Bento Grid" />
 </div>
 
 ---
@@ -175,7 +108,7 @@
 
 <div align="center">
   <a href="https://star-history.com/#noontiger/noontiger&Date">
-    <img src="https://api.star-history.com/svg?repos=noontiger/noontiger&type=Date&theme=dark" alt="Star History" width="600" />
+    <img src="https://api.star-history.com/svg?repos=noontiger/noontiger&type=Date&theme=light" alt="Star History" width="600" />
   </a>
 </div>
 
@@ -194,11 +127,11 @@
 ## ⚡ Dynamic Badges
 
 <div align="center">
-  <img src="https://img.shields.io/github/last-commit/noontiger/noontiger?style=flat-square&color=00d4aa&logo=git" alt="Last Commit" />
-  <img src="https://img.shields.io/github/repo-size/noontiger/noontiger?style=flat-square&color=00d4aa&logo=github" alt="Repo Size" />
-  <img src="https://img.shields.io/github/license/noontiger/noontiger?style=flat-square&color=00d4aa" alt="License" />
-  <img src="https://img.shields.io/github/issues/noontiger/noontiger?style=flat-square&color=00d4aa&logo=github" alt="Issues" />
-  <img src="https://img.shields.io/github/pulls/noontiger/noontiger?style=flat-square&color=00d4aa&logo=github" alt="Pull Requests" />
+  <img src="https://img.shields.io/github/last-commit/noontiger/noontiger?style=flat-square&color=0078D4&logo=git" alt="Last Commit" />
+  <img src="https://img.shields.io/github/repo-size/noontiger/noontiger?style=flat-square&color=0078D4&logo=github" alt="Repo Size" />
+  <img src="https://img.shields.io/github/license/noontiger/noontiger?style=flat-square&color=0078D4" alt="License" />
+  <img src="https://img.shields.io/github/issues/noontiger/noontiger?style=flat-square&color=0078D4&logo=github" alt="Issues" />
+  <img src="https://img.shields.io/github/pulls/noontiger/noontiger?style=flat-square&color=0078D4&logo=github" alt="Pull Requests" />
 </div>
 
 ---
@@ -206,7 +139,7 @@
 ## 🌍 Visitor World Map
 
 <div align="center">
-  <img src="https://visitor-badge.laobi.icu/badge?page_id=noontiger.noontiger&left_color=1a1b27&right_color=00d4aa" alt="Visitor Map" />
+  <img src="https://visitor-badge.laobi.icu/badge?page_id=noontiger.noontiger&left_color=FFFFFF&right_color=0078D4" alt="Visitor Map" />
 </div>
 
 ---
@@ -214,7 +147,7 @@
 ## 🎵 Now Playing (Spotify)
 
 <div align="center">
-  <img src="https://spotify-github-profile.vercel.app/api/view?uid=noontiger&cover_image=true&theme=tokyonight&show_offline=false&background_color=1a1b27&bar_color=00d4aa&bar_color_cover=true" alt="Spotify Now Playing" />
+  <img src="https://spotify-github-profile.vercel.app/api/view?uid=noontiger&cover_image=true&theme=github&show_offline=false&background_color=FFFFFF&bar_color=0078D4&bar_color_cover=true" alt="Spotify Now Playing" />
 </div>
 
 ---
@@ -222,7 +155,7 @@
 ## 🌐 3D Contribution Globe
 
 <div align="center">
-  <img src="https://github-readme-3d-globe.vercel.app/api?username=noontiger&theme=tokyonight&hide_border=true" alt="3D Globe" />
+  <img src="https://github-readme-3d-globe.vercel.app/api?username=noontiger&theme=github&hide_border=true" alt="3D Globe" />
 </div>
 
 ---
@@ -231,7 +164,7 @@
 
 <!-- BLOG-POST-LIST:START -->
 <div align="center">
-  <img src="https://github-readme-blog-posts.vercel.app/api?username=noontiger&limit=5&theme=tokyonight&hide_border=true" alt="Latest Blog Posts" />
+  <img src="https://github-readme-blog-posts.vercel.app/api?username=noontiger&limit=5&theme=github&hide_border=true" alt="Latest Blog Posts" />
 </div>
 <!-- BLOG-POST-LIST:END -->
 
@@ -242,7 +175,7 @@
 ## 💬 Discord Status
 
 <div align="center">
-  <img src="https://discord-status.vercel.app/api/noontiger?theme=tokyonight&hide_border=true" alt="Discord Status" />
+  <img src="https://discord-status.vercel.app/api/noontiger?theme=github&hide_border=true" alt="Discord Status" />
 </div>
 
 ---
@@ -250,7 +183,7 @@
 ## ⚡ Code::Stats Experience
 
 <div align="center">
-  <img src="https://codestats.net/api/profile/noontiger?theme=tokyonight&hide_border=true" alt="Code::Stats" />
+  <img src="https://codestats.net/api/profile/noontiger?theme=github&hide_border=true" alt="Code::Stats" />
 </div>
 
 ---
@@ -258,7 +191,7 @@
 ## 🌤️ Weather Widget
 
 <div align="center">
-  <img src="https://weather-widget.vercel.app/api?location=auto&theme=tokyonight&hide_border=true" alt="Weather" />
+  <img src="https://weather-widget.vercel.app/api?location=auto&theme=github&hide_border=true" alt="Weather" />
 </div>
 
 ---
@@ -267,7 +200,7 @@
 
 <div align="center">
   <a href="https://github.com/sponsors/noontiger">
-    <img src="https://github-sponsors.vercel.app/api/noontiger?theme=tokyonight&hide_border=true" alt="GitHub Sponsors" />
+    <img src="https://github-sponsors.vercel.app/api/noontiger?theme=github&hide_border=true" alt="GitHub Sponsors" />
   </a>
 </div>
 
@@ -304,7 +237,7 @@
 
 <div align="center">
   <a href="https://github.com/noontiger?tab=followers">
-    <img src="https://img.shields.io/github/followers/noontiger?label=Follow%20Me&style=for-the-badge&color=00d4aa&logo=github" alt="Follow Me" />
+    <img src="https://img.shields.io/github/followers/noontiger?label=Follow%20Me&style=for-the-badge&color=0078D4&logo=github" alt="Follow Me" />
   </a>
 </div>
 
@@ -322,5 +255,5 @@
 <div align="center">
   <sub>⚡ Data sourced from GitHub REST API • Last updated: 2026</sub>
   <br>
-  <sub>🎨 Profile styled with ❤️ using dynamic badges & stats widgets</sub>
+  <sub>🎨 Profile styled with ❤️ using dynamic badges & stats widgets — GitHub Light theme</sub>
 </div>
