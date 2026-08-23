@@ -363,29 +363,6 @@ def generate_radar_scan():
 </svg>'''
     generate_svg(svg, "radar-scan.svg")
 
-def generate_neural_network():
-    """Generate neural network / AI brain visualization"""
-    nodes = []
-    edges = []
-    positions = []
-    for i in range(12):
-        x = 150 + (i % 4) * 150
-        y = 80 + (i // 4) * 100
-        positions.append((x, y))
-        nodes.append(f'<circle cx="{x}" cy="{y}" r="5" fill="#0078d4"><animate attributeName="opacity" values="0.4;1;0.4" dur="{2 + i%3}s" repeatCount="indefinite" begin="{i*0.3}s"/></circle>')
-    for i, (x1, y1) in enumerate(positions):
-        for j, (x2, y2) in enumerate(positions):
-            if i < j and abs(i - j) <= 2:
-                edges.append(f'<line x1="{x1}" y1="{y1}" x2="{x2}" y2="{y2}" stroke="#0078d4" stroke-width="1" opacity="0.2"><animate attributeName="opacity" values="0.1;0.4;0.1" dur="{3 + (i+j)%3}s" repeatCount="indefinite"/></line>')
-    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="800" height="300" viewBox="0 0 800 300">
-  <rect width="800" height="300" fill="#0a0a0a" rx="8"/>
-  <text x="400" y="25" text-anchor="middle" font-family="Courier New" font-size="16" font-weight="600" fill="#0078d4">Neural Network</text>
-  {''.join(edges)}
-  {''.join(nodes)}
-  <text x="400" y="280" text-anchor="middle" font-family="Courier New" font-size="10" fill="#0078d4">🧠 AI-powered development</text>
-</svg>'''
-    generate_svg(svg, "neural-network.svg")
-
 def generate_matrix_rain():
     """Generate Matrix-style rain animation"""
     columns = 40
@@ -412,34 +389,6 @@ def generate_matrix_rain():
   <text x="400" y="290" text-anchor="middle" font-family="monospace" font-size="10" fill="#00ff00">The Matrix has you...</text>
 </svg>'''
     generate_svg(svg, "matrix-rain.svg")
-
-def generate_neon_glow():
-    """Generate neon glow effect"""
-    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="600" height="200" viewBox="0 0 600 200">
-  <defs>
-    <filter id="neon">
-      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-      <feMerge>
-        <feMergeNode in="coloredBlur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
-  </defs>
-  <rect width="600" height="200" fill="#0a0a0a" rx="8"/>
-  <text x="300" y="50" text-anchor="middle" font-family="Courier New" font-size="32" font-weight="bold" fill="#00ff00" filter="url(#neon)">NEON</text>
-  <text x="300" y="100" text-anchor="middle" font-family="Courier New" font-size="28" fill="#ff00ff" filter="url(#neon)">CYBERPUNK</text>
-  <text x="300" y="150" text-anchor="middle" font-family="Courier New" font-size="22" fill="#00ffff" filter="url(#neon)">TECHNOLOGY</text>
-  
-  <circle cx="100" cy="150" r="30" fill="none" stroke="#ff00ff" stroke-width="2" opacity="0.5">
-    <animate attributeName="r" values="25;35;25" dur="3s" repeatCount="indefinite"/>
-    <animate attributeName="opacity" values="0.5;0.2;0.5" dur="3s" repeatCount="indefinite"/>
-  </circle>
-  <circle cx="500" cy="150" r="25" fill="none" stroke="#00ffff" stroke-width="2" opacity="0.5">
-    <animate attributeName="r" values="20;30;20" dur="2.5s" repeatCount="indefinite"/>
-    <animate attributeName="opacity" values="0.5;0.2;0.5" dur="2.5s" repeatCount="indefinite"/>
-  </circle>
-</svg>'''
-    generate_svg(svg, "neon-glow.svg")
 
 def generate_terminal():
     """Generate terminal typing animation"""
@@ -601,9 +550,7 @@ def main():
     
     print("Generating new animation assets...")
     generate_radar_scan()
-    generate_neural_network()
     generate_matrix_rain()
-    generate_neon_glow()
     generate_terminal()
     generate_circuit_board()
     generate_particles()

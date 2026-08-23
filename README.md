@@ -143,26 +143,10 @@
 
 ---
 
-## 🧠 Neural Network
-
-<div align="center">
-  <img src="assets/neural-network.svg" alt="Neural Network" />
-</div>
-
----
-
 ## 🌧️ Matrix Rain
 
 <div align="center">
   <img src="assets/matrix-rain.svg" alt="Matrix Rain" />
-</div>
-
----
-
-## 💡 Neon Glow
-
-<div align="center">
-  <img src="assets/neon-glow.svg" alt="Neon Glow" />
 </div>
 
 ---
@@ -288,8 +272,6 @@
 
 <div align="center">
   <sub>⚡ Data sourced from GitHub REST API • Last updated: 2026</sub>
-  <br>
-  <sub>🎨 Profile styled with ❤️ using dynamic badges & stats widgets — GitHub Light theme</sub>
   <br>
   <sub>🔄 Assets auto-regenerated daily via GitHub Actions</sub>
 </div>
