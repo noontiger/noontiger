@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="200" viewBox="0 0 800 200">
+  <defs>
+    <linearGradient id="circuitGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#0078d4;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#00d4aa;stop-opacity:0.8" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="200" fill="#0a0a0a" rx="8"/>
+  <text x="400" y="25" text-anchor="middle" font-family="Courier New" font-size="14" font-weight="600" fill="#0078d4">Circuit Board</text>
+  
+  <line x1="50" y1="50" x2="200" y2="50" stroke="url(#circuitGrad)" stroke-width="2">
+    <animate attributeName="stroke-dashoffset" from="1000" to="0" dur="5s" repeatCount="indefinite"/>
+  </line>
+  <line x1="200" y1="50" x2="200" y2="150" stroke="url(#circuitGrad)" stroke-width="2">
+    <animate attributeName="stroke-dashoffset" from="1000" to="0" dur="5s" repeatCount="indefinite"/>
+  </line>
+  <line x1="200" y1="150" x2="400" y2="150" stroke="url(#circuitGrad)" stroke-width="2">
+    <animate attributeName="stroke-dashoffset" from="1000" to="0" dur="5s" repeatCount="indefinite"/>
+  </line>
+  <line x1="400" y1="150" x2="400" y2="80" stroke="url(#circuitGrad)" stroke-width="2">
+    <animate attributeName="stroke-dashoffset" from="1000" to="0" dur="5s" repeatCount="indefinite"/>
+  </line>
+  <line x1="400" y1="80" x2="600" y2="80" stroke="url(#circuitGrad)" stroke-width="2">
+    <animate attributeName="stroke-dashoffset" from="1000" to="0" dur="5s" repeatCount="indefinite"/>
+  </line>
+  <line x1="600" y1="80" x2="600" y2="180" stroke="url(#circuitGrad)" stroke-width="2">
+    <animate attributeName="stroke-dashoffset" from="1000" to="0" dur="5s" repeatCount="indefinite"/>
+  </line>
+  <line x1="600" y1="180" x2="750" y2="180" stroke="url(#circuitGrad)" stroke-width="2">
+    <animate attributeName="stroke-dashoffset" from="1000" to="0" dur="5s" repeatCount="indefinite"/>
+  </line>
+  
+  <circle cx="200" cy="50" r="5" fill="#00d4aa">
+    <animate attributeName="r" values="4;6;4" dur="1.5s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="200" cy="150" r="5" fill="#00d4aa">
+    <animate attributeName="r" values="4;6;4" dur="1.5s" repeatCount="indefinite" begin="0.2s"/>
+  </circle>
+  <circle cx="400" cy="150" r="5" fill="#00d4aa">
+    <animate attributeName="r" values="4;6;4" dur="1.5s" repeatCount="indefinite" begin="0.4s"/>
+  </circle>
+  <circle cx="400" cy="80" r="5" fill="#00d4aa">
+    <animate attributeName="r" values="4;6;4" dur="1.5s" repeatCount="indefinite" begin="0.6s"/>
+  </circle>
+  <circle cx="600" cy="80" r="5" fill="#00d4aa">
+    <animate attributeName="r" values="4;6;4" dur="1.5s" repeatCount="indefinite" begin="0.8s"/>
+  </circle>
+  
+  <text x="400" y="195" text-anchor="middle" font-family="Courier New" font-size="10" fill="#0078d4">⚡ Data flows through circuits...</text>
+</svg>

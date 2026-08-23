@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="300" viewBox="0 0 800 300">
+  <rect width="800" height="300" fill="#0a0a0a" rx="8"/>
+  <text x="400" y="25" text-anchor="middle" font-family="Courier New" font-size="14" font-weight="600" fill="#0078d4">Particle Network</text>
+  
+  <circle cx="50" cy="50" r="3" fill="#0078d4">
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite" begin="0.0s"/>
+  </circle>
+  <circle cx="200" cy="50" r="3" fill="#0078d4">
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="3s" repeatCount="indefinite" begin="0.2s"/>
+  </circle>
+  <circle cx="350" cy="50" r="3" fill="#0078d4">
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="4s" repeatCount="indefinite" begin="0.4s"/>
+  </circle>
+  <circle cx="500" cy="50" r="3" fill="#0078d4">
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite" begin="0.6000000000000001s"/>
+  </circle>
+  <circle cx="650" cy="50" r="3" fill="#0078d4">
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="3s" repeatCount="indefinite" begin="0.8s"/>
+  </circle>
+  <circle cx="50" cy="150" r="3" fill="#0078d4">
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="4s" repeatCount="indefinite" begin="1.0s"/>
+  </circle>
+  <circle cx="200" cy="150" r="3" fill="#0078d4">
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite" begin="1.2000000000000002s"/>
+  </circle>
+  <circle cx="350" cy="150" r="3" fill="#0078d4">
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="3s" repeatCount="indefinite" begin="1.4000000000000001s"/>
+  </circle>
+  <circle cx="500" cy="150" r="3" fill="#0078d4">
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="4s" repeatCount="indefinite" begin="1.6s"/>
+  </circle>
+  <circle cx="650" cy="150" r="3" fill="#0078d4">
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite" begin="1.8s"/>
+  </circle>
+  <circle cx="50" cy="250" r="3" fill="#0078d4">
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="3s" repeatCount="indefinite" begin="2.0s"/>
+  </circle>
+  <circle cx="200" cy="250" r="3" fill="#0078d4">
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="4s" repeatCount="indefinite" begin="2.2s"/>
+  </circle>
+  <circle cx="350" cy="250" r="3" fill="#0078d4">
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite" begin="2.4000000000000004s"/>
+  </circle>
+  <circle cx="500" cy="250" r="3" fill="#0078d4">
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="3s" repeatCount="indefinite" begin="2.6s"/>
+  </circle>
+  <circle cx="650" cy="250" r="3" fill="#0078d4">
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="4s" repeatCount="indefinite" begin="2.8000000000000003s"/>
+  </circle>
+  <circle cx="50" cy="350" r="3" fill="#0078d4">
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite" begin="3.0s"/>
+  </circle>
+  <circle cx="200" cy="350" r="3" fill="#0078d4">
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="3s" repeatCount="indefinite" begin="3.2s"/>
+  </circle>
+  <circle cx="350" cy="350" r="3" fill="#0078d4">
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="4s" repeatCount="indefinite" begin="3.4000000000000004s"/>
+  </circle>
+  <circle cx="500" cy="350" r="3" fill="#0078d4">
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite" begin="3.6s"/>
+  </circle>
+  <circle cx="650" cy="350" r="3" fill="#0078d4">
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="3s" repeatCount="indefinite" begin="3.8000000000000003s"/>
+  </circle>
+  <text x="400" y="280" text-anchor="middle" font-family="Courier New" font-size="10" fill="#0078d4">🤖 Neural network visualization</text>
+</svg>

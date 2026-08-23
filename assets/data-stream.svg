@@ -1,0 +1,246 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="300" viewBox="0 0 800 300">
+  <rect width="800" height="300" fill="#0a0a0a" rx="8"/>
+  <text x="400" y="25" text-anchor="middle" font-family="Courier New" font-size="14" font-weight="600" fill="#00d4aa">Data Stream</text>
+  
+  <text x="50" y="50" fill="#00d4aa" font-family="Courier New" font-size="14" opacity="0.8">
+    0
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="1s" repeatCount="indefinite" begin="0.0s"/>
+  </text>
+  <text x="120" y="50" fill="#00d4aa" font-family="Courier New" font-size="14" opacity="0.8">
+    1
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite" begin="0.15s"/>
+  </text>
+  <text x="190" y="50" fill="#00d4aa" font-family="Courier New" font-size="14" opacity="0.8">
+    0
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="3s" repeatCount="indefinite" begin="0.3s"/>
+  </text>
+  <text x="260" y="50" fill="#00d4aa" font-family="Courier New" font-size="14" opacity="0.8">
+    1
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="4s" repeatCount="indefinite" begin="0.44999999999999996s"/>
+  </text>
+  <text x="330" y="50" fill="#00d4aa" font-family="Courier New" font-size="14" opacity="0.8">
+    0
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="1s" repeatCount="indefinite" begin="0.6s"/>
+  </text>
+  <text x="400" y="50" fill="#00d4aa" font-family="Courier New" font-size="14" opacity="0.8">
+    1
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite" begin="0.75s"/>
+  </text>
+  <text x="470" y="50" fill="#00d4aa" font-family="Courier New" font-size="14" opacity="0.8">
+    0
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="3s" repeatCount="indefinite" begin="0.8999999999999999s"/>
+  </text>
+  <text x="540" y="50" fill="#00d4aa" font-family="Courier New" font-size="14" opacity="0.8">
+    1
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="4s" repeatCount="indefinite" begin="1.05s"/>
+  </text>
+  <text x="610" y="50" fill="#00d4aa" font-family="Courier New" font-size="14" opacity="0.8">
+    0
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="1s" repeatCount="indefinite" begin="1.2s"/>
+  </text>
+  <text x="680" y="50" fill="#00d4aa" font-family="Courier New" font-size="14" opacity="0.8">
+    1
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite" begin="1.3499999999999999s"/>
+  </text>
+  <text x="50" y="100" fill="#00d4aa" font-family="Courier New" font-size="14" opacity="0.8">
+    0
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="3s" repeatCount="indefinite" begin="1.5s"/>
+  </text>
+  <text x="120" y="100" fill="#00d4aa" font-family="Courier New" font-size="14" opacity="0.8">
+    1
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="4s" repeatCount="indefinite" begin="1.65s"/>
+  </text>
+  <text x="190" y="100" fill="#00d4aa" font-family="Courier New" font-size="14" opacity="0.8">
+    0
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="1s" repeatCount="indefinite" begin="1.7999999999999998s"/>
+  </text>
+  <text x="260" y="100" fill="#00d4aa" font-family="Courier New" font-size="14" opacity="0.8">
+    1
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite" begin="1.95s"/>
+  </text>
+  <text x="330" y="100" fill="#00d4aa" font-family="Courier New" font-size="14" opacity="0.8">
+    0
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="3s" repeatCount="indefinite" begin="2.1s"/>
+  </text>
+  <text x="400" y="100" fill="#00d4aa" font-family="Courier New" font-size="14" opacity="0.8">
+    1
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="4s" repeatCount="indefinite" begin="2.25s"/>
+  </text>
+  <text x="470" y="100" fill="#00d4aa" font-family="Courier New" font-size="14" opacity="0.8">
+    0
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="1s" repeatCount="indefinite" begin="2.4s"/>
+  </text>
+  <text x="540" y="100" fill="#00d4aa" font-family="Courier New" font-size="14" opacity="0.8">
+    1
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite" begin="2.55s"/>
+  </text>
+  <text x="610" y="100" fill="#00d4aa" font-family="Courier New" font-size="14" opacity="0.8">
+    0
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="3s" repeatCount="indefinite" begin="2.6999999999999997s"/>
+  </text>
+  <text x="680" y="100" fill="#00d4aa" font-family="Courier New" font-size="14" opacity="0.8">
+    1
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="4s" repeatCount="indefinite" begin="2.85s"/>
+  </text>
+  <text x="50" y="150" fill="#00d4aa" font-family="Courier New" font-size="14" opacity="0.8">
+    0
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="1s" repeatCount="indefinite" begin="3.0s"/>
+  </text>
+  <text x="120" y="150" fill="#00d4aa" font-family="Courier New" font-size="14" opacity="0.8">
+    1
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite" begin="3.15s"/>
+  </text>
+  <text x="190" y="150" fill="#00d4aa" font-family="Courier New" font-size="14" opacity="0.8">
+    0
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="3s" repeatCount="indefinite" begin="3.3s"/>
+  </text>
+  <text x="260" y="150" fill="#00d4aa" font-family="Courier New" font-size="14" opacity="0.8">
+    1
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="4s" repeatCount="indefinite" begin="3.4499999999999997s"/>
+  </text>
+  <text x="330" y="150" fill="#00d4aa" font-family="Courier New" font-size="14" opacity="0.8">
+    0
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="1s" repeatCount="indefinite" begin="3.5999999999999996s"/>
+  </text>
+  <text x="400" y="150" fill="#00d4aa" font-family="Courier New" font-size="14" opacity="0.8">
+    1
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite" begin="3.75s"/>
+  </text>
+  <text x="470" y="150" fill="#00d4aa" font-family="Courier New" font-size="14" opacity="0.8">
+    0
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="3s" repeatCount="indefinite" begin="3.9s"/>
+  </text>
+  <text x="540" y="150" fill="#00d4aa" font-family="Courier New" font-size="14" opacity="0.8">
+    1
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="4s" repeatCount="indefinite" begin="4.05s"/>
+  </text>
+  <text x="610" y="150" fill="#00d4aa" font-family="Courier New" font-size="14" opacity="0.8">
+    0
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="1s" repeatCount="indefinite" begin="4.2s"/>
+  </text>
+  <text x="680" y="150" fill="#00d4aa" font-family="Courier New" font-size="14" opacity="0.8">
+    1
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite" begin="4.35s"/>
+  </text>
+  <text x="50" y="200" fill="#00d4aa" font-family="Courier New" font-size="14" opacity="0.8">
+    0
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="3s" repeatCount="indefinite" begin="4.5s"/>
+  </text>
+  <text x="120" y="200" fill="#00d4aa" font-family="Courier New" font-size="14" opacity="0.8">
+    1
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="4s" repeatCount="indefinite" begin="4.6499999999999995s"/>
+  </text>
+  <text x="190" y="200" fill="#00d4aa" font-family="Courier New" font-size="14" opacity="0.8">
+    0
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="1s" repeatCount="indefinite" begin="4.8s"/>
+  </text>
+  <text x="260" y="200" fill="#00d4aa" font-family="Courier New" font-size="14" opacity="0.8">
+    1
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite" begin="4.95s"/>
+  </text>
+  <text x="330" y="200" fill="#00d4aa" font-family="Courier New" font-size="14" opacity="0.8">
+    0
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="3s" repeatCount="indefinite" begin="5.1s"/>
+  </text>
+  <text x="400" y="200" fill="#00d4aa" font-family="Courier New" font-size="14" opacity="0.8">
+    1
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="4s" repeatCount="indefinite" begin="5.25s"/>
+  </text>
+  <text x="470" y="200" fill="#00d4aa" font-family="Courier New" font-size="14" opacity="0.8">
+    0
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="1s" repeatCount="indefinite" begin="5.3999999999999995s"/>
+  </text>
+  <text x="540" y="200" fill="#00d4aa" font-family="Courier New" font-size="14" opacity="0.8">
+    1
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite" begin="5.55s"/>
+  </text>
+  <text x="610" y="200" fill="#00d4aa" font-family="Courier New" font-size="14" opacity="0.8">
+    0
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="3s" repeatCount="indefinite" begin="5.7s"/>
+  </text>
+  <text x="680" y="200" fill="#00d4aa" font-family="Courier New" font-size="14" opacity="0.8">
+    1
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="4s" repeatCount="indefinite" begin="5.85s"/>
+  </text>
+  <text x="50" y="250" fill="#00d4aa" font-family="Courier New" font-size="14" opacity="0.8">
+    0
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="1s" repeatCount="indefinite" begin="6.0s"/>
+  </text>
+  <text x="120" y="250" fill="#00d4aa" font-family="Courier New" font-size="14" opacity="0.8">
+    1
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite" begin="6.1499999999999995s"/>
+  </text>
+  <text x="190" y="250" fill="#00d4aa" font-family="Courier New" font-size="14" opacity="0.8">
+    0
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="3s" repeatCount="indefinite" begin="6.3s"/>
+  </text>
+  <text x="260" y="250" fill="#00d4aa" font-family="Courier New" font-size="14" opacity="0.8">
+    1
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="4s" repeatCount="indefinite" begin="6.45s"/>
+  </text>
+  <text x="330" y="250" fill="#00d4aa" font-family="Courier New" font-size="14" opacity="0.8">
+    0
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="1s" repeatCount="indefinite" begin="6.6s"/>
+  </text>
+  <text x="400" y="250" fill="#00d4aa" font-family="Courier New" font-size="14" opacity="0.8">
+    1
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite" begin="6.75s"/>
+  </text>
+  <text x="470" y="250" fill="#00d4aa" font-family="Courier New" font-size="14" opacity="0.8">
+    0
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="3s" repeatCount="indefinite" begin="6.8999999999999995s"/>
+  </text>
+  <text x="540" y="250" fill="#00d4aa" font-family="Courier New" font-size="14" opacity="0.8">
+    1
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="4s" repeatCount="indefinite" begin="7.05s"/>
+  </text>
+  <text x="610" y="250" fill="#00d4aa" font-family="Courier New" font-size="14" opacity="0.8">
+    0
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="1s" repeatCount="indefinite" begin="7.199999999999999s"/>
+  </text>
+  <text x="680" y="250" fill="#00d4aa" font-family="Courier New" font-size="14" opacity="0.8">
+    1
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite" begin="7.35s"/>
+  </text>
+  <text x="50" y="300" fill="#00d4aa" font-family="Courier New" font-size="14" opacity="0.8">
+    0
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="3s" repeatCount="indefinite" begin="7.5s"/>
+  </text>
+  <text x="120" y="300" fill="#00d4aa" font-family="Courier New" font-size="14" opacity="0.8">
+    1
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="4s" repeatCount="indefinite" begin="7.6499999999999995s"/>
+  </text>
+  <text x="190" y="300" fill="#00d4aa" font-family="Courier New" font-size="14" opacity="0.8">
+    0
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="1s" repeatCount="indefinite" begin="7.8s"/>
+  </text>
+  <text x="260" y="300" fill="#00d4aa" font-family="Courier New" font-size="14" opacity="0.8">
+    1
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite" begin="7.949999999999999s"/>
+  </text>
+  <text x="330" y="300" fill="#00d4aa" font-family="Courier New" font-size="14" opacity="0.8">
+    0
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="3s" repeatCount="indefinite" begin="8.1s"/>
+  </text>
+  <text x="400" y="300" fill="#00d4aa" font-family="Courier New" font-size="14" opacity="0.8">
+    1
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="4s" repeatCount="indefinite" begin="8.25s"/>
+  </text>
+  <text x="470" y="300" fill="#00d4aa" font-family="Courier New" font-size="14" opacity="0.8">
+    0
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="1s" repeatCount="indefinite" begin="8.4s"/>
+  </text>
+  <text x="540" y="300" fill="#00d4aa" font-family="Courier New" font-size="14" opacity="0.8">
+    1
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite" begin="8.549999999999999s"/>
+  </text>
+  <text x="610" y="300" fill="#00d4aa" font-family="Courier New" font-size="14" opacity="0.8">
+    0
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="3s" repeatCount="indefinite" begin="8.7s"/>
+  </text>
+  <text x="680" y="300" fill="#00d4aa" font-family="Courier New" font-size="14" opacity="0.8">
+    1
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="4s" repeatCount="indefinite" begin="8.85s"/>
+  </text>
+  <text x="400" y="290" text-anchor="middle" font-family="Courier New" font-size="10" fill="#00d4aa">Binary data flow...</text>
+</svg>

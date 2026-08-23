@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="300" viewBox="0 0 800 300">
+  <rect width="800" height="300" fill="#1e1e1e" rx="8"/>
+  <rect x="10" y="10" width="780" height="30" fill="#2d2d2d" rx="4"/>
+  <circle cx="25" cy="25" r="8" fill="#ff5f56"/>
+  <circle cx="45" cy="25" r="8" fill="#ffbd2e"/>
+  <circle cx="65" cy="25" r="8" fill="#27c93f"/>
+  
+  <text x="20" y="80" font-family="Courier New" font-size="14" fill="#00ff00">$ whoami</text>
+  <text x="20" y="110" font-family="Courier New" font-size="14" fill="#ffffff">noontiger</text>
+  <text x="20" y="150" font-family="Courier New" font-size="14" fill="#00ff00">$ cat skills.txt</text>
+  <text x="20" y="180" font-family="Courier New" font-size="14" fill="#ff00ff">Python, JavaScript, TypeScript, Rust, Go...</text>
+  <text x="20" y="220" font-family="Courier New" font-size="14" fill="#00ffff">$ ./build_awesome.sh</text>
+  <text x="20" y="250" font-family="Courier New" font-size="14" fill="#ffff00">Building the future...</text>
+  
+  <rect x="20" y="255" width="10" height="20" fill="#00ff00">
+    <animate attributeName="opacity" values="1;0" dur="0.5s" repeatCount="indefinite"/>
+  </rect>
+</svg>

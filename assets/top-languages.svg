@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="300" viewBox="0 0 800 300">
+  <rect width="800" height="300" fill="#ffffff" rx="12"/>
+  <text x="400" y="35" text-anchor="middle" font-family="Arial" font-size="20" font-weight="600" fill="#0078d4">Top Languages</text>
+  
+  <rect x="50" y="60" width="270.98881910137214" height="24" fill="#0078d4" rx="4">
+    <animate attributeName="width" from="0" to="270.98881910137214" dur="1s" fill="freeze" begin="0.0s"/>
+  </rect>
+  <text x="55" y="77" font-family="Arial" font-size="12" font-weight="600" fill="#fff">JavaScript</text>
+  <text x="330.98881910137214" y="77" font-family="Arial" font-size="12" fill="#666">77.4%</text>
+  <rect x="50" y="100" width="64.6365537628282" height="24" fill="#00d4aa" rx="4">
+    <animate attributeName="width" from="0" to="64.6365537628282" dur="1s" fill="freeze" begin="0.1s"/>
+  </rect>
+  <text x="55" y="117" font-family="Arial" font-size="12" font-weight="600" fill="#fff">TypeScript</text>
+  <text x="124.6365537628282" y="117" font-family="Arial" font-size="12" fill="#666">18.5%</text>
+  <rect x="50" y="140" width="12.03907281660779" height="24" fill="#F7C948" rx="4">
+    <animate attributeName="width" from="0" to="12.03907281660779" dur="1s" fill="freeze" begin="0.2s"/>
+  </rect>
+  <text x="55" y="157" font-family="Arial" font-size="12" font-weight="600" fill="#fff">Python</text>
+  <text x="72.03907281660778" y="157" font-family="Arial" font-size="12" fill="#666">3.4%</text>
+  <rect x="50" y="180" width="2.238190678562571" height="24" fill="#ff6b9d" rx="4">
+    <animate attributeName="width" from="0" to="2.238190678562571" dur="1s" fill="freeze" begin="0.3s"/>
+  </rect>
+  <text x="55" y="197" font-family="Arial" font-size="12" font-weight="600" fill="#fff">Astro</text>
+  <text x="62.238190678562574" y="197" font-family="Arial" font-size="12" fill="#666">0.6%</text>
+  <rect x="50" y="220" width="0.06099890738220843" height="24" fill="#c084fc" rx="4">
+    <animate attributeName="width" from="0" to="0.06099890738220843" dur="1s" fill="freeze" begin="0.4s"/>
+  </rect>
+  <text x="55" y="237" font-family="Arial" font-size="12" font-weight="600" fill="#fff">CSS</text>
+  <text x="60.060998907382206" y="237" font-family="Arial" font-size="12" fill="#666">0.0%</text>
+  <rect x="50" y="260" width="0.03636473324708579" height="24" fill="#fb923c" rx="4">
+    <animate attributeName="width" from="0" to="0.03636473324708579" dur="1s" fill="freeze" begin="0.5s"/>
+  </rect>
+  <text x="55" y="277" font-family="Arial" font-size="12" font-weight="600" fill="#fff">HTML</text>
+  <text x="60.03636473324708" y="277" font-family="Arial" font-size="12" fill="#666">0.0%</text>
+</svg>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="300" viewBox="0 0 800 300">
+  <rect width="800" height="300" fill="#ffffff" rx="12"/>
+  <text x="400" y="45" text-anchor="middle" font-family="Arial" font-size="20" font-weight="600" fill="#0078d4">GitHub Trophies</text>
+  
+  <g transform="translate(150, 80)">
+    <text x="0" y="0" font-size="40">🏆</text>
+    <text x="0" y="30" font-family="Arial" font-size="12" fill="#666">Arctic Code Vault</text>
+  </g>
+  <g transform="translate(350, 80)">
+    <text x="0" y="0" font-size="40">⭐</text>
+    <text x="0" y="30" font-family="Arial" font-size="12" fill="#666">Starstruck</text>
+  </g>
+  <g transform="translate(550, 80)">
+    <text x="0" y="0" font-size="40">🔥</text>
+    <text x="0" y="30" font-family="Arial" font-size="12" fill="#666">On Fire</text>
+  </g>
+</svg>
