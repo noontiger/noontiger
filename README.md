@@ -4,7 +4,7 @@
 
 ### 💻 Full-Stack Developer · Open Source Enthusiast · AI/ML Explorer
 
-*Turning ideas into reality with code • 172 public repos • 7.1k+ total stars*
+*Turning ideas into reality with code*
 
 </div>
 
@@ -41,6 +41,21 @@
 <div align="center">
   <img src="https://github-readme-activity-graph.vercel.app/graph?username=noontiger&theme=github&hide_border=true&area=true&radius=16&color=0078D4&bg_color=FFFFFF" alt="Contribution Graph" />
 </div>
+
+---
+
+## 📦 Package Download Stats
+
+<div align="center">
+
+![npm downloads](https://img.shields.io/npm/dm/droidseal?style=flat-square&color=CB3837&logo=npm&logoColor=white&label=npm%20downloads)
+![npm total downloads](https://img.shields.io/npm/dt/droidseal?style=flat-square&color=CB3837&logo=npm&logoColor=white&label=npm%20total)
+![PyPI downloads (monthly)](https://img.shields.io/pypi/dm/droidseal?style=flat-square&color=3775A9&logo=pypi&logoColor=white&label=pypi%20monthly)
+![PyPI downloads (total)](https://img.shields.io/pypi/dt/droidseal?style=flat-square&color=3775A9&logo=pypi&logoColor=white&label=pypi%20total)
+
+</div>
+
+*Replace `droidseal` with your actual package name on npm/PyPI*
 
 ---
 
@@ -144,14 +159,6 @@
 
 ---
 
-## 🎵 Now Playing (Spotify)
-
-<div align="center">
-  <img src="https://spotify-github-profile.vercel.app/api/view?uid=noontiger&cover_image=true&theme=github&show_offline=false&background_color=FFFFFF&bar_color=0078D4&bar_color_cover=true" alt="Spotify Now Playing" />
-</div>
-
----
-
 ## 🌐 3D Contribution Globe
 
 <div align="center">
@@ -202,6 +209,20 @@
   <a href="https://github.com/sponsors/noontiger">
     <img src="https://github-sponsors.vercel.app/api/noontiger?theme=github&hide_border=true" alt="GitHub Sponsors" />
   </a>
+</div>
+
+---
+
+## 🔊 Sound
+
+<div align="center">
+  <p><strong>许镜清 - 杨戬擒悟空</strong></p>
+  <p><em>GitHub README 不支持直接播放音频。请将音频文件上传到仓库或托管服务，然后使用以下链接：</em></p>
+  <p>
+    <a href="https://github.com/noontiger/noontiger/raw/main/assets/sound.wav" target="_blank">
+      🔗 点击播放 / 下载音频
+    </a>
+  </p>
 </div>
 
 ---
