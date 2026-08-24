@@ -1,9 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="220" viewBox="0 0 800 220">
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="240" viewBox="0 0 800 240">
   <defs>
     <linearGradient id="timelineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#0078d4;stop-opacity:0.3" />
-      <stop offset="50%" style="stop-color:#00d4aa;stop-opacity:0.3" />
-      <stop offset="100%" style="stop-color:#0078d4;stop-opacity:0.3" />
+      <stop offset="0%" style="stop-color:#0078d4;stop-opacity:0.4" />
+      <stop offset="20%" style="stop-color:#00d4aa;stop-opacity:0.4" />
+      <stop offset="40%" style="stop-color:#F7C948;stop-opacity:0.4" />
+      <stop offset="60%" style="stop-color:#ff6b9d;stop-opacity:0.4" />
+      <stop offset="80%" style="stop-color:#c084fc;stop-opacity:0.4" />
+      <stop offset="100%" style="stop-color:#fb923c;stop-opacity:0.4" />
     </linearGradient>
     <filter id="nodeGlow">
       <feGaussianBlur stdDeviation="2" result="blur"/>
@@ -12,72 +15,168 @@
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
+    <filter id="lineGlow">
+      <feGaussianBlur stdDeviation="1" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
   </defs>
-  <rect width="800" height="220" fill="#ffffff" rx="12"/>
+  <rect width="800" height="240" fill="#ffffff" rx="12"/>
   
-  <line x1="80" y1="120" x2="720" y2="120" stroke="url(#timelineGrad)" stroke-width="3" stroke-dasharray="8,4">
-    <animate attributeName="stroke-dashoffset" from="0" to="-24" dur="1s" repeatCount="indefinite"/>
+  <!-- Timeline axis with gradient -->
+  <line x1="60" y1="120" x2="740" y2="120" stroke="url(#timelineGrad)" stroke-width="4" filter="url(#lineGlow)">
+    <animate attributeName="stroke-dashoffset" from="0" to="-40" dur="2s" repeatCount="indefinite"/>
   </line>
   
+  <!-- Subtle grid lines -->
+  <g stroke="#eee" stroke-width="0.5">
+    <line x1="60" y1="60" x2="740" y2="60"/>
+    <line x1="60" y1="180" x2="740" y2="180"/>
+  </g>
   
-  <g transform="translate(100, 120)">
-    <circle cx="0" cy="0" r="12" fill="#0078d4" opacity="0.2">
+  
+  <g transform="translate(80, 120)">
+    <!-- Outer pulse ring -->
+    <circle cx="0" cy="0" r="16" fill="#3776AB" opacity="0.15">
+      <animate attributeName="r" values="14;22;14" dur="2.5s" repeatCount="indefinite" begin="0.0s"/>
+      <animate attributeName="opacity" values="0.2;0.05;0.2" dur="2.5s" repeatCount="indefinite" begin="0.0s"/>
+    </circle>
+    <!-- Middle ring -->
+    <circle cx="0" cy="0" r="12" fill="#3776AB" opacity="0.25">
       <animate attributeName="r" values="10;16;10" dur="2s" repeatCount="indefinite" begin="0.0s"/>
     </circle>
-    <circle cx="0" cy="0" r="8" fill="#0078d4">
-      <animate attributeName="r" values="6;10;6" dur="2s" repeatCount="indefinite" begin="0.0s"/>
+    <!-- Core node -->
+    <circle cx="0" cy="0" r="8" fill="#3776AB" filter="url(#nodeGlow)">
+      <animate attributeName="r" values="7;9;7" dur="1.5s" repeatCount="indefinite" begin="0.0s"/>
     </circle>
-    <text x="0" y="-25" text-anchor="middle" font-family="Arial" font-size="20" font-weight="700" fill="#0078d4">2020</text>
-    <text x="0" y="35" text-anchor="middle" font-family="Arial" font-size="11" fill="#666">Started Coding</text>
+    <!-- Icon -->
+    <text x="0" y="-38" text-anchor="middle" font-size="22">🐍</text>
+    <!-- Year -->
+    <text x="0" y="-18" text-anchor="middle" font-family="Arial" font-size="13" font-weight="700" fill="#3776AB">2020</text>
+    <!-- Title -->
+    <text x="0" y="2" text-anchor="middle" font-family="Arial" font-size="11" font-weight="600" fill="#333">Python & Web Dev</text>
+    <!-- Description -->
+    <text x="0" y="16" text-anchor="middle" font-family="Arial" font-size="9" fill="#888">Django, Flask, REST APIs</text>
   </g>
-  <g transform="translate(220, 120)">
-    <circle cx="0" cy="0" r="12" fill="#00d4aa" opacity="0.2">
-      <animate attributeName="r" values="10;16;10" dur="2s" repeatCount="indefinite" begin="0.3s"/>
+  <g transform="translate(195, 120)">
+    <!-- Outer pulse ring -->
+    <circle cx="0" cy="0" r="16" fill="#3178C6" opacity="0.15">
+      <animate attributeName="r" values="14;22;14" dur="2.5s" repeatCount="indefinite" begin="0.35s"/>
+      <animate attributeName="opacity" values="0.2;0.05;0.2" dur="2.5s" repeatCount="indefinite" begin="0.35s"/>
     </circle>
-    <circle cx="0" cy="0" r="8" fill="#00d4aa">
-      <animate attributeName="r" values="6;10;6" dur="2s" repeatCount="indefinite" begin="0.3s"/>
+    <!-- Middle ring -->
+    <circle cx="0" cy="0" r="12" fill="#3178C6" opacity="0.25">
+      <animate attributeName="r" values="10;16;10" dur="2s" repeatCount="indefinite" begin="0.35s"/>
     </circle>
-    <text x="0" y="-25" text-anchor="middle" font-family="Arial" font-size="20" font-weight="700" fill="#00d4aa">2021</text>
-    <text x="0" y="35" text-anchor="middle" font-family="Arial" font-size="11" fill="#666">First Open Source</text>
+    <!-- Core node -->
+    <circle cx="0" cy="0" r="8" fill="#3178C6" filter="url(#nodeGlow)">
+      <animate attributeName="r" values="7;9;7" dur="1.5s" repeatCount="indefinite" begin="0.35s"/>
+    </circle>
+    <!-- Icon -->
+    <text x="0" y="-38" text-anchor="middle" font-size="22">⚛️</text>
+    <!-- Year -->
+    <text x="0" y="-18" text-anchor="middle" font-family="Arial" font-size="13" font-weight="700" fill="#3178C6">2021</text>
+    <!-- Title -->
+    <text x="0" y="2" text-anchor="middle" font-family="Arial" font-size="11" font-weight="600" fill="#333">TypeScript & React</text>
+    <!-- Description -->
+    <text x="0" y="16" text-anchor="middle" font-family="Arial" font-size="9" fill="#888">Next.js, Redux, Testing</text>
   </g>
-  <g transform="translate(340, 120)">
-    <circle cx="0" cy="0" r="12" fill="#F7C948" opacity="0.2">
-      <animate attributeName="r" values="10;16;10" dur="2s" repeatCount="indefinite" begin="0.6s"/>
+  <g transform="translate(310, 120)">
+    <!-- Outer pulse ring -->
+    <circle cx="0" cy="0" r="16" fill="#FF9900" opacity="0.15">
+      <animate attributeName="r" values="14;22;14" dur="2.5s" repeatCount="indefinite" begin="0.7s"/>
+      <animate attributeName="opacity" values="0.2;0.05;0.2" dur="2.5s" repeatCount="indefinite" begin="0.7s"/>
     </circle>
-    <circle cx="0" cy="0" r="8" fill="#F7C948">
-      <animate attributeName="r" values="6;10;6" dur="2s" repeatCount="indefinite" begin="0.6s"/>
+    <!-- Middle ring -->
+    <circle cx="0" cy="0" r="12" fill="#FF9900" opacity="0.25">
+      <animate attributeName="r" values="10;16;10" dur="2s" repeatCount="indefinite" begin="0.7s"/>
     </circle>
-    <text x="0" y="-25" text-anchor="middle" font-family="Arial" font-size="20" font-weight="700" fill="#F7C948">2022</text>
-    <text x="0" y="35" text-anchor="middle" font-family="Arial" font-size="11" fill="#666">Full-Stack Dev</text>
+    <!-- Core node -->
+    <circle cx="0" cy="0" r="8" fill="#FF9900" filter="url(#nodeGlow)">
+      <animate attributeName="r" values="7;9;7" dur="1.5s" repeatCount="indefinite" begin="0.7s"/>
+    </circle>
+    <!-- Icon -->
+    <text x="0" y="-38" text-anchor="middle" font-size="22">☁️</text>
+    <!-- Year -->
+    <text x="0" y="-18" text-anchor="middle" font-family="Arial" font-size="13" font-weight="700" fill="#FF9900">2022</text>
+    <!-- Title -->
+    <text x="0" y="2" text-anchor="middle" font-family="Arial" font-size="11" font-weight="600" fill="#333">Full-Stack & Cloud</text>
+    <!-- Description -->
+    <text x="0" y="16" text-anchor="middle" font-family="Arial" font-size="9" fill="#888">AWS, Docker, CI/CD, K8s</text>
   </g>
-  <g transform="translate(460, 120)">
-    <circle cx="0" cy="0" r="12" fill="#ff6b9d" opacity="0.2">
-      <animate attributeName="r" values="10;16;10" dur="2s" repeatCount="indefinite" begin="0.8999999999999999s"/>
+  <g transform="translate(425, 120)">
+    <!-- Outer pulse ring -->
+    <circle cx="0" cy="0" r="16" fill="#FF6F00" opacity="0.15">
+      <animate attributeName="r" values="14;22;14" dur="2.5s" repeatCount="indefinite" begin="1.0499999999999998s"/>
+      <animate attributeName="opacity" values="0.2;0.05;0.2" dur="2.5s" repeatCount="indefinite" begin="1.0499999999999998s"/>
     </circle>
-    <circle cx="0" cy="0" r="8" fill="#ff6b9d">
-      <animate attributeName="r" values="6;10;6" dur="2s" repeatCount="indefinite" begin="0.8999999999999999s"/>
+    <!-- Middle ring -->
+    <circle cx="0" cy="0" r="12" fill="#FF6F00" opacity="0.25">
+      <animate attributeName="r" values="10;16;10" dur="2s" repeatCount="indefinite" begin="1.0499999999999998s"/>
     </circle>
-    <text x="0" y="-25" text-anchor="middle" font-family="Arial" font-size="20" font-weight="700" fill="#ff6b9d">2023</text>
-    <text x="0" y="35" text-anchor="middle" font-family="Arial" font-size="11" fill="#666">AI/ML Explorer</text>
+    <!-- Core node -->
+    <circle cx="0" cy="0" r="8" fill="#FF6F00" filter="url(#nodeGlow)">
+      <animate attributeName="r" values="7;9;7" dur="1.5s" repeatCount="indefinite" begin="1.0499999999999998s"/>
+    </circle>
+    <!-- Icon -->
+    <text x="0" y="-38" text-anchor="middle" font-size="22">🤖</text>
+    <!-- Year -->
+    <text x="0" y="-18" text-anchor="middle" font-family="Arial" font-size="13" font-weight="700" fill="#FF6F00">2023</text>
+    <!-- Title -->
+    <text x="0" y="2" text-anchor="middle" font-family="Arial" font-size="11" font-weight="600" fill="#333">AI/ML Engineering</text>
+    <!-- Description -->
+    <text x="0" y="16" text-anchor="middle" font-family="Arial" font-size="9" fill="#888">PyTorch, LLMs, MLOps</text>
   </g>
-  <g transform="translate(580, 120)">
-    <circle cx="0" cy="0" r="12" fill="#c084fc" opacity="0.2">
-      <animate attributeName="r" values="10;16;10" dur="2s" repeatCount="indefinite" begin="1.2s"/>
+  <g transform="translate(540, 120)">
+    <!-- Outer pulse ring -->
+    <circle cx="0" cy="0" r="16" fill="#DEA584" opacity="0.15">
+      <animate attributeName="r" values="14;22;14" dur="2.5s" repeatCount="indefinite" begin="1.4s"/>
+      <animate attributeName="opacity" values="0.2;0.05;0.2" dur="2.5s" repeatCount="indefinite" begin="1.4s"/>
     </circle>
-    <circle cx="0" cy="0" r="8" fill="#c084fc">
-      <animate attributeName="r" values="6;10;6" dur="2s" repeatCount="indefinite" begin="1.2s"/>
+    <!-- Middle ring -->
+    <circle cx="0" cy="0" r="12" fill="#DEA584" opacity="0.25">
+      <animate attributeName="r" values="10;16;10" dur="2s" repeatCount="indefinite" begin="1.4s"/>
     </circle>
-    <text x="0" y="-25" text-anchor="middle" font-family="Arial" font-size="20" font-weight="700" fill="#c084fc">2024</text>
-    <text x="0" y="35" text-anchor="middle" font-family="Arial" font-size="11" fill="#666">Cloud Native</text>
+    <!-- Core node -->
+    <circle cx="0" cy="0" r="8" fill="#DEA584" filter="url(#nodeGlow)">
+      <animate attributeName="r" values="7;9;7" dur="1.5s" repeatCount="indefinite" begin="1.4s"/>
+    </circle>
+    <!-- Icon -->
+    <text x="0" y="-38" text-anchor="middle" font-size="22">🦀</text>
+    <!-- Year -->
+    <text x="0" y="-18" text-anchor="middle" font-family="Arial" font-size="13" font-weight="700" fill="#DEA584">2024</text>
+    <!-- Title -->
+    <text x="0" y="2" text-anchor="middle" font-family="Arial" font-size="11" font-weight="600" fill="#333">Systems & Rust</text>
+    <!-- Description -->
+    <text x="0" y="16" text-anchor="middle" font-family="Arial" font-size="9" fill="#888">Rust, WASM, Performance</text>
   </g>
-  <g transform="translate(700, 120)">
-    <circle cx="0" cy="0" r="12" fill="#fb923c" opacity="0.2">
-      <animate attributeName="r" values="10;16;10" dur="2s" repeatCount="indefinite" begin="1.5s"/>
+  <g transform="translate(655, 120)">
+    <!-- Outer pulse ring -->
+    <circle cx="0" cy="0" r="16" fill="#8B5CF6" opacity="0.15">
+      <animate attributeName="r" values="14;22;14" dur="2.5s" repeatCount="indefinite" begin="1.75s"/>
+      <animate attributeName="opacity" values="0.2;0.05;0.2" dur="2.5s" repeatCount="indefinite" begin="1.75s"/>
     </circle>
-    <circle cx="0" cy="0" r="8" fill="#fb923c">
-      <animate attributeName="r" values="6;10;6" dur="2s" repeatCount="indefinite" begin="1.5s"/>
+    <!-- Middle ring -->
+    <circle cx="0" cy="0" r="12" fill="#8B5CF6" opacity="0.25">
+      <animate attributeName="r" values="10;16;10" dur="2s" repeatCount="indefinite" begin="1.75s"/>
     </circle>
-    <text x="0" y="-25" text-anchor="middle" font-family="Arial" font-size="20" font-weight="700" fill="#fb923c">2025</text>
-    <text x="0" y="35" text-anchor="middle" font-family="Arial" font-size="11" fill="#666">Building Future</text>
+    <!-- Core node -->
+    <circle cx="0" cy="0" r="8" fill="#8B5CF6" filter="url(#nodeGlow)">
+      <animate attributeName="r" values="7;9;7" dur="1.5s" repeatCount="indefinite" begin="1.75s"/>
+    </circle>
+    <!-- Icon -->
+    <text x="0" y="-38" text-anchor="middle" font-size="22">🔮</text>
+    <!-- Year -->
+    <text x="0" y="-18" text-anchor="middle" font-family="Arial" font-size="13" font-weight="700" fill="#8B5CF6">2025</text>
+    <!-- Title -->
+    <text x="0" y="2" text-anchor="middle" font-family="Arial" font-size="11" font-weight="600" fill="#333">Agentic Systems</text>
+    <!-- Description -->
+    <text x="0" y="16" text-anchor="middle" font-family="Arial" font-size="9" fill="#888">Multi-Agent, RAG, Tool Use</text>
   </g>
+  
+  <!-- Progress indicator -->
+  <circle cx="60" cy="120" r="4" fill="#999" opacity="0.5"/>
+  <circle cx="740" cy="120" r="4" fill="#999" opacity="0.5"/>
 </svg>

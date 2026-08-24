@@ -127,53 +127,115 @@ def generate_snake():
     generate_svg(svg, "snake.svg")
 
 def generate_radar_scan():
-    """Generate radar scan animation with matrix rain background"""
+    """Generate radar scan animation with cohesive binary rain background"""
     import random
+    random.seed(42)
     width = 800
     height = 300
+    cx, cy = 400, 160
+    radius = 110
+    
+    # Cohesive binary rain - organized in vertical streams
     binary_drops = []
-    columns = 40
-    for i in range(columns):
-        x = i * 20
-        for _ in range(3):
+    stream_count = 24
+    for i in range(stream_count):
+        x = 50 + i * 30
+        stream_len = random.randint(8, 15)
+        for j in range(stream_len):
             char = random.choice(['0', '1'])
-            duration = 1.5 + random.random() * 2
-            delay = random.random() * 4
+            y_start = -j * 22 + random.randint(-50, 0)
+            duration = 3 + random.random() * 2
+            delay = j * 0.15 + i * 0.08
             binary_drops.append(f'''
-  <text x="{x + random.randint(-2, 2)}" y="20" fill="#00ff00" font-family="monospace" font-size="12" opacity="0.4">
+  <text x="{x}" y="{y_start}" fill="#00ff00" font-family="monospace" font-size="11" opacity="0.35">
     {char}
-    <animate attributeName="y" from="0" to="{height}" dur="{duration}s" repeatCount="indefinite" begin="{delay}s"/>
-    <animate attributeName="opacity" values="0.6;0.1" dur="{duration}s" repeatCount="indefinite" begin="{delay}s"/>
+    <animate attributeName="y" from="{y_start}" to="{height + 50}" dur="{duration}s" repeatCount="indefinite" begin="{delay}s"/>
+    <animate attributeName="opacity" values="0.4;0.7;0.1" dur="{duration}s" repeatCount="indefinite" begin="{delay}s"/>
   </text>''')
+    
+    # Radar blips (targets)
+    blips = []
+    blip_positions = [
+        (cx + 60, cy - 40), (cx - 80, cy + 20), (cx + 30, cy + 70),
+        (cx - 40, cy - 80), (cx + 90, cy + 10), (cx - 10, cy - 60)
+    ]
+    for idx, (bx, by) in enumerate(blip_positions):
+        blips.append(f'''
+  <circle cx="{bx}" cy="{by}" r="3" fill="#ff0044" opacity="0">
+    <animate attributeName="opacity" values="0;1;0.8;0" dur="4s" repeatCount="indefinite" begin="{idx * 0.6}s"/>
+    <animate attributeName="r" values="2;5;2" dur="2s" repeatCount="indefinite" begin="{idx * 0.6}s"/>
+  </circle>''')
+    
+    # Sweep line with trailing glow
+    sweep = f'''
+  <g filter="url(#sweepGlow)">
+    <path d="M {cx} {cy} L {cx} {cy - radius} A {radius} {radius} 0 0 1 {cx + radius} {cy} Z" fill="url(#radarGrad)">
+      <animateTransform attributeName="transform" type="rotate" from="0 {cx} {cy}" to="360 {cx} {cy}" dur="6s" repeatCount="indefinite"/>
+    </path>
+    <line x1="{cx}" y1="{cy}" x2="{cx}" y2="{cy - radius}" stroke="#00ff00" stroke-width="2">
+      <animateTransform attributeName="transform" type="rotate" from="0 {cx} {cy}" to="360 {cx} {cy}" dur="6s" repeatCount="indefinite"/>
+    </line>
+  </g>'''
+    
+    # Range rings with distance labels
+    rings = []
+    for r_idx, r in enumerate([30, 60, 90, 120]):
+        rings.append(f'''
+  <circle cx="{cx}" cy="{cy}" r="{r}" fill="none" stroke="#00ff00" stroke-width="1" opacity="0.15" stroke-dasharray="4,4"/>
+  <text x="{cx + r + 5}" y="{cy - 3}" fill="#00ff00" font-family="monospace" font-size="9" opacity="0.5">{r//10}0</text>''')
+    
+    # Crosshairs
+    crosshairs = f'''
+  <line x1="{cx - radius}" y1="{cy}" x2="{cx + radius}" y2="{cy}" stroke="#00ff00" stroke-width="0.5" opacity="0.2"/>
+  <line x1="{cx}" y1="{cy - radius}" x2="{cx}" y2="{cy + radius}" stroke="#00ff00" stroke-width="0.5" opacity="0.2"/>
+  <line x1="{cx - 20}" y1="{cy - 20}" x2="{cx - 5}" y2="{cy - 5}" stroke="#00ff00" stroke-width="1" opacity="0.4"/>
+  <line x1="{cx - 20}" y1="{cy + 20}" x2="{cx - 5}" y2="{cy + 5}" stroke="#00ff00" stroke-width="1" opacity="0.4"/>
+  <line x1="{cx + 20}" y1="{cy - 20}" x2="{cx + 5}" y2="{cy - 5}" stroke="#00ff00" stroke-width="1" opacity="0.4"/>
+  <line x1="{cx + 20}" y1="{cy + 20}" x2="{cx + 5}" y2="{cy + 5}" stroke="#00ff00" stroke-width="1" opacity="0.4"/>'''
+    
+    # HUD elements
+    hud = f'''
+  <text x="20" y="30" fill="#00ff00" font-family="monospace" font-size="11" opacity="0.7">RADAR ACTIVE</text>
+  <text x="20" y="50" fill="#00ff00" font-family="monospace" font-size="10" opacity="0.5">SCAN RATE: 6 RPM</text>
+  <text x="20" y="70" fill="#00ff00" font-family="monospace" font-size="10" opacity="0.5">RANGE: 120 km</text>
+  <text x="680" y="30" fill="#00ff00" font-family="monospace" font-size="11" opacity="0.7" text-anchor="end">TARGETS: {len(blip_positions)}</text>
+  <text x="680" y="50" fill="#00ff00" font-family="monospace" font-size="10" opacity="0.5" text-anchor="end">MODE: SEARCH</text>
+  <text x="680" y="70" fill="#00ff00" font-family="monospace" font-size="10" opacity="0.5" text-anchor="end">GAIN: HIGH</text>'''
     
     svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">
   <defs>
     <radialGradient id="radarGrad">
-      <stop offset="0%" style="stop-color:#00ff00;stop-opacity:0.3" />
+      <stop offset="0%" style="stop-color:#00ff00;stop-opacity:0.4" />
+      <stop offset="60%" style="stop-color:#00ff00;stop-opacity:0.15" />
       <stop offset="100%" style="stop-color:#00ff00;stop-opacity:0" />
     </radialGradient>
+    <filter id="sweepGlow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="blipGlow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
   </defs>
-  <rect width="{width}" height="{height}" fill="#0a0a0a" rx="8"/>
+  <rect width="{width}" height="{height}" fill="#050a05" rx="12"/>
+  <rect x="0" y="0" width="{width}" height="{height}" fill="url(#radarGrad)" rx="12" opacity="0.02"/>
+  
   {''.join(binary_drops)}
-  <text x="400" y="25" text-anchor="middle" font-family="Courier New" font-size="16" font-weight="600" fill="#00ff00">Radar Scan</text>
   
-  <circle cx="400" cy="160" r="100" fill="none" stroke="#00ff00" stroke-width="1" opacity="0.3"/>
-  <circle cx="400" cy="160" r="75" fill="none" stroke="#00ff00" stroke-width="1" opacity="0.3"/>
-  <circle cx="400" cy="160" r="50" fill="none" stroke="#00ff00" stroke-width="1" opacity="0.3"/>
-  <circle cx="400" cy="160" r="25" fill="none" stroke="#00ff00" stroke-width="1" opacity="0.3"/>
-  <line x1="400" y1="60" x2="400" y2="260" stroke="#00ff00" stroke-width="1" opacity="0.3"/>
-  <line x1="300" y1="160" x2="500" y2="160" stroke="#00ff00" stroke-width="1" opacity="0.3"/>
+  {''.join(rings)}
+  {crosshairs}
+  {sweep}
+  {''.join(blips)}
+  {hud}
   
-  <path d="M 400 160 L 400 60 A 100 100 0 0 1 500 160 Z" fill="url(#radarGrad)">
-    <animateTransform attributeName="transform" type="rotate" from="0 400 160" to="360 400 160" dur="4s" repeatCount="indefinite"/>
-  </path>
-  
-  <circle cx="450" cy="120" r="4" fill="#00ff00">
-    <animate attributeName="opacity" values="0;1;0" dur="4s" repeatCount="indefinite"/>
-  </circle>
-  <circle cx="380" cy="180" r="3" fill="#00ff00">
-    <animate attributeName="opacity" values="0;1;0" dur="4s" repeatCount="indefinite" begin="1s"/>
-  </circle>
+  <text x="{cx}" y="25" text-anchor="middle" font-family="Courier New" font-size="14" font-weight="600" fill="#00ff00">RADAR SCAN</text>
 </svg>'''
     generate_svg(svg, "radar-scan.svg")
 
@@ -307,38 +369,54 @@ def generate_particles():
     generate_svg(svg, "particles.svg")
 
 def generate_timeline():
-    """Generate optimized animated tech timeline with icons and gradients"""
+    """Generate optimized animated tech timeline with detailed milestones"""
     events = [
-        ("2020", "Started Coding", "💻", "#0078d4"),
-        ("2021", "First Open Source", "🌟", "#00d4aa"),
-        ("2022", "Full-Stack Dev", "🚀", "#F7C948"),
-        ("2023", "AI/ML Explorer", "🤖", "#ff6b9d"),
-        ("2024", "Cloud Native", "☸️", "#c084fc"),
-        ("2025", "Building Future", "🔮", "#fb923c")
+        ("2020", "Python & Web Dev", "🐍", "#3776AB", "Django, Flask, REST APIs"),
+        ("2021", "TypeScript & React", "⚛️", "#3178C6", "Next.js, Redux, Testing"),
+        ("2022", "Full-Stack & Cloud", "☁️", "#FF9900", "AWS, Docker, CI/CD, K8s"),
+        ("2023", "AI/ML Engineering", "🤖", "#FF6F00", "PyTorch, LLMs, MLOps"),
+        ("2024", "Systems & Rust", "🦀", "#DEA584", "Rust, WASM, Performance"),
+        ("2025", "Agentic Systems", "🔮", "#8B5CF6", "Multi-Agent, RAG, Tool Use"),
     ]
     
     nodes = []
-    for i, (year, event, icon, color) in enumerate(events):
-        x = 100 + i * 120
+    for i, (year, title, icon, color, desc) in enumerate(events):
+        x = 80 + i * 115
         
         nodes.append(f'''
   <g transform="translate({x}, 120)">
-    <circle cx="0" cy="0" r="12" fill="{color}" opacity="0.2">
-      <animate attributeName="r" values="10;16;10" dur="2s" repeatCount="indefinite" begin="{i*0.3}s"/>
+    <!-- Outer pulse ring -->
+    <circle cx="0" cy="0" r="16" fill="{color}" opacity="0.15">
+      <animate attributeName="r" values="14;22;14" dur="2.5s" repeatCount="indefinite" begin="{i*0.35}s"/>
+      <animate attributeName="opacity" values="0.2;0.05;0.2" dur="2.5s" repeatCount="indefinite" begin="{i*0.35}s"/>
     </circle>
-    <circle cx="0" cy="0" r="8" fill="{color}">
-      <animate attributeName="r" values="6;10;6" dur="2s" repeatCount="indefinite" begin="{i*0.3}s"/>
+    <!-- Middle ring -->
+    <circle cx="0" cy="0" r="12" fill="{color}" opacity="0.25">
+      <animate attributeName="r" values="10;16;10" dur="2s" repeatCount="indefinite" begin="{i*0.35}s"/>
     </circle>
-    <text x="0" y="-25" text-anchor="middle" font-family="Arial" font-size="20" font-weight="700" fill="{color}">{year}</text>
-    <text x="0" y="35" text-anchor="middle" font-family="Arial" font-size="11" fill="#666">{event}</text>
+    <!-- Core node -->
+    <circle cx="0" cy="0" r="8" fill="{color}" filter="url(#nodeGlow)">
+      <animate attributeName="r" values="7;9;7" dur="1.5s" repeatCount="indefinite" begin="{i*0.35}s"/>
+    </circle>
+    <!-- Icon -->
+    <text x="0" y="-38" text-anchor="middle" font-size="22">{icon}</text>
+    <!-- Year -->
+    <text x="0" y="-18" text-anchor="middle" font-family="Arial" font-size="13" font-weight="700" fill="{color}">{year}</text>
+    <!-- Title -->
+    <text x="0" y="2" text-anchor="middle" font-family="Arial" font-size="11" font-weight="600" fill="#333">{title}</text>
+    <!-- Description -->
+    <text x="0" y="16" text-anchor="middle" font-family="Arial" font-size="9" fill="#888">{desc}</text>
   </g>''')
     
-    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="800" height="220" viewBox="0 0 800 220">
+    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="800" height="240" viewBox="0 0 800 240">
   <defs>
     <linearGradient id="timelineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#0078d4;stop-opacity:0.3" />
-      <stop offset="50%" style="stop-color:#00d4aa;stop-opacity:0.3" />
-      <stop offset="100%" style="stop-color:#0078d4;stop-opacity:0.3" />
+      <stop offset="0%" style="stop-color:#0078d4;stop-opacity:0.4" />
+      <stop offset="20%" style="stop-color:#00d4aa;stop-opacity:0.4" />
+      <stop offset="40%" style="stop-color:#F7C948;stop-opacity:0.4" />
+      <stop offset="60%" style="stop-color:#ff6b9d;stop-opacity:0.4" />
+      <stop offset="80%" style="stop-color:#c084fc;stop-opacity:0.4" />
+      <stop offset="100%" style="stop-color:#fb923c;stop-opacity:0.4" />
     </linearGradient>
     <filter id="nodeGlow">
       <feGaussianBlur stdDeviation="2" result="blur"/>
@@ -347,14 +425,32 @@ def generate_timeline():
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
+    <filter id="lineGlow">
+      <feGaussianBlur stdDeviation="1" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
   </defs>
-  <rect width="800" height="220" fill="#ffffff" rx="12"/>
+  <rect width="800" height="240" fill="#ffffff" rx="12"/>
   
-  <line x1="80" y1="120" x2="720" y2="120" stroke="url(#timelineGrad)" stroke-width="3" stroke-dasharray="8,4">
-    <animate attributeName="stroke-dashoffset" from="0" to="-24" dur="1s" repeatCount="indefinite"/>
+  <!-- Timeline axis with gradient -->
+  <line x1="60" y1="120" x2="740" y2="120" stroke="url(#timelineGrad)" stroke-width="4" filter="url(#lineGlow)">
+    <animate attributeName="stroke-dashoffset" from="0" to="-40" dur="2s" repeatCount="indefinite"/>
   </line>
   
+  <!-- Subtle grid lines -->
+  <g stroke="#eee" stroke-width="0.5">
+    <line x1="60" y1="60" x2="740" y2="60"/>
+    <line x1="60" y1="180" x2="740" y2="180"/>
+  </g>
+  
   {''.join(nodes)}
+  
+  <!-- Progress indicator -->
+  <circle cx="60" cy="120" r="4" fill="#999" opacity="0.5"/>
+  <circle cx="740" cy="120" r="4" fill="#999" opacity="0.5"/>
 </svg>'''
     generate_svg(svg, "timeline.svg")
 

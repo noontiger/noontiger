@@ -25,8 +25,6 @@
   <img src="https://readme-jokes.vercel.app/api?theme=github&hideBorder=true&layout=horizontal&width=600" alt="Random Dev Joke" />
 </div>
 
-*程序员的幽默 / Programmer's Humor*
-
 ---
 
 ## 📊 Repository Language Distribution
