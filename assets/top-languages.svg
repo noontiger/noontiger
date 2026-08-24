@@ -1,35 +1,35 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="300" viewBox="0 0 800 300">
-  <rect width="800" height="300" fill="#ffffff" rx="12"/>
-  <text x="400" y="35" text-anchor="middle" font-family="Arial" font-size="20" font-weight="600" fill="#0078d4">Top Languages</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="320" viewBox="0 0 800 320">
+  <rect width="800" height="320" fill="#ffffff" rx="12"/>
+  <text x="400" y="40" text-anchor="middle" font-family="Arial" font-size="22" font-weight="700" fill="#0078d4">Top Languages</text>
   
-  <rect x="50" y="60" width="270.97247171430104" height="24" fill="#0078d4" rx="4">
-    <animate attributeName="width" from="0" to="270.97247171430104" dur="1s" fill="freeze" begin="0.0s"/>
+  <rect x="50" y="70" width="270.97247171430104" height="28" fill="#0078d4" rx="6">
+    <animate attributeName="width" from="0" to="270.97247171430104" dur="1.2s" fill="freeze" begin="0.0s"/>
   </rect>
-  <text x="55" y="77" font-family="Arial" font-size="12" font-weight="600" fill="#fff">JavaScript</text>
-  <text x="330.97247171430104" y="77" font-family="Arial" font-size="12" fill="#666">77.4%</text>
-  <rect x="50" y="100" width="64.63265456592846" height="24" fill="#00d4aa" rx="4">
-    <animate attributeName="width" from="0" to="64.63265456592846" dur="1s" fill="freeze" begin="0.1s"/>
+  <text x="60" y="89" font-family="Arial" font-size="13" font-weight="700" fill="#fff">JavaScript</text>
+  <text x="335.97247171430104" y="89" font-family="Arial" font-size="13" font-weight="600" fill="#333">77.4%</text>
+  <rect x="50" y="115" width="64.63265456592846" height="28" fill="#00d4aa" rx="6">
+    <animate attributeName="width" from="0" to="64.63265456592846" dur="1.2s" fill="freeze" begin="0.1s"/>
   </rect>
-  <text x="55" y="117" font-family="Arial" font-size="12" font-weight="600" fill="#fff">TypeScript</text>
-  <text x="124.63265456592846" y="117" font-family="Arial" font-size="12" fill="#666">18.5%</text>
-  <rect x="50" y="140" width="12.059460292777093" height="24" fill="#F7C948" rx="4">
-    <animate attributeName="width" from="0" to="12.059460292777093" dur="1s" fill="freeze" begin="0.2s"/>
+  <text x="60" y="134" font-family="Arial" font-size="13" font-weight="700" fill="#fff">TypeScript</text>
+  <text x="129.63265456592848" y="134" font-family="Arial" font-size="13" font-weight="600" fill="#333">18.5%</text>
+  <rect x="50" y="160" width="12.059460292777093" height="28" fill="#F7C948" rx="6">
+    <animate attributeName="width" from="0" to="12.059460292777093" dur="1.2s" fill="freeze" begin="0.2s"/>
   </rect>
-  <text x="55" y="157" font-family="Arial" font-size="12" font-weight="600" fill="#fff">Python</text>
-  <text x="72.05946029277709" y="157" font-family="Arial" font-size="12" fill="#666">3.4%</text>
-  <rect x="50" y="180" width="2.238055659820902" height="24" fill="#ff6b9d" rx="4">
-    <animate attributeName="width" from="0" to="2.238055659820902" dur="1s" fill="freeze" begin="0.3s"/>
+  <text x="60" y="179" font-family="Arial" font-size="13" font-weight="700" fill="#fff">Python</text>
+  <text x="77.05946029277709" y="179" font-family="Arial" font-size="13" font-weight="600" fill="#333">3.4%</text>
+  <rect x="50" y="205" width="2.238055659820902" height="28" fill="#ff6b9d" rx="6">
+    <animate attributeName="width" from="0" to="2.238055659820902" dur="1.2s" fill="freeze" begin="0.3s"/>
   </rect>
-  <text x="55" y="197" font-family="Arial" font-size="12" font-weight="600" fill="#fff">Astro</text>
-  <text x="62.2380556598209" y="197" font-family="Arial" font-size="12" fill="#666">0.6%</text>
-  <rect x="50" y="220" width="0.06099522762614618" height="24" fill="#c084fc" rx="4">
-    <animate attributeName="width" from="0" to="0.06099522762614618" dur="1s" fill="freeze" begin="0.4s"/>
+  <text x="60" y="224" font-family="Arial" font-size="13" font-weight="700" fill="#fff">Astro</text>
+  <text x="67.2380556598209" y="224" font-family="Arial" font-size="13" font-weight="600" fill="#333">0.6%</text>
+  <rect x="50" y="250" width="0.06099522762614618" height="28" fill="#c084fc" rx="6">
+    <animate attributeName="width" from="0" to="0.06099522762614618" dur="1.2s" fill="freeze" begin="0.4s"/>
   </rect>
-  <text x="55" y="237" font-family="Arial" font-size="12" font-weight="600" fill="#fff">CSS</text>
-  <text x="60.060995227626144" y="237" font-family="Arial" font-size="12" fill="#666">0.0%</text>
-  <rect x="50" y="260" width="0.036362539546356376" height="24" fill="#fb923c" rx="4">
-    <animate attributeName="width" from="0" to="0.036362539546356376" dur="1s" fill="freeze" begin="0.5s"/>
+  <text x="60" y="269" font-family="Arial" font-size="13" font-weight="700" fill="#fff">CSS</text>
+  <text x="65.06099522762615" y="269" font-family="Arial" font-size="13" font-weight="600" fill="#333">0.0%</text>
+  <rect x="50" y="295" width="0.036362539546356376" height="28" fill="#fb923c" rx="6">
+    <animate attributeName="width" from="0" to="0.036362539546356376" dur="1.2s" fill="freeze" begin="0.5s"/>
   </rect>
-  <text x="55" y="277" font-family="Arial" font-size="12" font-weight="600" fill="#fff">HTML</text>
-  <text x="60.03636253954635" y="277" font-family="Arial" font-size="12" fill="#666">0.0%</text>
+  <text x="60" y="314" font-family="Arial" font-size="13" font-weight="700" fill="#fff">HTML</text>
+  <text x="65.03636253954636" y="314" font-family="Arial" font-size="13" font-weight="600" fill="#333">0.0%</text>
 </svg>

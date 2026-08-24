@@ -114,23 +114,23 @@ def generate_top_languages():
         total = 100
     lang_pct = {k: v/total*100 for k, v in sorted(lang_bytes.items(), key=lambda x: x[1], reverse=True)}
     colors = ["#0078d4", "#00d4aa", "#F7C948", "#ff6b9d", "#c084fc", "#fb923c"]
-    y = 60
+    y = 70
     bars = []
     i = 0
     for lang, pct in lang_pct.items():
         color = colors[i % len(colors)]
         width = pct * 3.5
         bars.append(f'''
-  <rect x="50" y="{y}" width="{width}" height="24" fill="{color}" rx="4">
-    <animate attributeName="width" from="0" to="{width}" dur="1s" fill="freeze" begin="0.{i}s"/>
+  <rect x="50" y="{y}" width="{width}" height="28" fill="{color}" rx="6">
+    <animate attributeName="width" from="0" to="{width}" dur="1.2s" fill="freeze" begin="0.{i}s"/>
   </rect>
-  <text x="55" y="{y+17}" font-family="Arial" font-size="12" font-weight="600" fill="#fff">{lang}</text>
-  <text x="{width+60}" y="{y+17}" font-family="Arial" font-size="12" fill="#666">{pct:.1f}%</text>''')
-        y += 40
+  <text x="60" y="{y+19}" font-family="Arial" font-size="13" font-weight="700" fill="#fff">{lang}</text>
+  <text x="{width+65}" y="{y+19}" font-family="Arial" font-size="13" font-weight="600" fill="#333">{pct:.1f}%</text>''')
+        y += 45
         i += 1
-    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="800" height="300" viewBox="0 0 800 300">
-  <rect width="800" height="300" fill="#ffffff" rx="12"/>
-  <text x="400" y="35" text-anchor="middle" font-family="Arial" font-size="20" font-weight="600" fill="#0078d4">Top Languages</text>
+    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="800" height="320" viewBox="0 0 800 320">
+  <rect width="800" height="320" fill="#ffffff" rx="12"/>
+  <text x="400" y="40" text-anchor="middle" font-family="Arial" font-size="22" font-weight="700" fill="#0078d4">Top Languages</text>
   {''.join(bars)}
 </svg>'''
     generate_svg(svg, "top-languages.svg")
@@ -145,11 +145,11 @@ def generate_streak():
     </linearGradient>
   </defs>
   <text x="400" y="45" text-anchor="middle" font-family="Arial" font-size="20" font-weight="600" fill="#0078d4">GitHub Streak</text>
-  <text x="400" y="90" text-anchor="middle" font-family="Arial" font-size="48" font-weight="bold" fill="url(#fire)">365</text>
-  <text x="400" y="120" text-anchor="middle" font-family="Arial" font-size="16" fill="#666">Current Streak</text>
-  <text x="400" y="150" text-anchor="middle" font-family="Arial" font-size="16" fill="#666">Longest Streak: 365 days</text>
+  <text x="400" y="95" text-anchor="middle" font-family="Arial" font-size="52" font-weight="bold" fill="url(#fire)">365</text>
+  <text x="400" y="125" text-anchor="middle" font-family="Arial" font-size="16" fill="#666">Current Streak</text>
+  <text x="400" y="155" text-anchor="middle" font-family="Arial" font-size="16" fill="#666">Longest Streak: 365 days</text>
   
-  <g transform="translate(200, 160)">
+  <g transform="translate(200, 175)">
     <rect x="0" y="0" width="400" height="4" fill="#0078d4" opacity="0.2" rx="2"/>
     <rect x="0" y="0" width="400" height="4" fill="url(#fire)" rx="2">
       <animate attributeName="width" values="0;400" dur="2s" fill="freeze"/>
@@ -195,28 +195,6 @@ def generate_trophy():
 </svg>'''
     generate_svg(svg, "trophy.svg")
 
-def generate_bento():
-    svg = '''<svg xmlns="http://www.w3.org/2000/svg" width="800" height="400" viewBox="0 0 800 400">
-  <rect width="800" height="400" fill="#ffffff" rx="12"/>
-  <text x="400" y="35" text-anchor="middle" font-family="Arial" font-size="20" font-weight="600" fill="#0078d4">Bento Grid</text>
-  
-  <rect x="20" y="60" width="350" height="150" fill="#0078d4" opacity="0.1" rx="8"/>
-  <text x="195" y="140" text-anchor="middle" font-family="Arial" font-size="16" font-weight="600" fill="#0078d4">Projects</text>
-  
-  <rect x="390" y="60" width="350" height="150" fill="#00d4aa" opacity="0.1" rx="8"/>
-  <text x="565" y="140" text-anchor="middle" font-family="Arial" font-size="16" font-weight="600" fill="#00d4aa">Skills</text>
-  
-  <rect x="20" y="230" width="230" height="140" fill="#F7C948" opacity="0.1" rx="8"/>
-  <text x="135" y="305" text-anchor="middle" font-family="Arial" font-size="14" font-weight="600" fill="#F7C948">Experience</text>
-  
-  <rect x="270" y="230" width="230" height="140" fill="#ff6b9d" opacity="0.1" rx="8"/>
-  <text x="385" y="305" text-anchor="middle" font-family="Arial" font-size="14" font-weight="600" fill="#ff6b9d">Education</text>
-  
-  <rect x="520" y="230" width="220" height="140" fill="#c084fc" opacity="0.1" rx="8"/>
-  <text x="630" y="305" text-anchor="middle" font-family="Arial" font-size="14" font-weight="600" fill="#c084fc">Interests</text>
-</svg>'''
-    generate_svg(svg, "bento.svg")
-
 def generate_snake():
     cols = 40
     rows = 6
@@ -261,25 +239,6 @@ def generate_snake():
   </g>
 </svg>'''
     generate_svg(svg, "snake.svg")
-
-def generate_star_history():
-    svg = '''<svg xmlns="http://www.w3.org/2000/svg" width="800" height="250" viewBox="0 0 800 250">
-  <defs>
-    <linearGradient id="linegrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#0078d4;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#00d4aa;stop-opacity:1" />
-    </linearGradient>
-  </defs>
-  <rect width="800" height="250" fill="#ffffff" rx="12"/>
-  <text x="400" y="35" text-anchor="middle" font-family="Arial" font-size="18" font-weight="600" fill="#0078d4">Star History</text>
-  <polyline points="50,200 150,180 250,150 350,160 450,100 550,80 650,50 750,60" fill="none" stroke="url(#linegrad)" stroke-width="3">
-    <animate attributeName="stroke-dasharray" from="0,1000" to="1000,0" dur="3s" fill="freeze"/>
-  </polyline>
-  <circle cx="750" cy="60" r="5" fill="#0078d4">
-    <animate attributeName="r" values="4;6;4" dur="1.5s" repeatCount="indefinite"/>
-  </circle>
-</svg>'''
-    generate_svg(svg, "star-history.svg")
 
 def generate_globe():
     svg = '''<svg xmlns="http://www.w3.org/2000/svg" width="800" height="300" viewBox="0 0 800 300">
@@ -484,26 +443,6 @@ def generate_particles():
 </svg>'''
     generate_svg(svg, "particles.svg")
 
-def generate_data_stream():
-    """Generate binary/data stream animation"""
-    bits = []
-    for i in range(60):
-        x = 50 + (i % 10) * 70
-        y = 50 + (i // 10) * 50
-        bit = ["0", "1"][i % 2]
-        bits.append(f'''
-  <text x="{x}" y="{y}" fill="#00d4aa" font-family="Courier New" font-size="14" opacity="0.8">
-    {bit}
-    <animate attributeName="opacity" values="0.3;1;0.3" dur="{1 + i%4}s" repeatCount="indefinite" begin="{i*0.15}s"/>
-  </text>''')
-    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="800" height="300" viewBox="0 0 800 300">
-  <rect width="800" height="300" fill="#0a0a0a" rx="8"/>
-  <text x="400" y="25" text-anchor="middle" font-family="Courier New" font-size="14" font-weight="600" fill="#00d4aa">Data Stream</text>
-  {''.join(bits)}
-  <text x="400" y="290" text-anchor="middle" font-family="Courier New" font-size="10" fill="#00d4aa">Binary data flow...</text>
-</svg>'''
-    generate_svg(svg, "data-stream.svg")
-
 def generate_timeline():
     """Generate animated tech timeline"""
     events = [
@@ -542,9 +481,7 @@ def main():
     generate_streak()
     generate_activity_graph()
     generate_trophy()
-    generate_bento()
     generate_snake()
-    generate_star_history()
     generate_globe()
     generate_wakatime()
     
@@ -554,7 +491,6 @@ def main():
     generate_terminal()
     generate_circuit_board()
     generate_particles()
-    generate_data_stream()
     generate_timeline()
     
     print("All assets generated!")

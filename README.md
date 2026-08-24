@@ -1,15 +1,3 @@
-<div align="center">
-
-# 👋 Hi there, I'm **noontiger**
-
-### 💻 Full-Stack Developer · Open Source Enthusiast · AI/ML Explorer
-
-*Turning ideas into reality with code*
-
-</div>
-
----
-
 ## 🎯 Typing Animation
 
 <div align="center">
@@ -50,8 +38,6 @@
 
 ![npm downloads](https://img.shields.io/npm/dm/droidseal?style=flat-square&color=CB3837&logo=npm&logoColor=white&label=npm%20downloads)
 ![npm total downloads](https://img.shields.io/npm/dt/droidseal?style=flat-square&color=CB3837&logo=npm&logoColor=white&label=npm%20total)
-![PyPI downloads (monthly)](https://img.shields.io/pypi/dm/droidseal?style=flat-square&color=3775A9&logo=pypi&logoColor=white&label=pypi%20monthly)
-![PyPI downloads (total)](https://img.shields.io/pypi/dt/droidseal?style=flat-square&color=3775A9&logo=pypi&logoColor=white&label=pypi%20total)
 
 </div>
 
@@ -75,14 +61,6 @@
 
 ---
 
-## 💬 Dynamic Quote
-
-<div align="center">
-  <img src="https://github-readme-quotes.vercel.app/api?theme=github&hideBorder=true" alt="Dynamic Quote" />
-</div>
-
----
-
 ## 📊 Repository Language Distribution
 
 <div align="center">
@@ -98,24 +76,6 @@
 </div>
 
 *Data from 11 original repos with language detected (158 forks excluded)*
-
----
-
-## 🧩 Bento Grid Overview
-
-<div align="center">
-  <img src="assets/bento.svg" alt="Bento Grid" />
-</div>
-
----
-
-## 🌟 Star History
-
-<div align="center">
-  <a href="https://star-history.com/#noontiger/noontiger&Date">
-    <img src="assets/star-history.svg" alt="Star History" width="600" />
-  </a>
-</div>
 
 ---
 
@@ -175,14 +135,6 @@
 
 ---
 
-## 📊 Data Stream
-
-<div align="center">
-  <img src="assets/data-stream.svg" alt="Data Stream" />
-</div>
-
----
-
 ## 📈 Tech Timeline
 
 <div align="center">
@@ -198,54 +150,6 @@
   <img src="https://github-readme-blog-posts.vercel.app/api?username=noontiger&limit=5&theme=github&hide_border=true" alt="Latest Blog Posts" />
 </div>
 <!-- BLOG-POST-LIST:END -->
-
-*Auto-updated via GitHub Actions*
-
----
-
-## 💬 Discord Status
-
-<div align="center">
-  <img src="https://discord-status.vercel.app/api/noontiger?theme=github&hide_border=true" alt="Discord Status" />
-</div>
-
----
-
-## ⚡ Code::Stats Experience
-
-<div align="center">
-  <img src="https://codestats.net/api/profile/noontiger?theme=github&hide_border=true" alt="Code::Stats" />
-</div>
-
----
-
-## 🌤️ Weather Widget
-
-<div align="center">
-  <img src="https://weather-widget.vercel.app/api?location=auto&theme=github&hide_border=true" alt="Weather" />
-</div>
-
----
-
-## 💖 GitHub Sponsors
-
-<div align="center">
-  <a href="https://github.com/sponsors/noontiger">
-    <img src="https://github-sponsors.vercel.app/api/noontiger?theme=github&hide_border=true" alt="GitHub Sponsors" />
-  </a>
-</div>
-
----
-
-## 📈 Recent Activity
-
-<!--START_SECTION:activity-->
-1. 🎉 Pushed to [speech-to-text](https://github.com/noontiger/speech-to-text) - Browser-based speech-to-text (Whisper)
-2. 🎉 Pushed to [video](https://github.com/noontiger/video) - Video gallery built with Astro
-3. 🎉 Pushed to [hh](https://github.com/noontiger/hh) - Personal portfolio built with Astro
-4. 🎉 Pushed to [tts](https://github.com/noontiger/tts) - TTS project with Astro
-5. 🎉 Pushed to [noontiger.github.io](https://github.com/noontiger/noontiger.github.io) - Personal site
-<!--END_SECTION:activity-->
 
 *Auto-updated via GitHub Actions*
 

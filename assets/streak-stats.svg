@@ -7,11 +7,11 @@
     </linearGradient>
   </defs>
   <text x="400" y="45" text-anchor="middle" font-family="Arial" font-size="20" font-weight="600" fill="#0078d4">GitHub Streak</text>
-  <text x="400" y="90" text-anchor="middle" font-family="Arial" font-size="48" font-weight="bold" fill="url(#fire)">365</text>
-  <text x="400" y="120" text-anchor="middle" font-family="Arial" font-size="16" fill="#666">Current Streak</text>
-  <text x="400" y="150" text-anchor="middle" font-family="Arial" font-size="16" fill="#666">Longest Streak: 365 days</text>
+  <text x="400" y="95" text-anchor="middle" font-family="Arial" font-size="52" font-weight="bold" fill="url(#fire)">365</text>
+  <text x="400" y="125" text-anchor="middle" font-family="Arial" font-size="16" fill="#666">Current Streak</text>
+  <text x="400" y="155" text-anchor="middle" font-family="Arial" font-size="16" fill="#666">Longest Streak: 365 days</text>
   
-  <g transform="translate(200, 160)">
+  <g transform="translate(200, 175)">
     <rect x="0" y="0" width="400" height="4" fill="#0078d4" opacity="0.2" rx="2"/>
     <rect x="0" y="0" width="400" height="4" fill="url(#fire)" rx="2">
       <animate attributeName="width" values="0;400" dur="2s" fill="freeze"/>
