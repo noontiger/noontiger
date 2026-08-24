@@ -95,17 +95,20 @@ def generate_snake():
 
 def generate_radar_scan():
     """Generate radar scan animation with matrix rain background"""
+    import random
     width = 800
     height = 300
     binary_drops = []
     columns = 40
     for i in range(columns):
         x = i * 20
-        duration = 1.5 + (i % 3)
-        delay = i * 0.08
-        binary_drops.append(f'''
-  <text x="{x}" y="20" fill="#00ff00" font-family="monospace" font-size="12" opacity="0.4">
-    01
+        for _ in range(3):
+            char = random.choice(['0', '1'])
+            duration = 1.5 + random.random() * 2
+            delay = random.random() * 4
+            binary_drops.append(f'''
+  <text x="{x + random.randint(-2, 2)}" y="20" fill="#00ff00" font-family="monospace" font-size="12" opacity="0.4">
+    {char}
     <animate attributeName="y" from="0" to="{height}" dur="{duration}s" repeatCount="indefinite" begin="{delay}s"/>
     <animate attributeName="opacity" values="0.6;0.1" dur="{duration}s" repeatCount="indefinite" begin="{delay}s"/>
   </text>''')
