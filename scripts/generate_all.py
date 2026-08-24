@@ -51,43 +51,61 @@ def generate_svg(content, filename):
 def generate_snake():
     cols = 53
     rows = 7
-    cell_size = 10
-    gap = 2
-    start_x = 30
-    start_y = 50
+    cell_size = 11
+    gap = 3
+    start_x = 25
+    start_y = 40
     
     squares = []
     for r in range(rows):
         for c in range(cols):
             x = start_x + c * (cell_size + gap)
             y = start_y + r * (cell_size + gap)
-            level = ((r * 7 + c) % 5)
-            opacity = 0.1 + level * 0.15
+            level = ((r * 13 + c * 7) % 5)
+            colors = ["#ebedf0", "#9be9a8", "#40c463", "#30a14e", "#216e39"]
+            color = colors[level]
             squares.append(
-                f'<rect x="{x}" y="{y}" width="{cell_size}" height="{cell_size}" fill="#0078d4" opacity="{opacity}" rx="1"/>'
+                f'<rect x="{x}" y="{y}" width="{cell_size}" height="{cell_size}" fill="{color}" rx="2"/>'
             )
     
-    snake_path = f"M {start_x + 5},{start_y + 5}"
-    for c in range(cols - 1):
+    path_points = []
+    for c in range(cols):
+        r = c % rows
         x = start_x + c * (cell_size + gap) + cell_size // 2
-        y = start_y + (c % rows) * (cell_size + gap) + cell_size // 2
-        snake_path += f" L {x},{y}"
+        y = start_y + r * (cell_size + gap) + cell_size // 2
+        path_points.append(f"{x},{y}")
     
+    snake_path = "M " + " L ".join(path_points)
+    
+    snake_segments = 35
     snake_parts = []
-    for i in range(30):
-        color = "#00d4aa" if i == 0 else "#0078d4"
-        r = 5 if i == 0 else 4
+    for i in range(snake_segments):
+        progress = 1 - (i / snake_segments)
+        color = "#ff6b6b" if i == 0 else ("#40c463" if i < 5 else "#30a14e")
+        r = 6 if i == 0 else (5 if i < 5 else 4)
         snake_parts.append(
             f'<circle cx="0" cy="0" r="{r}" fill="{color}">'
-            f'<animateMotion path="{snake_path}" dur="15s" repeatCount="indefinite" begin="{i * 0.2}s"/>'
-            f'<animate attributeName="opacity" values="1;0.7;1" dur="2s" repeatCount="indefinite" begin="{i * 0.15}s"/>'
+            f'<animateMotion path="{snake_path}" dur="12s" repeatCount="indefinite" begin="{i * 0.15}s" fill="freeze"/>'
+            f'<animate attributeName="opacity" values="1;0.8;1" dur="1.5s" repeatCount="indefinite" begin="{i * 0.1}s"/>'
             f'</circle>'
         )
     
-    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="800" height="220" viewBox="0 0 800 220">
-  <rect width="800" height="220" fill="#ffffff" rx="12"/>
-  <g transform="translate(0, 20)">
+    eaten_highlights = []
+    for c in range(0, cols, 2):
+        r = c % rows
+        x = start_x + c * (cell_size + gap) + cell_size // 2
+        y = start_y + r * (cell_size + gap) + cell_size // 2
+        eaten_highlights.append(
+            f'<circle cx="{x}" cy="{y}" r="{cell_size//2}" fill="#ff6b6b" opacity="0.3">'
+            f'<animate attributeName="opacity" values="0.3;0.6;0.3" dur="2s" repeatCount="indefinite" begin="{c * 0.1}s"/>'
+            f'</circle>'
+        )
+    
+    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="800" height="200" viewBox="0 0 800 200">
+  <rect width="800" height="200" fill="#ffffff" rx="12"/>
+  <g transform="translate(0, 10)">
     {''.join(squares)}
+    {''.join(eaten_highlights)}
     {''.join(snake_parts)}
   </g>
 </svg>'''
@@ -349,9 +367,6 @@ def main():
     
     print("Generating new animation assets...")
     generate_radar_scan()
-    generate_terminal()
-    generate_circuit_board()
-    generate_particles()
     generate_timeline()
     
     print("All assets generated!")
