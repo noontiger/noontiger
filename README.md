@@ -19,14 +19,6 @@
 
 ---
 
-## 🐍 GitHub Contribution Snake
-
-<div align="center">
-  <img src="assets/snake.svg" alt="Contribution Snake" />
-</div>
-
----
-
 ## 🃏 Random Dev Joke
 
 <div align="center">
@@ -77,6 +69,14 @@
 - 🎥 **Generative Video & 3D** — AI-powered content creation pipelines
 - 🦀 **Rust & Systems Programming** — Performance-critical applications
 - ☸️ **Kubernetes & Cloud Native** — Scalable infrastructure patterns
+
+---
+
+## 🐍 GitHub Contribution Snake
+
+<div align="center">
+  <img src="assets/snake.svg" alt="Contribution Snake" />
+</div>
 
 ---
 

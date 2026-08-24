@@ -56,56 +56,71 @@ def generate_snake():
     start_x = 25
     start_y = 40
     
+    base_colors = ["#ebedf0", "#9be9a8", "#40c463", "#30a14e", "#216e39"]
     squares = []
     for r in range(rows):
         for c in range(cols):
             x = start_x + c * (cell_size + gap)
             y = start_y + r * (cell_size + gap)
             level = ((r * 13 + c * 7) % 5)
-            colors = ["#ebedf0", "#9be9a8", "#40c463", "#30a14e", "#216e39"]
-            color = colors[level]
+            color = base_colors[level]
             squares.append(
-                f'<rect x="{x}" y="{y}" width="{cell_size}" height="{cell_size}" fill="{color}" rx="2"/>'
+                f'<rect x="{x}" y="{y}" width="{cell_size}" height="{cell_size}" fill="{color}" rx="2" id="sq-{c}-{r}"/>'
             )
     
     path_points = []
     for c in range(cols):
-        r = c % rows
+        r = c % rows if c % 2 == 0 else (rows - 1 - (c % rows))
         x = start_x + c * (cell_size + gap) + cell_size // 2
         y = start_y + r * (cell_size + gap) + cell_size // 2
-        path_points.append(f"{x},{y}")
+        path_points.append((x, y))
     
-    snake_path = "M " + " L ".join(path_points)
+    snake_segments = 45
+    snake_path = "M " + " L ".join(f"{x},{y}" for x, y in path_points)
     
-    snake_segments = 35
     snake_parts = []
     for i in range(snake_segments):
-        progress = 1 - (i / snake_segments)
-        color = "#ff6b6b" if i == 0 else ("#40c463" if i < 5 else "#30a14e")
-        r = 6 if i == 0 else (5 if i < 5 else 4)
+        delay = i * 0.08
+        if i == 0:
+            color = "#ff4444"
+            r = 6.5
+        elif i < 8:
+            color = "#55d67a"
+            r = 5.5 - (i * 0.15)
+        else:
+            color = "#35a34f"
+            r = max(4, 5.5 - (i * 0.08))
         snake_parts.append(
-            f'<circle cx="0" cy="0" r="{r}" fill="{color}">'
-            f'<animateMotion path="{snake_path}" dur="12s" repeatCount="indefinite" begin="{i * 0.15}s" fill="freeze"/>'
-            f'<animate attributeName="opacity" values="1;0.8;1" dur="1.5s" repeatCount="indefinite" begin="{i * 0.1}s"/>'
+            f'<circle cx="0" cy="0" r="{r}" fill="{color}" filter="url(#snakeGlow)">'
+            f'<animateMotion path="{snake_path}" dur="18s" repeatCount="indefinite" begin="{delay}s" fill="freeze" rotate="auto"/>'
+            f'<animate attributeName="opacity" values="1;0.9;1" dur="1s" repeatCount="indefinite" begin="{delay}s"/>'
             f'</circle>'
         )
     
-    eaten_highlights = []
-    for c in range(0, cols, 2):
-        r = c % rows
-        x = start_x + c * (cell_size + gap) + cell_size // 2
-        y = start_y + r * (cell_size + gap) + cell_size // 2
-        eaten_highlights.append(
-            f'<circle cx="{x}" cy="{y}" r="{cell_size//2}" fill="#ff6b6b" opacity="0.3">'
-            f'<animate attributeName="opacity" values="0.3;0.6;0.3" dur="2s" repeatCount="indefinite" begin="{c * 0.1}s"/>'
+    eaten_squares = []
+    for idx, (x, y) in enumerate(path_points):
+        delay = (idx / len(path_points)) * 18
+        eaten_squares.append(
+            f'<circle cx="{x}" cy="{y}" r="{cell_size//2}" fill="#ff4444" opacity="0">'
+            f'<animate attributeName="opacity" values="0;0.5;0" dur="1s" begin="{delay}s" fill="freeze"/>'
+            f'<animate attributeName="r" values="{cell_size//2};{cell_size};" dur="0.5s" begin="{delay}s" fill="freeze"/>'
             f'</circle>'
         )
     
     svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="800" height="200" viewBox="0 0 800 200">
+  <defs>
+    <filter id="snakeGlow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
   <rect width="800" height="200" fill="#ffffff" rx="12"/>
   <g transform="translate(0, 10)">
     {''.join(squares)}
-    {''.join(eaten_highlights)}
+    {''.join(eaten_squares)}
     {''.join(snake_parts)}
   </g>
 </svg>'''
