@@ -6,6 +6,207 @@
     </radialGradient>
   </defs>
   <rect width="800" height="300" fill="#0a0a0a" rx="8"/>
+  
+  <text x="0" y="20" fill="#00ff00" font-family="monospace" font-size="12" opacity="0.4">
+    01
+    <animate attributeName="y" from="0" to="300" dur="1.5s" repeatCount="indefinite" begin="0.0s"/>
+    <animate attributeName="opacity" values="0.6;0.1" dur="1.5s" repeatCount="indefinite" begin="0.0s"/>
+  </text>
+  <text x="20" y="20" fill="#00ff00" font-family="monospace" font-size="12" opacity="0.4">
+    01
+    <animate attributeName="y" from="0" to="300" dur="2.5s" repeatCount="indefinite" begin="0.08s"/>
+    <animate attributeName="opacity" values="0.6;0.1" dur="2.5s" repeatCount="indefinite" begin="0.08s"/>
+  </text>
+  <text x="40" y="20" fill="#00ff00" font-family="monospace" font-size="12" opacity="0.4">
+    01
+    <animate attributeName="y" from="0" to="300" dur="3.5s" repeatCount="indefinite" begin="0.16s"/>
+    <animate attributeName="opacity" values="0.6;0.1" dur="3.5s" repeatCount="indefinite" begin="0.16s"/>
+  </text>
+  <text x="60" y="20" fill="#00ff00" font-family="monospace" font-size="12" opacity="0.4">
+    01
+    <animate attributeName="y" from="0" to="300" dur="1.5s" repeatCount="indefinite" begin="0.24s"/>
+    <animate attributeName="opacity" values="0.6;0.1" dur="1.5s" repeatCount="indefinite" begin="0.24s"/>
+  </text>
+  <text x="80" y="20" fill="#00ff00" font-family="monospace" font-size="12" opacity="0.4">
+    01
+    <animate attributeName="y" from="0" to="300" dur="2.5s" repeatCount="indefinite" begin="0.32s"/>
+    <animate attributeName="opacity" values="0.6;0.1" dur="2.5s" repeatCount="indefinite" begin="0.32s"/>
+  </text>
+  <text x="100" y="20" fill="#00ff00" font-family="monospace" font-size="12" opacity="0.4">
+    01
+    <animate attributeName="y" from="0" to="300" dur="3.5s" repeatCount="indefinite" begin="0.4s"/>
+    <animate attributeName="opacity" values="0.6;0.1" dur="3.5s" repeatCount="indefinite" begin="0.4s"/>
+  </text>
+  <text x="120" y="20" fill="#00ff00" font-family="monospace" font-size="12" opacity="0.4">
+    01
+    <animate attributeName="y" from="0" to="300" dur="1.5s" repeatCount="indefinite" begin="0.48s"/>
+    <animate attributeName="opacity" values="0.6;0.1" dur="1.5s" repeatCount="indefinite" begin="0.48s"/>
+  </text>
+  <text x="140" y="20" fill="#00ff00" font-family="monospace" font-size="12" opacity="0.4">
+    01
+    <animate attributeName="y" from="0" to="300" dur="2.5s" repeatCount="indefinite" begin="0.56s"/>
+    <animate attributeName="opacity" values="0.6;0.1" dur="2.5s" repeatCount="indefinite" begin="0.56s"/>
+  </text>
+  <text x="160" y="20" fill="#00ff00" font-family="monospace" font-size="12" opacity="0.4">
+    01
+    <animate attributeName="y" from="0" to="300" dur="3.5s" repeatCount="indefinite" begin="0.64s"/>
+    <animate attributeName="opacity" values="0.6;0.1" dur="3.5s" repeatCount="indefinite" begin="0.64s"/>
+  </text>
+  <text x="180" y="20" fill="#00ff00" font-family="monospace" font-size="12" opacity="0.4">
+    01
+    <animate attributeName="y" from="0" to="300" dur="1.5s" repeatCount="indefinite" begin="0.72s"/>
+    <animate attributeName="opacity" values="0.6;0.1" dur="1.5s" repeatCount="indefinite" begin="0.72s"/>
+  </text>
+  <text x="200" y="20" fill="#00ff00" font-family="monospace" font-size="12" opacity="0.4">
+    01
+    <animate attributeName="y" from="0" to="300" dur="2.5s" repeatCount="indefinite" begin="0.8s"/>
+    <animate attributeName="opacity" values="0.6;0.1" dur="2.5s" repeatCount="indefinite" begin="0.8s"/>
+  </text>
+  <text x="220" y="20" fill="#00ff00" font-family="monospace" font-size="12" opacity="0.4">
+    01
+    <animate attributeName="y" from="0" to="300" dur="3.5s" repeatCount="indefinite" begin="0.88s"/>
+    <animate attributeName="opacity" values="0.6;0.1" dur="3.5s" repeatCount="indefinite" begin="0.88s"/>
+  </text>
+  <text x="240" y="20" fill="#00ff00" font-family="monospace" font-size="12" opacity="0.4">
+    01
+    <animate attributeName="y" from="0" to="300" dur="1.5s" repeatCount="indefinite" begin="0.96s"/>
+    <animate attributeName="opacity" values="0.6;0.1" dur="1.5s" repeatCount="indefinite" begin="0.96s"/>
+  </text>
+  <text x="260" y="20" fill="#00ff00" font-family="monospace" font-size="12" opacity="0.4">
+    01
+    <animate attributeName="y" from="0" to="300" dur="2.5s" repeatCount="indefinite" begin="1.04s"/>
+    <animate attributeName="opacity" values="0.6;0.1" dur="2.5s" repeatCount="indefinite" begin="1.04s"/>
+  </text>
+  <text x="280" y="20" fill="#00ff00" font-family="monospace" font-size="12" opacity="0.4">
+    01
+    <animate attributeName="y" from="0" to="300" dur="3.5s" repeatCount="indefinite" begin="1.12s"/>
+    <animate attributeName="opacity" values="0.6;0.1" dur="3.5s" repeatCount="indefinite" begin="1.12s"/>
+  </text>
+  <text x="300" y="20" fill="#00ff00" font-family="monospace" font-size="12" opacity="0.4">
+    01
+    <animate attributeName="y" from="0" to="300" dur="1.5s" repeatCount="indefinite" begin="1.2s"/>
+    <animate attributeName="opacity" values="0.6;0.1" dur="1.5s" repeatCount="indefinite" begin="1.2s"/>
+  </text>
+  <text x="320" y="20" fill="#00ff00" font-family="monospace" font-size="12" opacity="0.4">
+    01
+    <animate attributeName="y" from="0" to="300" dur="2.5s" repeatCount="indefinite" begin="1.28s"/>
+    <animate attributeName="opacity" values="0.6;0.1" dur="2.5s" repeatCount="indefinite" begin="1.28s"/>
+  </text>
+  <text x="340" y="20" fill="#00ff00" font-family="monospace" font-size="12" opacity="0.4">
+    01
+    <animate attributeName="y" from="0" to="300" dur="3.5s" repeatCount="indefinite" begin="1.36s"/>
+    <animate attributeName="opacity" values="0.6;0.1" dur="3.5s" repeatCount="indefinite" begin="1.36s"/>
+  </text>
+  <text x="360" y="20" fill="#00ff00" font-family="monospace" font-size="12" opacity="0.4">
+    01
+    <animate attributeName="y" from="0" to="300" dur="1.5s" repeatCount="indefinite" begin="1.44s"/>
+    <animate attributeName="opacity" values="0.6;0.1" dur="1.5s" repeatCount="indefinite" begin="1.44s"/>
+  </text>
+  <text x="380" y="20" fill="#00ff00" font-family="monospace" font-size="12" opacity="0.4">
+    01
+    <animate attributeName="y" from="0" to="300" dur="2.5s" repeatCount="indefinite" begin="1.52s"/>
+    <animate attributeName="opacity" values="0.6;0.1" dur="2.5s" repeatCount="indefinite" begin="1.52s"/>
+  </text>
+  <text x="400" y="20" fill="#00ff00" font-family="monospace" font-size="12" opacity="0.4">
+    01
+    <animate attributeName="y" from="0" to="300" dur="3.5s" repeatCount="indefinite" begin="1.6s"/>
+    <animate attributeName="opacity" values="0.6;0.1" dur="3.5s" repeatCount="indefinite" begin="1.6s"/>
+  </text>
+  <text x="420" y="20" fill="#00ff00" font-family="monospace" font-size="12" opacity="0.4">
+    01
+    <animate attributeName="y" from="0" to="300" dur="1.5s" repeatCount="indefinite" begin="1.68s"/>
+    <animate attributeName="opacity" values="0.6;0.1" dur="1.5s" repeatCount="indefinite" begin="1.68s"/>
+  </text>
+  <text x="440" y="20" fill="#00ff00" font-family="monospace" font-size="12" opacity="0.4">
+    01
+    <animate attributeName="y" from="0" to="300" dur="2.5s" repeatCount="indefinite" begin="1.76s"/>
+    <animate attributeName="opacity" values="0.6;0.1" dur="2.5s" repeatCount="indefinite" begin="1.76s"/>
+  </text>
+  <text x="460" y="20" fill="#00ff00" font-family="monospace" font-size="12" opacity="0.4">
+    01
+    <animate attributeName="y" from="0" to="300" dur="3.5s" repeatCount="indefinite" begin="1.84s"/>
+    <animate attributeName="opacity" values="0.6;0.1" dur="3.5s" repeatCount="indefinite" begin="1.84s"/>
+  </text>
+  <text x="480" y="20" fill="#00ff00" font-family="monospace" font-size="12" opacity="0.4">
+    01
+    <animate attributeName="y" from="0" to="300" dur="1.5s" repeatCount="indefinite" begin="1.92s"/>
+    <animate attributeName="opacity" values="0.6;0.1" dur="1.5s" repeatCount="indefinite" begin="1.92s"/>
+  </text>
+  <text x="500" y="20" fill="#00ff00" font-family="monospace" font-size="12" opacity="0.4">
+    01
+    <animate attributeName="y" from="0" to="300" dur="2.5s" repeatCount="indefinite" begin="2.0s"/>
+    <animate attributeName="opacity" values="0.6;0.1" dur="2.5s" repeatCount="indefinite" begin="2.0s"/>
+  </text>
+  <text x="520" y="20" fill="#00ff00" font-family="monospace" font-size="12" opacity="0.4">
+    01
+    <animate attributeName="y" from="0" to="300" dur="3.5s" repeatCount="indefinite" begin="2.08s"/>
+    <animate attributeName="opacity" values="0.6;0.1" dur="3.5s" repeatCount="indefinite" begin="2.08s"/>
+  </text>
+  <text x="540" y="20" fill="#00ff00" font-family="monospace" font-size="12" opacity="0.4">
+    01
+    <animate attributeName="y" from="0" to="300" dur="1.5s" repeatCount="indefinite" begin="2.16s"/>
+    <animate attributeName="opacity" values="0.6;0.1" dur="1.5s" repeatCount="indefinite" begin="2.16s"/>
+  </text>
+  <text x="560" y="20" fill="#00ff00" font-family="monospace" font-size="12" opacity="0.4">
+    01
+    <animate attributeName="y" from="0" to="300" dur="2.5s" repeatCount="indefinite" begin="2.24s"/>
+    <animate attributeName="opacity" values="0.6;0.1" dur="2.5s" repeatCount="indefinite" begin="2.24s"/>
+  </text>
+  <text x="580" y="20" fill="#00ff00" font-family="monospace" font-size="12" opacity="0.4">
+    01
+    <animate attributeName="y" from="0" to="300" dur="3.5s" repeatCount="indefinite" begin="2.32s"/>
+    <animate attributeName="opacity" values="0.6;0.1" dur="3.5s" repeatCount="indefinite" begin="2.32s"/>
+  </text>
+  <text x="600" y="20" fill="#00ff00" font-family="monospace" font-size="12" opacity="0.4">
+    01
+    <animate attributeName="y" from="0" to="300" dur="1.5s" repeatCount="indefinite" begin="2.4s"/>
+    <animate attributeName="opacity" values="0.6;0.1" dur="1.5s" repeatCount="indefinite" begin="2.4s"/>
+  </text>
+  <text x="620" y="20" fill="#00ff00" font-family="monospace" font-size="12" opacity="0.4">
+    01
+    <animate attributeName="y" from="0" to="300" dur="2.5s" repeatCount="indefinite" begin="2.48s"/>
+    <animate attributeName="opacity" values="0.6;0.1" dur="2.5s" repeatCount="indefinite" begin="2.48s"/>
+  </text>
+  <text x="640" y="20" fill="#00ff00" font-family="monospace" font-size="12" opacity="0.4">
+    01
+    <animate attributeName="y" from="0" to="300" dur="3.5s" repeatCount="indefinite" begin="2.56s"/>
+    <animate attributeName="opacity" values="0.6;0.1" dur="3.5s" repeatCount="indefinite" begin="2.56s"/>
+  </text>
+  <text x="660" y="20" fill="#00ff00" font-family="monospace" font-size="12" opacity="0.4">
+    01
+    <animate attributeName="y" from="0" to="300" dur="1.5s" repeatCount="indefinite" begin="2.64s"/>
+    <animate attributeName="opacity" values="0.6;0.1" dur="1.5s" repeatCount="indefinite" begin="2.64s"/>
+  </text>
+  <text x="680" y="20" fill="#00ff00" font-family="monospace" font-size="12" opacity="0.4">
+    01
+    <animate attributeName="y" from="0" to="300" dur="2.5s" repeatCount="indefinite" begin="2.72s"/>
+    <animate attributeName="opacity" values="0.6;0.1" dur="2.5s" repeatCount="indefinite" begin="2.72s"/>
+  </text>
+  <text x="700" y="20" fill="#00ff00" font-family="monospace" font-size="12" opacity="0.4">
+    01
+    <animate attributeName="y" from="0" to="300" dur="3.5s" repeatCount="indefinite" begin="2.8000000000000003s"/>
+    <animate attributeName="opacity" values="0.6;0.1" dur="3.5s" repeatCount="indefinite" begin="2.8000000000000003s"/>
+  </text>
+  <text x="720" y="20" fill="#00ff00" font-family="monospace" font-size="12" opacity="0.4">
+    01
+    <animate attributeName="y" from="0" to="300" dur="1.5s" repeatCount="indefinite" begin="2.88s"/>
+    <animate attributeName="opacity" values="0.6;0.1" dur="1.5s" repeatCount="indefinite" begin="2.88s"/>
+  </text>
+  <text x="740" y="20" fill="#00ff00" font-family="monospace" font-size="12" opacity="0.4">
+    01
+    <animate attributeName="y" from="0" to="300" dur="2.5s" repeatCount="indefinite" begin="2.96s"/>
+    <animate attributeName="opacity" values="0.6;0.1" dur="2.5s" repeatCount="indefinite" begin="2.96s"/>
+  </text>
+  <text x="760" y="20" fill="#00ff00" font-family="monospace" font-size="12" opacity="0.4">
+    01
+    <animate attributeName="y" from="0" to="300" dur="3.5s" repeatCount="indefinite" begin="3.04s"/>
+    <animate attributeName="opacity" values="0.6;0.1" dur="3.5s" repeatCount="indefinite" begin="3.04s"/>
+  </text>
+  <text x="780" y="20" fill="#00ff00" font-family="monospace" font-size="12" opacity="0.4">
+    01
+    <animate attributeName="y" from="0" to="300" dur="1.5s" repeatCount="indefinite" begin="3.12s"/>
+    <animate attributeName="opacity" values="0.6;0.1" dur="1.5s" repeatCount="indefinite" begin="3.12s"/>
+  </text>
   <text x="400" y="25" text-anchor="middle" font-family="Courier New" font-size="16" font-weight="600" fill="#00ff00">Radar Scan</text>
   
   <circle cx="400" cy="160" r="100" fill="none" stroke="#00ff00" stroke-width="1" opacity="0.3"/>

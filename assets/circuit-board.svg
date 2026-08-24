@@ -1,50 +1,114 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="200" viewBox="0 0 800 200">
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="280" viewBox="0 0 800 280">
   <defs>
     <linearGradient id="circuitGrad" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" style="stop-color:#0078d4;stop-opacity:0.8" />
       <stop offset="100%" style="stop-color:#00d4aa;stop-opacity:0.8" />
     </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
   </defs>
-  <rect width="800" height="200" fill="#0a0a0a" rx="8"/>
-  <text x="400" y="25" text-anchor="middle" font-family="Courier New" font-size="14" font-weight="600" fill="#0078d4">Circuit Board</text>
+  <rect width="800" height="280" fill="#0a0a0a" rx="12"/>
   
-  <line x1="50" y1="50" x2="200" y2="50" stroke="url(#circuitGrad)" stroke-width="2">
-    <animate attributeName="stroke-dashoffset" from="1000" to="0" dur="5s" repeatCount="indefinite"/>
+  
+  <line x1="100" y1="80" x2="250" y2="120" stroke="#0078d4" stroke-width="2" opacity="0.6">
+    <animate attributeName="stroke-dashoffset" from="1000" to="0" dur="3s" repeatCount="indefinite"/>
   </line>
-  <line x1="200" y1="50" x2="200" y2="150" stroke="url(#circuitGrad)" stroke-width="2">
-    <animate attributeName="stroke-dashoffset" from="1000" to="0" dur="5s" repeatCount="indefinite"/>
+  <line x1="250" y1="120" x2="400" y2="60" stroke="#0078d4" stroke-width="2" opacity="0.6">
+    <animate attributeName="stroke-dashoffset" from="1000" to="0" dur="3s" repeatCount="indefinite"/>
   </line>
-  <line x1="200" y1="150" x2="400" y2="150" stroke="url(#circuitGrad)" stroke-width="2">
-    <animate attributeName="stroke-dashoffset" from="1000" to="0" dur="5s" repeatCount="indefinite"/>
+  <line x1="400" y1="60" x2="550" y2="140" stroke="#0078d4" stroke-width="2" opacity="0.6">
+    <animate attributeName="stroke-dashoffset" from="1000" to="0" dur="3s" repeatCount="indefinite"/>
   </line>
-  <line x1="400" y1="150" x2="400" y2="80" stroke="url(#circuitGrad)" stroke-width="2">
-    <animate attributeName="stroke-dashoffset" from="1000" to="0" dur="5s" repeatCount="indefinite"/>
+  <line x1="550" y1="140" x2="700" y2="100" stroke="#0078d4" stroke-width="2" opacity="0.6">
+    <animate attributeName="stroke-dashoffset" from="1000" to="0" dur="3s" repeatCount="indefinite"/>
   </line>
-  <line x1="400" y1="80" x2="600" y2="80" stroke="url(#circuitGrad)" stroke-width="2">
-    <animate attributeName="stroke-dashoffset" from="1000" to="0" dur="5s" repeatCount="indefinite"/>
+  <line x1="150" y1="180" x2="300" y2="160" stroke="#0078d4" stroke-width="2" opacity="0.6">
+    <animate attributeName="stroke-dashoffset" from="1000" to="0" dur="3s" repeatCount="indefinite"/>
   </line>
-  <line x1="600" y1="80" x2="600" y2="180" stroke="url(#circuitGrad)" stroke-width="2">
-    <animate attributeName="stroke-dashoffset" from="1000" to="0" dur="5s" repeatCount="indefinite"/>
+  <line x1="300" y1="160" x2="450" y2="200" stroke="#0078d4" stroke-width="2" opacity="0.6">
+    <animate attributeName="stroke-dashoffset" from="1000" to="0" dur="3s" repeatCount="indefinite"/>
   </line>
-  <line x1="600" y1="180" x2="750" y2="180" stroke="url(#circuitGrad)" stroke-width="2">
-    <animate attributeName="stroke-dashoffset" from="1000" to="0" dur="5s" repeatCount="indefinite"/>
+  <line x1="450" y1="200" x2="600" y2="180" stroke="#0078d4" stroke-width="2" opacity="0.6">
+    <animate attributeName="stroke-dashoffset" from="1000" to="0" dur="3s" repeatCount="indefinite"/>
+  </line>
+  <line x1="600" y1="180" x2="750" y2="220" stroke="#0078d4" stroke-width="2" opacity="0.6">
+    <animate attributeName="stroke-dashoffset" from="1000" to="0" dur="3s" repeatCount="indefinite"/>
+  </line>
+  <line x1="250" y1="120" x2="300" y2="160" stroke="#0078d4" stroke-width="2" opacity="0.6">
+    <animate attributeName="stroke-dashoffset" from="1000" to="0" dur="3s" repeatCount="indefinite"/>
+  </line>
+  <line x1="400" y1="60" x2="450" y2="200" stroke="#0078d4" stroke-width="2" opacity="0.6">
+    <animate attributeName="stroke-dashoffset" from="1000" to="0" dur="3s" repeatCount="indefinite"/>
+  </line>
+  <line x1="550" y1="140" x2="600" y2="180" stroke="#0078d4" stroke-width="2" opacity="0.6">
+    <animate attributeName="stroke-dashoffset" from="1000" to="0" dur="3s" repeatCount="indefinite"/>
+  </line>
+  <line x1="100" y1="80" x2="150" y2="180" stroke="#0078d4" stroke-width="2" opacity="0.6">
+    <animate attributeName="stroke-dashoffset" from="1000" to="0" dur="3s" repeatCount="indefinite"/>
   </line>
   
-  <circle cx="200" cy="50" r="5" fill="#00d4aa">
-    <animate attributeName="r" values="4;6;4" dur="1.5s" repeatCount="indefinite"/>
+  <circle cx="100" cy="80" r="6" fill="#00d4aa" opacity="0.8">
+    <animate attributeName="r" values="5;8;5" dur="2s" repeatCount="indefinite" begin="0.0s"/>
+    <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite" begin="0.0s"/>
   </circle>
-  <circle cx="200" cy="150" r="5" fill="#00d4aa">
-    <animate attributeName="r" values="4;6;4" dur="1.5s" repeatCount="indefinite" begin="0.2s"/>
+  <circle cx="250" cy="120" r="6" fill="#0078d4" opacity="0.8">
+    <animate attributeName="r" values="5;8;5" dur="2s" repeatCount="indefinite" begin="0.2s"/>
+    <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite" begin="0.2s"/>
   </circle>
-  <circle cx="400" cy="150" r="5" fill="#00d4aa">
-    <animate attributeName="r" values="4;6;4" dur="1.5s" repeatCount="indefinite" begin="0.4s"/>
+  <circle cx="400" cy="60" r="6" fill="#00d4aa" opacity="0.8">
+    <animate attributeName="r" values="5;8;5" dur="2s" repeatCount="indefinite" begin="0.4s"/>
+    <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite" begin="0.4s"/>
   </circle>
-  <circle cx="400" cy="80" r="5" fill="#00d4aa">
-    <animate attributeName="r" values="4;6;4" dur="1.5s" repeatCount="indefinite" begin="0.6s"/>
+  <circle cx="550" cy="140" r="6" fill="#0078d4" opacity="0.8">
+    <animate attributeName="r" values="5;8;5" dur="2s" repeatCount="indefinite" begin="0.6000000000000001s"/>
+    <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite" begin="0.6000000000000001s"/>
   </circle>
-  <circle cx="600" cy="80" r="5" fill="#00d4aa">
-    <animate attributeName="r" values="4;6;4" dur="1.5s" repeatCount="indefinite" begin="0.8s"/>
+  <circle cx="700" cy="100" r="6" fill="#00d4aa" opacity="0.8">
+    <animate attributeName="r" values="5;8;5" dur="2s" repeatCount="indefinite" begin="0.8s"/>
+    <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite" begin="0.8s"/>
+  </circle>
+  <circle cx="150" cy="180" r="6" fill="#0078d4" opacity="0.8">
+    <animate attributeName="r" values="5;8;5" dur="2s" repeatCount="indefinite" begin="1.0s"/>
+    <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite" begin="1.0s"/>
+  </circle>
+  <circle cx="300" cy="160" r="6" fill="#00d4aa" opacity="0.8">
+    <animate attributeName="r" values="5;8;5" dur="2s" repeatCount="indefinite" begin="1.2000000000000002s"/>
+    <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite" begin="1.2000000000000002s"/>
+  </circle>
+  <circle cx="450" cy="200" r="6" fill="#0078d4" opacity="0.8">
+    <animate attributeName="r" values="5;8;5" dur="2s" repeatCount="indefinite" begin="1.4000000000000001s"/>
+    <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite" begin="1.4000000000000001s"/>
+  </circle>
+  <circle cx="600" cy="180" r="6" fill="#00d4aa" opacity="0.8">
+    <animate attributeName="r" values="5;8;5" dur="2s" repeatCount="indefinite" begin="1.6s"/>
+    <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite" begin="1.6s"/>
+  </circle>
+  <circle cx="750" cy="220" r="6" fill="#0078d4" opacity="0.8">
+    <animate attributeName="r" values="5;8;5" dur="2s" repeatCount="indefinite" begin="1.8s"/>
+    <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite" begin="1.8s"/>
   </circle>
   
-  <text x="400" y="195" text-anchor="middle" font-family="Courier New" font-size="10" fill="#0078d4">⚡ Data flows through circuits...</text>
+  <circle cx="0" cy="0" r="3" fill="#F7C948">
+    <animateMotion path="M 100,80 L 250,120" dur="2s" repeatCount="indefinite" begin="0.0s"/>
+    <animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite" begin="0.0s"/>
+  </circle>
+  <circle cx="0" cy="0" r="3" fill="#F7C948">
+    <animateMotion path="M 250,120 L 400,60" dur="2s" repeatCount="indefinite" begin="0.5s"/>
+    <animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite" begin="0.5s"/>
+  </circle>
+  <circle cx="0" cy="0" r="3" fill="#F7C948">
+    <animateMotion path="M 400,60 L 550,140" dur="2s" repeatCount="indefinite" begin="1.0s"/>
+    <animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite" begin="1.0s"/>
+  </circle>
+  <circle cx="0" cy="0" r="3" fill="#F7C948">
+    <animateMotion path="M 550,140 L 700,100" dur="2s" repeatCount="indefinite" begin="1.5s"/>
+    <animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite" begin="1.5s"/>
+  </circle>
+  
+  <text x="400" y="260" text-anchor="middle" font-family="Courier New" font-size="12" fill="#0078d4" filter="url(#glow)">⚡ Data flows through circuits...</text>
 </svg>

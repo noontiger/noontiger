@@ -1,33 +1,12 @@
-## 🎯 Typing Animation
-
 <div align="center">
   <img src="https://readme-typing-svg.herokuapp.com/?font=Fira+Code&size=22&duration=3000&pause=1000&color=0078D4&center=true&vCenter=true&width=600&lines=Full-Stack+Developer;Open+Source+Enthusiast;AI%2FML+Explorer;Building+Cool+Things+🚀" alt="Typing Animation" />
 </div>
-
----
-
-## 🚀 GitHub Analytics
 
 <div align="center">
   
 ![Profile Views](https://komarev.com/ghpvc/?username=noontiger&color=0078D4&style=flat-square&label=Profile+Views)
 ![GitHub Followers](https://img.shields.io/github/followers/noontiger?style=flat-square&color=0078D4&logo=github)
-![GitHub Stars](https://img.shields.io/github/stars/noontiger?style=flat-square&color=F7C948&logo=github)
-![Total Commits](https://img.shields.io/badge/Commits-32K+-blue?style=flat-square&logo=git)
 
-</div>
-
-<div align="center">
-  <img height="180em" src="assets/github-stats.svg" alt="noontiger's GitHub Stats" />
-  <img height="180em" src="assets/top-languages.svg" alt="Top Languages" />
-</div>
-
-<div align="center">
-  <img src="assets/streak-stats.svg" alt="GitHub Streak" />
-</div>
-
-<div align="center">
-  <img src="assets/activity-graph.svg" alt="Contribution Graph" />
 </div>
 
 ---
@@ -36,8 +15,12 @@
 
 <div align="center">
 
-![npm downloads](https://img.shields.io/npm/dm/droidseal?style=flat-square&color=CB3837&logo=npm&logoColor=white&label=npm%20downloads)
-![npm total downloads](https://img.shields.io/npm/dt/droidseal?style=flat-square&color=CB3837&logo=npm&logoColor=white&label=npm%20total)
+<a href="https://www.npmjs.com/package/droidseal" target="_blank">
+  <img src="https://img.shields.io/npm/dm/droidseal?style=flat-square&color=CB3837&logo=npm&logoColor=white&label=npm%20downloads" alt="npm downloads" />
+</a>
+<a href="https://www.npmjs.com/package/droidseal" target="_blank">
+  <img src="https://img.shields.io/npm/dt/droidseal?style=flat-square&color=CB3837&logo=npm&logoColor=white&label=npm%20total" alt="npm total downloads" />
+</a>
 
 </div>
 
@@ -56,6 +39,8 @@
 <div align="center">
   <img src="https://readme-jokes.vercel.app/api?theme=github&hideBorder=true&layout=horizontal" alt="Random Dev Joke" />
 </div>
+
+*程序员的幽默 / Programmer's Humor*
 
 ---
 
@@ -77,34 +62,10 @@
 
 ---
 
-## 🌍 Visitor World Map
-
-<div align="center">
-  <img src="https://visitor-badge.laobi.icu/badge?page_id=noontiger.noontiger&left_color=FFFFFF&right_color=0078D4" alt="Visitor Map" />
-</div>
-
----
-
-## 🌐 3D Contribution Globe
-
-<div align="center">
-  <img src="assets/globe.svg" alt="3D Globe" />
-</div>
-
----
-
 ## 📡 Radar Scan
 
 <div align="center">
   <img src="assets/radar-scan.svg" alt="Radar Scan" />
-</div>
-
----
-
-## 🌧️ Matrix Rain
-
-<div align="center">
-  <img src="assets/matrix-rain.svg" alt="Matrix Rain" />
 </div>
 
 ---

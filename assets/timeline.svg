@@ -1,38 +1,83 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="200" viewBox="0 0 800 200">
-  <rect width="800" height="200" fill="#ffffff" rx="12"/>
-  <text x="400" y="30" text-anchor="middle" font-family="Arial" font-size="18" font-weight="600" fill="#0078d4">Tech Journey</text>
-  <line x1="80" y1="120" x2="720" y2="120" stroke="#0078d4" stroke-width="2" opacity="0.3" stroke-dasharray="5,5">
-    <animate attributeName="stroke-dashoffset" from="0" to="-20" dur="2s" repeatCount="indefinite"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="220" viewBox="0 0 800 220">
+  <defs>
+    <linearGradient id="timelineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#0078d4;stop-opacity:0.3" />
+      <stop offset="50%" style="stop-color:#00d4aa;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#0078d4;stop-opacity:0.3" />
+    </linearGradient>
+    <filter id="nodeGlow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="800" height="220" fill="#ffffff" rx="12"/>
+  
+  <line x1="80" y1="120" x2="720" y2="120" stroke="url(#timelineGrad)" stroke-width="3" stroke-dasharray="8,4">
+    <animate attributeName="stroke-dashoffset" from="0" to="-24" dur="1s" repeatCount="indefinite"/>
   </line>
   
-  <circle cx="100" cy="120" r="8" fill="#0078d4">
-    <animate attributeName="r" values="6;10;6" dur="2s" repeatCount="indefinite" begin="0.0s"/>
-  </circle>
-  <text x="100" y="100" text-anchor="middle" font-family="Arial" font-size="12" font-weight="600" fill="#0078d4">2020</text>
-  <text x="100" y="150" text-anchor="middle" font-family="Arial" font-size="10" fill="#666">Started Coding</text>
-  <circle cx="220" cy="120" r="8" fill="#00d4aa">
-    <animate attributeName="r" values="6;10;6" dur="2s" repeatCount="indefinite" begin="0.3s"/>
-  </circle>
-  <text x="220" y="100" text-anchor="middle" font-family="Arial" font-size="12" font-weight="600" fill="#00d4aa">2021</text>
-  <text x="220" y="150" text-anchor="middle" font-family="Arial" font-size="10" fill="#666">First Open Source</text>
-  <circle cx="340" cy="120" r="8" fill="#F7C948">
-    <animate attributeName="r" values="6;10;6" dur="2s" repeatCount="indefinite" begin="0.6s"/>
-  </circle>
-  <text x="340" y="100" text-anchor="middle" font-family="Arial" font-size="12" font-weight="600" fill="#F7C948">2022</text>
-  <text x="340" y="150" text-anchor="middle" font-family="Arial" font-size="10" fill="#666">Full-Stack Dev</text>
-  <circle cx="460" cy="120" r="8" fill="#ff6b9d">
-    <animate attributeName="r" values="6;10;6" dur="2s" repeatCount="indefinite" begin="0.8999999999999999s"/>
-  </circle>
-  <text x="460" y="100" text-anchor="middle" font-family="Arial" font-size="12" font-weight="600" fill="#ff6b9d">2023</text>
-  <text x="460" y="150" text-anchor="middle" font-family="Arial" font-size="10" fill="#666">AI/ML Explorer</text>
-  <circle cx="580" cy="120" r="8" fill="#c084fc">
-    <animate attributeName="r" values="6;10;6" dur="2s" repeatCount="indefinite" begin="1.2s"/>
-  </circle>
-  <text x="580" y="100" text-anchor="middle" font-family="Arial" font-size="12" font-weight="600" fill="#c084fc">2024</text>
-  <text x="580" y="150" text-anchor="middle" font-family="Arial" font-size="10" fill="#666">Cloud Native</text>
-  <circle cx="700" cy="120" r="8" fill="#fb923c">
-    <animate attributeName="r" values="6;10;6" dur="2s" repeatCount="indefinite" begin="1.5s"/>
-  </circle>
-  <text x="700" y="100" text-anchor="middle" font-family="Arial" font-size="12" font-weight="600" fill="#fb923c">2025</text>
-  <text x="700" y="150" text-anchor="middle" font-family="Arial" font-size="10" fill="#666">Building Future</text>
+  
+  <g transform="translate(100, 120)">
+    <circle cx="0" cy="0" r="12" fill="#0078d4" opacity="0.2">
+      <animate attributeName="r" values="10;16;10" dur="2s" repeatCount="indefinite" begin="0.0s"/>
+    </circle>
+    <circle cx="0" cy="0" r="8" fill="#0078d4">
+      <animate attributeName="r" values="6;10;6" dur="2s" repeatCount="indefinite" begin="0.0s"/>
+    </circle>
+    <text x="0" y="-25" text-anchor="middle" font-family="Arial" font-size="20" font-weight="700" fill="#0078d4">2020</text>
+    <text x="0" y="35" text-anchor="middle" font-family="Arial" font-size="11" fill="#666">Started Coding</text>
+  </g>
+  <g transform="translate(220, 120)">
+    <circle cx="0" cy="0" r="12" fill="#00d4aa" opacity="0.2">
+      <animate attributeName="r" values="10;16;10" dur="2s" repeatCount="indefinite" begin="0.3s"/>
+    </circle>
+    <circle cx="0" cy="0" r="8" fill="#00d4aa">
+      <animate attributeName="r" values="6;10;6" dur="2s" repeatCount="indefinite" begin="0.3s"/>
+    </circle>
+    <text x="0" y="-25" text-anchor="middle" font-family="Arial" font-size="20" font-weight="700" fill="#00d4aa">2021</text>
+    <text x="0" y="35" text-anchor="middle" font-family="Arial" font-size="11" fill="#666">First Open Source</text>
+  </g>
+  <g transform="translate(340, 120)">
+    <circle cx="0" cy="0" r="12" fill="#F7C948" opacity="0.2">
+      <animate attributeName="r" values="10;16;10" dur="2s" repeatCount="indefinite" begin="0.6s"/>
+    </circle>
+    <circle cx="0" cy="0" r="8" fill="#F7C948">
+      <animate attributeName="r" values="6;10;6" dur="2s" repeatCount="indefinite" begin="0.6s"/>
+    </circle>
+    <text x="0" y="-25" text-anchor="middle" font-family="Arial" font-size="20" font-weight="700" fill="#F7C948">2022</text>
+    <text x="0" y="35" text-anchor="middle" font-family="Arial" font-size="11" fill="#666">Full-Stack Dev</text>
+  </g>
+  <g transform="translate(460, 120)">
+    <circle cx="0" cy="0" r="12" fill="#ff6b9d" opacity="0.2">
+      <animate attributeName="r" values="10;16;10" dur="2s" repeatCount="indefinite" begin="0.8999999999999999s"/>
+    </circle>
+    <circle cx="0" cy="0" r="8" fill="#ff6b9d">
+      <animate attributeName="r" values="6;10;6" dur="2s" repeatCount="indefinite" begin="0.8999999999999999s"/>
+    </circle>
+    <text x="0" y="-25" text-anchor="middle" font-family="Arial" font-size="20" font-weight="700" fill="#ff6b9d">2023</text>
+    <text x="0" y="35" text-anchor="middle" font-family="Arial" font-size="11" fill="#666">AI/ML Explorer</text>
+  </g>
+  <g transform="translate(580, 120)">
+    <circle cx="0" cy="0" r="12" fill="#c084fc" opacity="0.2">
+      <animate attributeName="r" values="10;16;10" dur="2s" repeatCount="indefinite" begin="1.2s"/>
+    </circle>
+    <circle cx="0" cy="0" r="8" fill="#c084fc">
+      <animate attributeName="r" values="6;10;6" dur="2s" repeatCount="indefinite" begin="1.2s"/>
+    </circle>
+    <text x="0" y="-25" text-anchor="middle" font-family="Arial" font-size="20" font-weight="700" fill="#c084fc">2024</text>
+    <text x="0" y="35" text-anchor="middle" font-family="Arial" font-size="11" fill="#666">Cloud Native</text>
+  </g>
+  <g transform="translate(700, 120)">
+    <circle cx="0" cy="0" r="12" fill="#fb923c" opacity="0.2">
+      <animate attributeName="r" values="10;16;10" dur="2s" repeatCount="indefinite" begin="1.5s"/>
+    </circle>
+    <circle cx="0" cy="0" r="8" fill="#fb923c">
+      <animate attributeName="r" values="6;10;6" dur="2s" repeatCount="indefinite" begin="1.5s"/>
+    </circle>
+    <text x="0" y="-25" text-anchor="middle" font-family="Arial" font-size="20" font-weight="700" fill="#fb923c">2025</text>
+    <text x="0" y="35" text-anchor="middle" font-family="Arial" font-size="11" fill="#666">Building Future</text>
+  </g>
 </svg>

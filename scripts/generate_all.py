@@ -48,255 +48,77 @@ def generate_svg(content, filename):
 
 # ==================== EXISTING FUNCTIONS ====================
 
-def generate_github_stats():
-    user_data = fetch_user_stats()
-    repos = fetch_user_repos()
-    total_stars = sum(repo.get("stargazers_count", 0) for repo in repos)
-    total_forks = sum(repo.get("forks_count", 0) for repo in repos)
-    followers = user_data.get("followers", 0)
-    following = user_data.get("following", 0)
-    public_repos = user_data.get("public_repos", 0)
-    account_age = datetime.now().year - int(user_data.get("created_at", "2020-01-01")[:4])
-
-    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="800" height="300" viewBox="0 0 800 300">
-  <defs>
-    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#0078d4;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#00d4aa;stop-opacity:1" />
-    </linearGradient>
-    <filter id="shadow">
-      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-color="#0078d4" flood-opacity="0.3"/>
-    </filter>
-  </defs>
-  <rect width="800" height="300" fill="#ffffff" rx="12"/>
-  <rect x="10" y="10" width="780" height="280" fill="url(#grad)" opacity="0.05" rx="8"/>
-  
-  <text x="400" y="45" text-anchor="middle" font-family="Arial" font-size="24" font-weight="600" fill="#0078d4" filter="url(#shadow)">GitHub Stats</text>
-  
-  <g transform="translate(80, 80)">
-    <rect width="140" height="120" fill="#0078d4" opacity="0.1" rx="8"/>
-    <text x="70" y="45" text-anchor="middle" font-family="Arial" font-size="32" font-weight="bold" fill="#0078d4">{followers}</text>
-    <text x="70" y="70" text-anchor="middle" font-family="Arial" font-size="14" fill="#666">Followers</text>
-  </g>
-  
-  <g transform="translate(240, 80)">
-    <rect width="140" height="120" fill="#00d4aa" opacity="0.1" rx="8"/>
-    <text x="70" y="45" text-anchor="middle" font-family="Arial" font-size="32" font-weight="bold" fill="#00d4aa">{total_stars}</text>
-    <text x="70" y="70" text-anchor="middle" font-family="Arial" font-size="14" fill="#666">Stars</text>
-  </g>
-  
-  <g transform="translate(400, 80)">
-    <rect width="140" height="120" fill="#F7C948" opacity="0.1" rx="8"/>
-    <text x="70" y="45" text-anchor="middle" font-family="Arial" font-size="32" font-weight="bold" fill="#F7C948">{total_forks}</text>
-    <text x="70" y="70" text-anchor="middle" font-family="Arial" font-size="14" fill="#666">Forks</text>
-  </g>
-  
-  <g transform="translate(560, 80)">
-    <rect width="140" height="120" fill="#0078d4" opacity="0.1" rx="8"/>
-    <text x="70" y="45" text-anchor="middle" font-family="Arial" font-size="32" font-weight="bold" fill="#0078d4">{account_age}</text>
-    <text x="70" y="70" text-anchor="middle" font-family="Arial" font-size="14" fill="#666">Years</text>
-  </g>
-  
-  <text x="400" y="240" text-anchor="middle" font-family="Arial" font-size="12" fill="#999">Generated on {datetime.now().strftime("%Y-%m-%d")}</text>
-</svg>'''
-    generate_svg(svg, "github-stats.svg")
-
-def generate_top_languages():
-    repos = fetch_user_repos()
-    lang_bytes = {}
-    for repo in repos:
-        lang = repo.get("language")
-        if lang:
-            lang_bytes[lang] = lang_bytes.get(lang, 0) + repo.get("size", 0)
-    total = sum(lang_bytes.values())
-    if total == 0:
-        lang_bytes = {"JavaScript": 100}
-        total = 100
-    lang_pct = {k: v/total*100 for k, v in sorted(lang_bytes.items(), key=lambda x: x[1], reverse=True)}
-    colors = ["#0078d4", "#00d4aa", "#F7C948", "#ff6b9d", "#c084fc", "#fb923c"]
-    y = 70
-    bars = []
-    i = 0
-    for lang, pct in lang_pct.items():
-        color = colors[i % len(colors)]
-        width = pct * 3.5
-        bars.append(f'''
-  <rect x="50" y="{y}" width="{width}" height="28" fill="{color}" rx="6">
-    <animate attributeName="width" from="0" to="{width}" dur="1.2s" fill="freeze" begin="0.{i}s"/>
-  </rect>
-  <text x="60" y="{y+19}" font-family="Arial" font-size="13" font-weight="700" fill="#fff">{lang}</text>
-  <text x="{width+65}" y="{y+19}" font-family="Arial" font-size="13" font-weight="600" fill="#333">{pct:.1f}%</text>''')
-        y += 45
-        i += 1
-    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="800" height="320" viewBox="0 0 800 320">
-  <rect width="800" height="320" fill="#ffffff" rx="12"/>
-  <text x="400" y="40" text-anchor="middle" font-family="Arial" font-size="22" font-weight="700" fill="#0078d4">Top Languages</text>
-  {''.join(bars)}
-</svg>'''
-    generate_svg(svg, "top-languages.svg")
-
-def generate_streak():
-    svg = '''<svg xmlns="http://www.w3.org/2000/svg" width="800" height="200" viewBox="0 0 800 200">
-  <rect width="800" height="200" fill="#ffffff" rx="12"/>
-  <defs>
-    <linearGradient id="fire" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" style="stop-color:#ff6b00;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#ff0000;stop-opacity:1" />
-    </linearGradient>
-  </defs>
-  <text x="400" y="45" text-anchor="middle" font-family="Arial" font-size="20" font-weight="600" fill="#0078d4">GitHub Streak</text>
-  <text x="400" y="95" text-anchor="middle" font-family="Arial" font-size="52" font-weight="bold" fill="url(#fire)">365</text>
-  <text x="400" y="125" text-anchor="middle" font-family="Arial" font-size="16" fill="#666">Current Streak</text>
-  <text x="400" y="155" text-anchor="middle" font-family="Arial" font-size="16" fill="#666">Longest Streak: 365 days</text>
-  
-  <g transform="translate(200, 175)">
-    <rect x="0" y="0" width="400" height="4" fill="#0078d4" opacity="0.2" rx="2"/>
-    <rect x="0" y="0" width="400" height="4" fill="url(#fire)" rx="2">
-      <animate attributeName="width" values="0;400" dur="2s" fill="freeze"/>
-    </rect>
-  </g>
-</svg>'''
-    generate_svg(svg, "streak-stats.svg")
-
-def generate_activity_graph():
-    days = 365
-    width = 760
-    height = 120
-    rects = []
-    for i in range(days):
-        x = 20 + (i % 53) * 14
-        y = 20 + (i // 53) * 14
-        opacity = 0.1 + (i % 7) * 0.12
-        rects.append(f'<rect x="{x}" y="{y}" width="10" height="10" fill="#0078d4" opacity="{opacity}" rx="2"/>')
-    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="800" height="180" viewBox="0 0 800 180">
-  <rect width="800" height="180" fill="#ffffff" rx="12"/>
-  <text x="400" y="25" text-anchor="middle" font-family="Arial" font-size="16" font-weight="600" fill="#0078d4">Contribution Activity</text>
-  {''.join(rects)}
-</svg>'''
-    generate_svg(svg, "activity-graph.svg")
-
-def generate_trophy():
-    svg = '''<svg xmlns="http://www.w3.org/2000/svg" width="800" height="300" viewBox="0 0 800 300">
-  <rect width="800" height="300" fill="#ffffff" rx="12"/>
-  <text x="400" y="45" text-anchor="middle" font-family="Arial" font-size="20" font-weight="600" fill="#0078d4">GitHub Trophies</text>
-  
-  <g transform="translate(150, 80)">
-    <text x="0" y="0" font-size="40">🏆</text>
-    <text x="0" y="30" font-family="Arial" font-size="12" fill="#666">Arctic Code Vault</text>
-  </g>
-  <g transform="translate(350, 80)">
-    <text x="0" y="0" font-size="40">⭐</text>
-    <text x="0" y="30" font-family="Arial" font-size="12" fill="#666">Starstruck</text>
-  </g>
-  <g transform="translate(550, 80)">
-    <text x="0" y="0" font-size="40">🔥</text>
-    <text x="0" y="30" font-family="Arial" font-size="12" fill="#666">On Fire</text>
-  </g>
-</svg>'''
-    generate_svg(svg, "trophy.svg")
-
 def generate_snake():
-    cols = 40
-    rows = 6
-    cell_size = 12
-    grid_w = cols * cell_size
-    grid_h = rows * cell_size
-    start_x = 40
-    start_y = 60
-
-    cells = []
+    cols = 53
+    rows = 7
+    cell_size = 10
+    gap = 2
+    start_x = 30
+    start_y = 50
+    
+    squares = []
     for r in range(rows):
         for c in range(cols):
-            x = start_x + c * cell_size
-            y = start_y + r * cell_size
-            opacity = 0.06 + ((r + c) % 5) * 0.04
-            cells.append(
-                f'<rect x="{x}" y="{y}" width="10" height="10" fill="#0078d4" opacity="{opacity}" rx="2"/>'
+            x = start_x + c * (cell_size + gap)
+            y = start_y + r * (cell_size + gap)
+            level = ((r * 7 + c) % 5)
+            opacity = 0.1 + level * 0.15
+            squares.append(
+                f'<rect x="{x}" y="{y}" width="{cell_size}" height="{cell_size}" fill="#0078d4" opacity="{opacity}" rx="1"/>'
             )
-
+    
+    snake_path = f"M {start_x + 5},{start_y + 5}"
+    for c in range(cols - 1):
+        x = start_x + c * (cell_size + gap) + cell_size // 2
+        y = start_y + (c % rows) * (cell_size + gap) + cell_size // 2
+        snake_path += f" L {x},{y}"
+    
     snake_parts = []
-    for i in range(20):
-        color = "#0078d4" if i == 0 else "#00d4aa"
-        r = 7 if i == 0 else 5
+    for i in range(30):
+        color = "#00d4aa" if i == 0 else "#0078d4"
+        r = 5 if i == 0 else 4
         snake_parts.append(
             f'<circle cx="0" cy="0" r="{r}" fill="{color}">'
-            f'<animateMotion path="M {start_x},{start_y + 15} '
-            f'L {start_x + grid_w},{start_y + 15} '
-            f'L {start_x + grid_w},{start_y + grid_h - 5} '
-            f'L {start_x},{start_y + grid_h - 5} Z" '
-            f'dur="10s" repeatCount="indefinite" begin="{i * 0.12}s"'
-            f'/><animate attributeName="opacity" values="1;0.7;1" dur="2s" repeatCount="indefinite" begin="{i * 0.08}s"/></circle>'
+            f'<animateMotion path="{snake_path}" dur="15s" repeatCount="indefinite" begin="{i * 0.2}s"/>'
+            f'<animate attributeName="opacity" values="1;0.7;1" dur="2s" repeatCount="indefinite" begin="{i * 0.15}s"/>'
+            f'</circle>'
         )
-
-    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="800" height="240" viewBox="0 0 800 240">
-  <rect width="800" height="240" fill="#ffffff" rx="12"/>
-  <g transform="translate(0, 40)">
-    {''.join(cells)}
+    
+    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="800" height="220" viewBox="0 0 800 220">
+  <rect width="800" height="220" fill="#ffffff" rx="12"/>
+  <g transform="translate(0, 20)">
+    {''.join(squares)}
     {''.join(snake_parts)}
   </g>
 </svg>'''
     generate_svg(svg, "snake.svg")
 
-def generate_globe():
-    svg = '''<svg xmlns="http://www.w3.org/2000/svg" width="800" height="300" viewBox="0 0 800 300">
-  <defs>
-    <linearGradient id="ocean" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" style="stop-color:#0078d4;stop-opacity:0.2" />
-      <stop offset="100%" style="stop-color:#00d4aa;stop-opacity:0.2" />
-    </linearGradient>
-  </defs>
-  <rect width="800" height="300" fill="#ffffff" rx="12"/>
-  <text x="400" y="35" text-anchor="middle" font-family="Arial" font-size="18" font-weight="600" fill="#0078d4">3D Contribution Globe</text>
-  
-  <circle cx="400" cy="160" r="100" fill="url(#ocean)" stroke="#0078d4" stroke-width="2"/>
-  <ellipse cx="400" cy="160" rx="40" ry="100" fill="none" stroke="#0078d4" stroke-width="1" opacity="0.5"/>
-  <ellipse cx="400" cy="160" rx="100" ry="40" fill="none" stroke="#0078d4" stroke-width="1" opacity="0.5"/>
-  <line x1="300" y1="160" x2="500" y2="160" stroke="#0078d4" stroke-width="1" opacity="0.5"/>
-  <line x1="400" y1="60" x2="400" y2="260" stroke="#0078d4" stroke-width="1" opacity="0.5"/>
-  
-  <circle cx="400" cy="160" r="100" fill="none" stroke="#0078d4" stroke-width="2" stroke-dasharray="10,5">
-    <animate attributeName="stroke-dashoffset" from="0" to="-30" dur="2s" repeatCount="indefinite"/>
-  </circle>
-  
-  <circle cx="350" cy="130" r="4" fill="#ff6b9d">
-    <animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite"/>
-  </circle>
-  <circle cx="450" cy="180" r="4" fill="#00d4aa">
-    <animate attributeName="opacity" values="0.3;1;0.3" dur="2.5s" repeatCount="indefinite"/>
-  </circle>
-  <circle cx="420" cy="140" r="3" fill="#F7C948">
-    <animate attributeName="opacity" values="1;0.5;1" dur="1.8s" repeatCount="indefinite"/>
-  </circle>
-</svg>'''
-    generate_svg(svg, "globe.svg")
-
-def generate_wakatime():
-    svg = '''<svg xmlns="http://www.w3.org/2000/svg" width="800" height="250" viewBox="0 0 800 250">
-  <rect width="800" height="250" fill="#ffffff" rx="12"/>
-  <text x="400" y="35" text-anchor="middle" font-family="Arial" font-size="18" font-weight="600" fill="#0078d4">WakaTime Stats</text>
-  
-  <g transform="translate(100, 70)">
-    <rect width="600" height="140" fill="#f8f9fa" rx="8"/>
-    <text x="300" y="40" text-anchor="middle" font-family="Arial" font-size="14" fill="#666">Total Coding Time</text>
-    <text x="300" y="80" text-anchor="middle" font-family="Arial" font-size="36" font-weight="bold" fill="#0078d4">1,234</text>
-    <text x="300" y="105" text-anchor="middle" font-family="Arial" font-size="14" fill="#666">hours this year</text>
-    <text x="300" y="130" text-anchor="middle" font-family="Arial" font-size="12" fill="#999">Python • JavaScript • TypeScript • Rust</text>
-  </g>
-</svg>'''
-    generate_svg(svg, "wakatime.svg")
-
-# ==================== NEW ANIMATION FUNCTIONS ====================
-
 def generate_radar_scan():
-    """Generate radar scan animation"""
-    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="800" height="300" viewBox="0 0 800 300">
+    """Generate radar scan animation with matrix rain background"""
+    width = 800
+    height = 300
+    binary_drops = []
+    columns = 40
+    for i in range(columns):
+        x = i * 20
+        duration = 1.5 + (i % 3)
+        delay = i * 0.08
+        binary_drops.append(f'''
+  <text x="{x}" y="20" fill="#00ff00" font-family="monospace" font-size="12" opacity="0.4">
+    01
+    <animate attributeName="y" from="0" to="{height}" dur="{duration}s" repeatCount="indefinite" begin="{delay}s"/>
+    <animate attributeName="opacity" values="0.6;0.1" dur="{duration}s" repeatCount="indefinite" begin="{delay}s"/>
+  </text>''')
+    
+    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">
   <defs>
     <radialGradient id="radarGrad">
       <stop offset="0%" style="stop-color:#00ff00;stop-opacity:0.3" />
       <stop offset="100%" style="stop-color:#00ff00;stop-opacity:0" />
     </radialGradient>
   </defs>
-  <rect width="800" height="300" fill="#0a0a0a" rx="8"/>
+  <rect width="{width}" height="{height}" fill="#0a0a0a" rx="8"/>
+  {''.join(binary_drops)}
   <text x="400" y="25" text-anchor="middle" font-family="Courier New" font-size="16" font-weight="600" fill="#00ff00">Radar Scan</text>
   
   <circle cx="400" cy="160" r="100" fill="none" stroke="#00ff00" stroke-width="1" opacity="0.3"/>
@@ -318,33 +140,6 @@ def generate_radar_scan():
   </circle>
 </svg>'''
     generate_svg(svg, "radar-scan.svg")
-
-def generate_matrix_rain():
-    """Generate Matrix-style rain animation"""
-    columns = 40
-    width = 800
-    height = 300
-    drops = []
-    chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()"
-    for i in range(columns):
-        x = i * 20
-        y = 20
-        char = chars[i % len(chars)]
-        duration = 2 + (i % 3)
-        delay = i * 0.1
-        drops.append(f'''
-  <text x="{x}" y="{y}" fill="#00ff00" font-family="monospace" font-size="14" opacity="0.8">
-    {char}
-    <animate attributeName="y" from="0" to="{height}" dur="{duration}s" repeatCount="indefinite" begin="{delay}s"/>
-    <animate attributeName="opacity" values="1;0" dur="{duration}s" repeatCount="indefinite" begin="{delay}s"/>
-  </text>''')
-    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">
-  <rect width="{width}" height="{height}" fill="#0a0a0a" rx="8"/>
-  <text x="400" y="25" text-anchor="middle" font-family="monospace" font-size="16" font-weight="600" fill="#00ff00">Matrix Rain</text>
-  {''.join(drops)}
-  <text x="400" y="290" text-anchor="middle" font-family="monospace" font-size="10" fill="#00ff00">The Matrix has you...</text>
-</svg>'''
-    generate_svg(svg, "matrix-rain.svg")
 
 def generate_terminal():
     """Generate terminal typing animation"""
@@ -369,122 +164,188 @@ def generate_terminal():
     generate_svg(svg, "terminal.svg")
 
 def generate_circuit_board():
-    """Generate circuit board pattern"""
-    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="800" height="200" viewBox="0 0 800 200">
+    """Generate optimized circuit board pattern with glow effects and data flow"""
+    nodes = [
+        (100, 80), (250, 120), (400, 60), (550, 140), (700, 100),
+        (150, 180), (300, 160), (450, 200), (600, 180), (750, 220)
+    ]
+    
+    lines = [
+        (100, 80, 250, 120), (250, 120, 400, 60), (400, 60, 550, 140),
+        (550, 140, 700, 100), (150, 180, 300, 160), (300, 160, 450, 200),
+        (450, 200, 600, 180), (600, 180, 750, 220), (250, 120, 300, 160),
+        (400, 60, 450, 200), (550, 140, 600, 180), (100, 80, 150, 180)
+    ]
+    
+    circuit_lines = []
+    for x1, y1, x2, y2 in lines:
+        circuit_lines.append(f'''
+  <line x1="{x1}" y1="{y1}" x2="{x2}" y2="{y2}" stroke="#0078d4" stroke-width="2" opacity="0.6">
+    <animate attributeName="stroke-dashoffset" from="1000" to="0" dur="3s" repeatCount="indefinite"/>
+  </line>''')
+    
+    circuit_nodes = []
+    for i, (x, y) in enumerate(nodes):
+        color = "#00d4aa" if i % 2 == 0 else "#0078d4"
+        circuit_nodes.append(f'''
+  <circle cx="{x}" cy="{y}" r="6" fill="{color}" opacity="0.8">
+    <animate attributeName="r" values="5;8;5" dur="2s" repeatCount="indefinite" begin="{i*0.2}s"/>
+    <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite" begin="{i*0.2}s"/>
+  </circle>''')
+    
+    data_packets = []
+    for i, (x1, y1, x2, y2) in enumerate(lines[:4]):
+        data_packets.append(f'''
+  <circle cx="0" cy="0" r="3" fill="#F7C948">
+    <animateMotion path="M {x1},{y1} L {x2},{y2}" dur="2s" repeatCount="indefinite" begin="{i*0.5}s"/>
+    <animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite" begin="{i*0.5}s"/>
+  </circle>''')
+    
+    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="800" height="280" viewBox="0 0 800 280">
   <defs>
     <linearGradient id="circuitGrad" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" style="stop-color:#0078d4;stop-opacity:0.8" />
       <stop offset="100%" style="stop-color:#00d4aa;stop-opacity:0.8" />
     </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
   </defs>
-  <rect width="800" height="200" fill="#0a0a0a" rx="8"/>
-  <text x="400" y="25" text-anchor="middle" font-family="Courier New" font-size="14" font-weight="600" fill="#0078d4">Circuit Board</text>
+  <rect width="800" height="280" fill="#0a0a0a" rx="12"/>
   
-  <line x1="50" y1="50" x2="200" y2="50" stroke="url(#circuitGrad)" stroke-width="2">
-    <animate attributeName="stroke-dashoffset" from="1000" to="0" dur="5s" repeatCount="indefinite"/>
-  </line>
-  <line x1="200" y1="50" x2="200" y2="150" stroke="url(#circuitGrad)" stroke-width="2">
-    <animate attributeName="stroke-dashoffset" from="1000" to="0" dur="5s" repeatCount="indefinite"/>
-  </line>
-  <line x1="200" y1="150" x2="400" y2="150" stroke="url(#circuitGrad)" stroke-width="2">
-    <animate attributeName="stroke-dashoffset" from="1000" to="0" dur="5s" repeatCount="indefinite"/>
-  </line>
-  <line x1="400" y1="150" x2="400" y2="80" stroke="url(#circuitGrad)" stroke-width="2">
-    <animate attributeName="stroke-dashoffset" from="1000" to="0" dur="5s" repeatCount="indefinite"/>
-  </line>
-  <line x1="400" y1="80" x2="600" y2="80" stroke="url(#circuitGrad)" stroke-width="2">
-    <animate attributeName="stroke-dashoffset" from="1000" to="0" dur="5s" repeatCount="indefinite"/>
-  </line>
-  <line x1="600" y1="80" x2="600" y2="180" stroke="url(#circuitGrad)" stroke-width="2">
-    <animate attributeName="stroke-dashoffset" from="1000" to="0" dur="5s" repeatCount="indefinite"/>
-  </line>
-  <line x1="600" y1="180" x2="750" y2="180" stroke="url(#circuitGrad)" stroke-width="2">
-    <animate attributeName="stroke-dashoffset" from="1000" to="0" dur="5s" repeatCount="indefinite"/>
-  </line>
+  {''.join(circuit_lines)}
+  {''.join(circuit_nodes)}
+  {''.join(data_packets)}
   
-  <circle cx="200" cy="50" r="5" fill="#00d4aa">
-    <animate attributeName="r" values="4;6;4" dur="1.5s" repeatCount="indefinite"/>
-  </circle>
-  <circle cx="200" cy="150" r="5" fill="#00d4aa">
-    <animate attributeName="r" values="4;6;4" dur="1.5s" repeatCount="indefinite" begin="0.2s"/>
-  </circle>
-  <circle cx="400" cy="150" r="5" fill="#00d4aa">
-    <animate attributeName="r" values="4;6;4" dur="1.5s" repeatCount="indefinite" begin="0.4s"/>
-  </circle>
-  <circle cx="400" cy="80" r="5" fill="#00d4aa">
-    <animate attributeName="r" values="4;6;4" dur="1.5s" repeatCount="indefinite" begin="0.6s"/>
-  </circle>
-  <circle cx="600" cy="80" r="5" fill="#00d4aa">
-    <animate attributeName="r" values="4;6;4" dur="1.5s" repeatCount="indefinite" begin="0.8s"/>
-  </circle>
-  
-  <text x="400" y="195" text-anchor="middle" font-family="Courier New" font-size="10" fill="#0078d4">⚡ Data flows through circuits...</text>
+  <text x="400" y="260" text-anchor="middle" font-family="Courier New" font-size="12" fill="#0078d4" filter="url(#glow)">⚡ Data flows through circuits...</text>
 </svg>'''
     generate_svg(svg, "circuit-board.svg")
 
 def generate_particles():
-    """Generate particle network animation"""
+    """Generate optimized particle network with connections and dynamic motion"""
     particles = []
-    for i in range(20):
-        x = 50 + (i % 5) * 150
-        y = 50 + (i // 5) * 100
+    connections = []
+    
+    for i in range(25):
+        x = 80 + (i % 5) * 150 + (i % 3) * 20
+        y = 60 + (i // 5) * 120 + (i % 2) * 30
+        size = 2 + (i % 4)
+        duration = 3 + (i % 3)
+        delay = i * 0.15
+        
         particles.append(f'''
-  <circle cx="{x}" cy="{y}" r="3" fill="#0078d4">
-    <animate attributeName="opacity" values="0.3;1;0.3" dur="{2 + i%3}s" repeatCount="indefinite" begin="{i*0.2}s"/>
+  <circle cx="{x}" cy="{y}" r="{size}" fill="#0078d4">
+    <animate attributeName="opacity" values="0.4;1;0.4" dur="{duration}s" repeatCount="indefinite" begin="{delay}s"/>
+    <animate attributeName="r" values="{size};{size+2};{size}" dur="{duration}s" repeatCount="indefinite" begin="{delay}s"/>
   </circle>''')
-    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="800" height="300" viewBox="0 0 800 300">
-  <rect width="800" height="300" fill="#0a0a0a" rx="8"/>
-  <text x="400" y="25" text-anchor="middle" font-family="Courier New" font-size="14" font-weight="600" fill="#0078d4">Particle Network</text>
+        
+        for j in range(i + 1, min(i + 4, 25)):
+            x2 = 80 + (j % 5) * 150 + (j % 3) * 20
+            y2 = 60 + (j // 5) * 120 + (j % 2) * 30
+            dist = ((x - x2) ** 2 + (y - y2) ** 2) ** 0.5
+            if dist < 200:
+                connections.append(f'''
+  <line x1="{x}" y1="{y}" x2="{x2}" y2="{y2}" stroke="#0078d4" stroke-width="1" opacity="0.2">
+    <animate attributeName="opacity" values="0.1;0.4;0.1" dur="{duration}s" repeatCount="indefinite" begin="{delay}s"/>
+  </line>''')
+    
+    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="800" height="320" viewBox="0 0 800 320">
+  <defs>
+    <radialGradient id="particleGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#0078d4;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#0078d4;stop-opacity:0" />
+    </radialGradient>
+  </defs>
+  <rect width="800" height="320" fill="#0a0a0a" rx="12"/>
+  <rect x="0" y="0" width="800" height="320" fill="url(#particleGlow)" rx="12"/>
+  
+  {''.join(connections)}
   {''.join(particles)}
-  <text x="400" y="280" text-anchor="middle" font-family="Courier New" font-size="10" fill="#0078d4">🤖 Neural network visualization</text>
+  
+  <text x="400" y="300" text-anchor="middle" font-family="Courier New" font-size="11" fill="#0078d4">🤖 Neural network visualization</text>
 </svg>'''
     generate_svg(svg, "particles.svg")
 
 def generate_timeline():
-    """Generate animated tech timeline"""
+    """Generate optimized animated tech timeline with icons and gradients"""
     events = [
-        ("2020", "Started Coding", "#0078d4"),
-        ("2021", "First Open Source", "#00d4aa"),
-        ("2022", "Full-Stack Dev", "#F7C948"),
-        ("2023", "AI/ML Explorer", "#ff6b9d"),
-        ("2024", "Cloud Native", "#c084fc"),
-        ("2025", "Building Future", "#fb923c")
+        ("2020", "Started Coding", "💻", "#0078d4"),
+        ("2021", "First Open Source", "🌟", "#00d4aa"),
+        ("2022", "Full-Stack Dev", "🚀", "#F7C948"),
+        ("2023", "AI/ML Explorer", "🤖", "#ff6b9d"),
+        ("2024", "Cloud Native", "☸️", "#c084fc"),
+        ("2025", "Building Future", "🔮", "#fb923c")
     ]
+    
     nodes = []
-    for i, (year, event, color) in enumerate(events):
+    for i, (year, event, icon, color) in enumerate(events):
         x = 100 + i * 120
+        
         nodes.append(f'''
-  <circle cx="{x}" cy="120" r="8" fill="{color}">
-    <animate attributeName="r" values="6;10;6" dur="2s" repeatCount="indefinite" begin="{i*0.3}s"/>
-  </circle>
-  <text x="{x}" y="100" text-anchor="middle" font-family="Arial" font-size="12" font-weight="600" fill="{color}">{year}</text>
-  <text x="{x}" y="150" text-anchor="middle" font-family="Arial" font-size="10" fill="#666">{event}</text>''')
-    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="800" height="200" viewBox="0 0 800 200">
-  <rect width="800" height="200" fill="#ffffff" rx="12"/>
-  <text x="400" y="30" text-anchor="middle" font-family="Arial" font-size="18" font-weight="600" fill="#0078d4">Tech Journey</text>
-  <line x1="80" y1="120" x2="720" y2="120" stroke="#0078d4" stroke-width="2" opacity="0.3" stroke-dasharray="5,5">
-    <animate attributeName="stroke-dashoffset" from="0" to="-20" dur="2s" repeatCount="indefinite"/>
+  <g transform="translate({x}, 120)">
+    <circle cx="0" cy="0" r="12" fill="{color}" opacity="0.2">
+      <animate attributeName="r" values="10;16;10" dur="2s" repeatCount="indefinite" begin="{i*0.3}s"/>
+    </circle>
+    <circle cx="0" cy="0" r="8" fill="{color}">
+      <animate attributeName="r" values="6;10;6" dur="2s" repeatCount="indefinite" begin="{i*0.3}s"/>
+    </circle>
+    <text x="0" y="-25" text-anchor="middle" font-family="Arial" font-size="20" font-weight="700" fill="{color}">{year}</text>
+    <text x="0" y="35" text-anchor="middle" font-family="Arial" font-size="11" fill="#666">{event}</text>
+  </g>''')
+    
+    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="800" height="220" viewBox="0 0 800 220">
+  <defs>
+    <linearGradient id="timelineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#0078d4;stop-opacity:0.3" />
+      <stop offset="50%" style="stop-color:#00d4aa;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#0078d4;stop-opacity:0.3" />
+    </linearGradient>
+    <filter id="nodeGlow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="800" height="220" fill="#ffffff" rx="12"/>
+  
+  <line x1="80" y1="120" x2="720" y2="120" stroke="url(#timelineGrad)" stroke-width="3" stroke-dasharray="8,4">
+    <animate attributeName="stroke-dashoffset" from="0" to="-24" dur="1s" repeatCount="indefinite"/>
   </line>
+  
   {''.join(nodes)}
 </svg>'''
     generate_svg(svg, "timeline.svg")
+
+def generate_wakatime():
+    svg = '''<svg xmlns="http://www.w3.org/2000/svg" width="800" height="250" viewBox="0 0 800 250">
+  <rect width="800" height="250" fill="#ffffff" rx="12"/>
+  <text x="400" y="35" text-anchor="middle" font-family="Arial" font-size="18" font-weight="600" fill="#0078d4">WakaTime Stats</text>
+  
+  <g transform="translate(100, 70)">
+    <rect width="600" height="140" fill="#f8f9fa" rx="8"/>
+    <text x="300" y="40" text-anchor="middle" font-family="Arial" font-size="14" fill="#666">Total Coding Time</text>
+    <text x="300" y="80" text-anchor="middle" font-family="Arial" font-size="36" font-weight="bold" fill="#0078d4">1,234</text>
+    <text x="300" y="105" text-anchor="middle" font-family="Arial" font-size="14" fill="#666">hours this year</text>
+    <text x="300" y="130" text-anchor="middle" font-family="Arial" font-size="12" fill="#999">Python • JavaScript • TypeScript • Rust</text>
+  </g>
+</svg>'''
+    generate_svg(svg, "wakatime.svg")
 
 # ==================== MAIN ====================
 
 def main():
     print("Generating profile assets...")
-    generate_github_stats()
-    generate_top_languages()
-    generate_streak()
-    generate_activity_graph()
-    generate_trophy()
     generate_snake()
-    generate_globe()
     generate_wakatime()
     
     print("Generating new animation assets...")
     generate_radar_scan()
-    generate_matrix_rain()
     generate_terminal()
     generate_circuit_board()
     generate_particles()
