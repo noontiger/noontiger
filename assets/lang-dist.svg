@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="209" viewBox="0 0 800 209">
+  <rect width="800" height="209" fill="#ffffff" rx="12"/>
+  <text x="400" y="40" text-anchor="middle" font-family="Arial" font-size="20" font-weight="700" fill="#0078d4">Repository Language Distribution</text>
+  
+  <g transform="translate(0, 75)">
+    <rect x="40" y="-10" width="14" height="14" rx="3" fill="#f1e05a"/>
+    <text x="62" y="2" font-family="Arial" font-size="14" font-weight="600" fill="#24292f">JavaScript</text>
+    <rect x="270" y="-9" width="430" height="12" rx="6" fill="#eaeef2"/>
+    <rect x="270" y="-9" width="332.86441439026356" height="12" rx="6" fill="#f1e05a">
+      <animate attributeName="width" from="0" to="332.86441439026356" dur="1s" fill="freeze"/>
+    </rect>
+    <text x="712" y="2" font-family="Arial" font-size="13" font-weight="700" fill="#f1e05a">77.4%</text>
+    <text x="200" y="2" text-anchor="end" font-family="Arial" font-size="11" fill="#8b949e">4 repos</text>
+  </g>
+  <g transform="translate(0, 113)">
+    <rect x="40" y="-10" width="14" height="14" rx="3" fill="#3178c6"/>
+    <text x="62" y="2" font-family="Arial" font-size="14" font-weight="600" fill="#24292f">TypeScript</text>
+    <rect x="270" y="-9" width="430" height="12" rx="6" fill="#eaeef2"/>
+    <rect x="270" y="-9" width="79.39518939495484" height="12" rx="6" fill="#3178c6">
+      <animate attributeName="width" from="0" to="79.39518939495484" dur="1s" fill="freeze"/>
+    </rect>
+    <text x="712" y="2" font-family="Arial" font-size="13" font-weight="700" fill="#3178c6">18.5%</text>
+    <text x="200" y="2" text-anchor="end" font-family="Arial" font-size="11" fill="#8b949e">3 repos</text>
+  </g>
+  <g transform="translate(0, 151)">
+    <rect x="40" y="-10" width="14" height="14" rx="3" fill="#3572A5"/>
+    <text x="62" y="2" font-family="Arial" font-size="14" font-weight="600" fill="#24292f">Python</text>
+    <rect x="270" y="-9" width="430" height="12" rx="6" fill="#eaeef2"/>
+    <rect x="270" y="-9" width="14.871558587781145" height="12" rx="6" fill="#3572A5">
+      <animate attributeName="width" from="0" to="14.871558587781145" dur="1s" fill="freeze"/>
+    </rect>
+    <text x="712" y="2" font-family="Arial" font-size="13" font-weight="700" fill="#3572A5">3.5%</text>
+    <text x="200" y="2" text-anchor="end" font-family="Arial" font-size="11" fill="#8b949e">1 repos</text>
+  </g>
+  <text x="40" y="193" font-family="Arial" font-size="11" fill="#8b949e">Data from 172 repos (158 forks excluded) • auto-generated daily</text>
+</svg>

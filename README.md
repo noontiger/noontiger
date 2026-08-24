@@ -30,18 +30,8 @@
 ## 📊 Repository Language Distribution
 
 <div align="center">
-
-| Language | Repos | Percentage |
-|:---|:---:|---:|
-| **JavaScript** | 4 | 36.4% |
-| **TypeScript** | 3 | 27.3% |
-| **Astro** | 2 | 18.2% |
-| **HTML** | 1 | 9.1% |
-| **CSS** | 1 | 9.1% |
-
+  <img src="assets/lang-dist.svg" alt="Repository Language Distribution" />
 </div>
-
-*Data from 11 original repos with language detected (158 forks excluded)*
 
 ---
 

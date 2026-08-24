@@ -214,21 +214,21 @@ def generate_radar_scan():
     </line>
   </g>'''
     
-    # Range rings with distance labels
+    # Range rings with distance labels (dashed, clearly visible)
     rings = []
     for r_idx, r in enumerate([30, 60, 90, 120]):
         rings.append(f'''
-  <circle cx="{cx}" cy="{cy}" r="{r}" fill="none" stroke="#00ff00" stroke-width="1" opacity="0.15" stroke-dasharray="4,4"/>
-  <text x="{cx + r + 5}" y="{cy - 3}" fill="#00ff00" font-family="monospace" font-size="9" opacity="0.5">{r//10}0</text>''')
+  <circle cx="{cx}" cy="{cy}" r="{r}" fill="none" stroke="#00ff00" stroke-width="1.5" opacity="0.5" stroke-dasharray="7,5"/>
+  <text x="{cx + r + 6}" y="{cy - 4}" fill="#00ff00" font-family="monospace" font-size="9" opacity="0.75">{r//10}0</text>''')
     
-    # Crosshairs
+    # Crosshairs (solid, clearly visible)
     crosshairs = f'''
-  <line x1="{cx - radius}" y1="{cy}" x2="{cx + radius}" y2="{cy}" stroke="#00ff00" stroke-width="0.5" opacity="0.2"/>
-  <line x1="{cx}" y1="{cy - radius}" x2="{cx}" y2="{cy + radius}" stroke="#00ff00" stroke-width="0.5" opacity="0.2"/>
-  <line x1="{cx - 20}" y1="{cy - 20}" x2="{cx - 5}" y2="{cy - 5}" stroke="#00ff00" stroke-width="1" opacity="0.4"/>
-  <line x1="{cx - 20}" y1="{cy + 20}" x2="{cx - 5}" y2="{cy + 5}" stroke="#00ff00" stroke-width="1" opacity="0.4"/>
-  <line x1="{cx + 20}" y1="{cy - 20}" x2="{cx + 5}" y2="{cy - 5}" stroke="#00ff00" stroke-width="1" opacity="0.4"/>
-  <line x1="{cx + 20}" y1="{cy + 20}" x2="{cx + 5}" y2="{cy + 5}" stroke="#00ff00" stroke-width="1" opacity="0.4"/>'''
+  <line x1="{cx - radius}" y1="{cy}" x2="{cx + radius}" y2="{cy}" stroke="#00ff00" stroke-width="0.8" opacity="0.5"/>
+  <line x1="{cx}" y1="{cy - radius}" x2="{cx}" y2="{cy + radius}" stroke="#00ff00" stroke-width="0.8" opacity="0.5"/>
+  <line x1="{cx - 20}" y1="{cy - 20}" x2="{cx - 5}" y2="{cy - 5}" stroke="#00ff00" stroke-width="1.5" opacity="0.7"/>
+  <line x1="{cx - 20}" y1="{cy + 20}" x2="{cx - 5}" y2="{cy + 5}" stroke="#00ff00" stroke-width="1.5" opacity="0.7"/>
+  <line x1="{cx + 20}" y1="{cy - 20}" x2="{cx + 5}" y2="{cy - 5}" stroke="#00ff00" stroke-width="1.5" opacity="0.7"/>
+  <line x1="{cx + 20}" y1="{cy + 20}" x2="{cx + 5}" y2="{cy + 5}" stroke="#00ff00" stroke-width="1.5" opacity="0.7"/>'''
     
     # HUD elements
     hud = f'''
@@ -491,6 +491,71 @@ def generate_timeline():
 </svg>'''
     generate_svg(svg, "timeline.svg")
 
+def generate_lang_dist():
+    """Generate real-time repository language distribution from GitHub API"""
+    LANG_COLORS = {
+        "JavaScript": "#f1e05a", "TypeScript": "#3178c6", "Astro": "#ff5a03",
+        "HTML": "#e34c26", "CSS": "#563d7c", "Python": "#3572A5",
+        "Rust": "#dea584", "Go": "#00ADD8", "C++": "#f34b7d", "C": "#555555",
+        "Java": "#b07219", "Shell": "#89e051", "Vue": "#41b883", "Svelte": "#ff3e00",
+        "Ruby": "#701516", "PHP": "#4F5D95", "Swift": "#F05138", "Kotlin": "#A97BFF",
+        "Dart": "#00B4AB", "C#": "#178600", "Jupyter Notebook": "#DA5B0B",
+    }
+    DEFAULT_COLOR = "#0078d4"
+
+    repos = fetch_user_repos()
+    lang_bytes = {}
+    lang_repos = {}
+    for repo in repos:
+        if repo.get("fork"):
+            continue
+        lang = repo.get("language")
+        if lang:
+            lang_bytes[lang] = lang_bytes.get(lang, 0) + repo.get("size", 0)
+            lang_repos[lang] = lang_repos.get(lang, 0) + 1
+
+    if not lang_bytes:
+        lang_bytes = {"JavaScript": 100}
+        lang_repos = {"JavaScript": 4}
+
+    total = sum(lang_bytes.values())
+    sorted_langs = sorted(lang_bytes.items(), key=lambda x: x[1], reverse=True)
+    top = [ (l, b) for l, b in sorted_langs if b / total >= 0.01 ][:8]
+    if not top:
+        top = sorted_langs[:8]
+
+    rows = []
+    y = 75
+    bar_x = 270
+    bar_max_w = 430
+    for lang, bytes_ in top:
+        pct = bytes_ / total * 100
+        color = LANG_COLORS.get(lang, DEFAULT_COLOR)
+        bar_w = max(6, pct / 100 * bar_max_w)
+        count = lang_repos.get(lang, 0)
+        rows.append(f'''
+  <g transform="translate(0, {y})">
+    <rect x="40" y="-10" width="14" height="14" rx="3" fill="{color}"/>
+    <text x="62" y="2" font-family="Arial" font-size="14" font-weight="600" fill="#24292f">{lang}</text>
+    <rect x="{bar_x}" y="-9" width="{bar_max_w}" height="12" rx="6" fill="#eaeef2"/>
+    <rect x="{bar_x}" y="-9" width="{bar_w}" height="12" rx="6" fill="{color}">
+      <animate attributeName="width" from="0" to="{bar_w}" dur="1s" fill="freeze"/>
+    </rect>
+    <text x="{bar_x + bar_max_w + 12}" y="2" font-family="Arial" font-size="13" font-weight="700" fill="{color}">{pct:.1f}%</text>
+    <text x="200" y="2" text-anchor="end" font-family="Arial" font-size="11" fill="#8b949e">{count} repos</text>
+  </g>''')
+        y += 38
+
+    orig_count = len(repos)
+    fork_count = sum(1 for r in repos if r.get("fork"))
+    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="800" height="{y + 20}" viewBox="0 0 800 {y + 20}">
+  <rect width="800" height="{y + 20}" fill="#ffffff" rx="12"/>
+  <text x="400" y="40" text-anchor="middle" font-family="Arial" font-size="20" font-weight="700" fill="#0078d4">Repository Language Distribution</text>
+  {''.join(rows)}
+  <text x="40" y="{y + 4}" font-family="Arial" font-size="11" fill="#8b949e">Data from {orig_count} repos ({fork_count} forks excluded) • auto-generated daily</text>
+</svg>'''
+    generate_svg(svg, "lang-dist.svg")
+
 def generate_wakatime():
     svg = '''<svg xmlns="http://www.w3.org/2000/svg" width="800" height="250" viewBox="0 0 800 250">
   <rect width="800" height="250" fill="#ffffff" rx="12"/>
@@ -512,6 +577,7 @@ def main():
     print("Generating profile assets...")
     generate_snake()
     generate_wakatime()
+    generate_lang_dist()
     
     print("Generating new animation assets...")
     generate_radar_scan()
