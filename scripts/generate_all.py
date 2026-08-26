@@ -49,94 +49,105 @@ def generate_svg(content, filename):
 # ==================== EXISTING FUNCTIONS ====================
 
 def generate_snake():
+    """Snake moves strictly orthogonally (up/down/left/right) on a grid of
+    randomly-scattered contribution cells. Each cell 'appears' just before the
+    snake head reaches it, then gets eaten (dimmed); the whole loop repeats."""
     import random
-    cols = 53
-    rows = 7
-    cell_size = 11
-    gap = 3
-    start_x = 25
-    start_y = 40
-    dur = 20
+    random.seed(23)
+    cols, rows = 50, 12
+    step = 13
+    cell_size = 10
+    start_x, start_y = 30, 25
+    dur = 22
 
     base_colors = ["#ebedf0", "#9be9a8", "#40c463", "#30a14e", "#216e39"]
-    # Simulate a realistic contribution graph (mostly empty / sparse, few dense)
-    random.seed(7)
-    level_map = {}
-    for c in range(cols):
-        for r in range(rows):
-            roll = random.random()
-            if roll < 0.45:
-                level = 0
-            elif roll < 0.70:
-                level = 1
-            elif roll < 0.86:
-                level = 2
-            elif roll < 0.96:
-                level = 3
-            else:
-                level = 4
-            level_map[(c, r)] = level
 
-    squares = []
-    for c in range(cols):
-        for r in range(rows):
-            x = start_x + c * (cell_size + gap)
-            y = start_y + r * (cell_size + gap)
-            color = base_colors[level_map[(c, r)]]
-            squares.append(
-                f'<rect x="{x}" y="{y}" width="{cell_size}" height="{cell_size}" fill="{color}" rx="2"/>'
-            )
+    def center(c, r):
+        return (start_x + c * step + cell_size // 2,
+                start_y + r * step + cell_size // 2)
 
-    # Hamiltonian-style back-and-forth path covering every cell exactly once
-    path_points = []
-    for c in range(cols):
-        r = c % rows if c % 2 == 0 else (rows - 1 - (c % rows))
-        x = start_x + c * (cell_size + gap) + cell_size // 2
-        y = start_y + r * (cell_size + gap) + cell_size // 2
-        path_points.append((x, y))
+    # --- randomly scattered cells (not a uniform block) ---
+    K = 42
+    cells = []
+    seen = set()
+    while len(cells) < K:
+        c = random.randint(0, cols - 1)
+        r = random.randint(0, rows - 1)
+        if (c, r) not in seen:
+            seen.add((c, r))
+            cells.append((c, r))
 
-    n = len(path_points)
-    snake_path = "M " + " L ".join(f"{x},{y}" for x, y in path_points)
+    # --- order cells by nearest-neighbour for an organic snake path ---
+    order = [cells[0]]
+    remaining = set(cells[1:])
+    while remaining:
+        cur = order[-1]
+        nxt = min(remaining, key=lambda x: abs(x[0] - cur[0]) + abs(x[1] - cur[1]))
+        order.append(nxt)
+        remaining.discard(nxt)
 
-    # Each cell gets "eaten" (dimmed) as the snake head reaches it, stays eaten
-    # for the rest of the loop, then resets at the next loop start.
-    eaten_overlays = []
-    for idx, (x, y) in enumerate(path_points):
-        eat_frac = idx / n
-        if eat_frac < 0.0005:
-            # First cell: eaten from the very start
-            eaten_overlays.append(
-                f'<rect x="{x - cell_size//2}" y="{y - cell_size//2}" width="{cell_size}" height="{cell_size}" '
-                f'fill="#161b22" rx="2" opacity="0.92">'
-                f'<animate attributeName="opacity" values="0.92;0" '
-                f'keyTimes="0.985;1" '
-                f'dur="{dur}s" repeatCount="indefinite"/>'
-                f'</rect>'
-            )
+    # --- build ORTHOGONAL path (only H/V segments, no diagonals) ---
+    # points[2*i] = center of cell i
+    points = [center(*order[0])]
+    for cell in order[1:]:
+        px, py = points[-1]
+        tx, ty = center(*cell)
+        points.append((tx, py))   # horizontal move
+        points.append((tx, ty))   # vertical move
+
+    # cumulative arc length -> eat fraction for each cell
+    cum = [0.0]
+    for k in range(1, len(points)):
+        dx = points[k][0] - points[k - 1][0]
+        dy = points[k][1] - points[k - 1][1]
+        cum.append(cum[-1] + abs(dx) + abs(dy))
+    total = cum[-1] or 1.0
+
+    snake_path = "M " + " L ".join(f"{x},{y}" for x, y in points)
+
+    # --- render scattered cells with appear + eaten behaviour ---
+    cell_rects = []
+    for i, (c, r) in enumerate(order):
+        x = start_x + c * step
+        y = start_y + r * step
+        color = random.choice(base_colors)
+        eat_frac = cum[2 * i] / total
+
+        if eat_frac <= 0.004:
+            base_anim = (f'<animate attributeName="opacity" values="1;0" '
+                         f'keyTimes="0.985;1" dur="{dur}s" repeatCount="indefinite"/>')
+            overlay_anim = (f'<animate attributeName="opacity" values="0.92;0.92;0" '
+                            f'keyTimes="0;0.985;1" dur="{dur}s" repeatCount="indefinite"/>')
+        elif eat_frac >= 0.999:
+            # last cell: eaten right at loop end
+            base_anim = (f'<animate attributeName="opacity" values="0;0;1;1;0" '
+                         f'keyTimes="0;0.950;0.951;0.999;1" dur="{dur}s" repeatCount="indefinite"/>')
+            overlay_anim = (f'<animate attributeName="opacity" values="0;0;0.92;0.92" '
+                            f'keyTimes="0;0.9985;0.999;1" dur="{dur}s" repeatCount="indefinite"/>')
         else:
-            # invisible until eaten; snap dark and stay dark until loop reset
-            eaten_overlays.append(
-                f'<rect x="{x - cell_size//2}" y="{y - cell_size//2}" width="{cell_size}" height="{cell_size}" '
-                f'fill="#161b22" rx="2" opacity="0">'
-                f'<animate attributeName="opacity" values="0;0;0.92;0.92" '
-                f'keyTimes="0;{eat_frac - 0.0005:.5f};{eat_frac:.5f};1" '
-                f'dur="{dur}s" repeatCount="indefinite"/>'
-                f'</rect>'
-            )
+            appear = max(0.003, eat_frac - 0.05)
+            base_anim = (f'<animate attributeName="opacity" values="0;0;1;1;0" '
+                         f'keyTimes="0;{appear:.5f};{appear + 0.001:.5f};{eat_frac:.5f};1" '
+                         f'dur="{dur}s" repeatCount="indefinite"/>')
+            overlay_anim = (f'<animate attributeName="opacity" values="0;0;0.92;0.92" '
+                            f'keyTimes="0;{eat_frac - 0.0005:.5f};{eat_frac:.5f};1" '
+                            f'dur="{dur}s" repeatCount="indefinite"/>')
+
+        cell_rects.append(f'''<g>
+    <rect x="{x}" y="{y}" width="{cell_size}" height="{cell_size}" fill="{color}" rx="2" opacity="0">{base_anim}</rect>
+    <rect x="{x}" y="{y}" width="{cell_size}" height="{cell_size}" fill="#161b22" rx="2" opacity="0">{overlay_anim}</rect>
+  </g>''')
 
     snake_segments = 40
     snake_parts = []
     for i in range(snake_segments):
         delay = i * 0.10
         if i == 0:
-            color = "#ff4d4d"
-            r = 6.5
+            color, r = "#ff4d4d", 6.5
         elif i < 8:
-            color = "#3fb950"
-            r = 5.6 - (i * 0.12)
+            color, r = "#3fb950", 5.6 - (i * 0.12)
         else:
-            color = "#2ea043"
-            r = max(4.0, 5.6 - (i * 0.07))
+            color, r = "#2ea043", max(4.0, 5.6 - (i * 0.07))
         snake_parts.append(
             f'<circle cx="0" cy="0" r="{r}" fill="{color}" filter="url(#snakeGlow)">'
             f'<animateMotion path="{snake_path}" dur="{dur}s" repeatCount="indefinite" begin="{delay}s" fill="freeze" rotate="auto"/>'
@@ -144,7 +155,7 @@ def generate_snake():
             f'</circle>'
         )
 
-    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="800" height="200" viewBox="0 0 800 200">
+    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="800" height="220" viewBox="0 0 800 220">
   <defs>
     <filter id="snakeGlow">
       <feGaussianBlur stdDeviation="2" result="blur"/>
@@ -154,10 +165,9 @@ def generate_snake():
       </feMerge>
     </filter>
   </defs>
-  <rect width="800" height="200" fill="#ffffff" rx="12"/>
-  <g transform="translate(0, 10)">
-    {''.join(squares)}
-    {''.join(eaten_overlays)}
+  <rect width="800" height="220" fill="#ffffff" rx="12"/>
+  <g transform="translate(62, 26)">
+    {''.join(cell_rects)}
     {''.join(snake_parts)}
   </g>
 </svg>'''
