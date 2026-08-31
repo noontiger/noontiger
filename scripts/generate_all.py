@@ -56,7 +56,7 @@ def generate_snake():
     cols, rows = 53, 7
     cell_size, gap = 11, 3
     step = cell_size + gap
-    start_x, start_y = 18, 35
+    start_x, start_y = 30, 14
     dur = 20
 
     gh_colors = ["#ebedf0", "#9be9a8", "#40c463", "#30a14e", "#216e39"]
@@ -108,8 +108,38 @@ def generate_snake():
     <rect x="{x}" y="{y}" width="{cell_size}" height="{cell_size}" fill="#161b22" rx="2" opacity="0">{overlay_anim}</rect>
   </g>''')
 
-    # snake body: thick rounded green stroke + travelling shimmer, moving red head w/ eyes
-    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="800" height="220" viewBox="0 0 800 220">
+    # moving snake: red head with eyes + a trailing green body of finite length,
+    # so the contribution grid stays visible (not "all snake")
+    seg = 50
+    per = 0.012
+    c_head = (63, 185, 80)    # #3fb950
+    c_tail = (35, 134, 54)    # #238636
+    def lerp(a, b, t):
+        return tuple(int(round(a[k] + (b[k] - a[k]) * t)) for k in range(3))
+
+    snake_parts = []
+    for i in range(seg - 1, 0, -1):      # tail -> just behind head
+        t = i / (seg - 1)
+        r_, g_, b_ = lerp(c_head, c_tail, t)
+        color = f"#{r_:02x}{g_:02x}{b_:02x}"
+        rad = 6.8 - (i / seg) * 2.6
+        begin = i * per
+        snake_parts.append(
+            f'<circle cx="0" cy="0" r="{rad:.1f}" fill="{color}" filter="url(#snakeGlow)">'
+            f'<animateMotion path="{snake_path}" dur="{dur}s" repeatCount="indefinite" begin="{begin:.3f}s" rotate="auto" fill="freeze"/>'
+            f'<animate attributeName="opacity" values="1;0.85;1" dur="1.1s" repeatCount="indefinite" begin="{begin:.3f}s"/>'
+            f'</circle>'
+        )
+    head = f'''<g filter="url(#snakeGlow)">
+      <circle r="7" fill="#ff4d4d" stroke="#c62828" stroke-width="1.5"/>
+      <circle cx="2.8" cy="-2.8" r="1.7" fill="#fff"/>
+      <circle cx="2.8" cy="2.8" r="1.7" fill="#fff"/>
+      <circle cx="3.6" cy="-2.8" r="0.9" fill="#111"/>
+      <circle cx="3.6" cy="2.8" r="0.9" fill="#111"/>
+      <animateMotion path="{snake_path}" dur="{dur}s" repeatCount="indefinite" rotate="auto" fill="freeze"/>
+    </g>'''
+
+    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="800" height="120" viewBox="0 0 800 120">
   <defs>
     <filter id="snakeGlow">
       <feGaussianBlur stdDeviation="1.5" result="blur"/>
@@ -118,29 +148,12 @@ def generate_snake():
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
-    <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%"  style="stop-color:#2ea043"/>
-      <stop offset="100%" style="stop-color:#238636"/>
-    </linearGradient>
   </defs>
-  <rect width="800" height="220" fill="#ffffff" rx="12"/>
-  <g transform="translate(22, 50)">
+  <rect width="800" height="120" fill="#ffffff" rx="12"/>
+  <g>
     {''.join(cell_rects)}
-    <path d="{snake_path}" stroke="url(#bodyGrad)" stroke-width="9" fill="none"
-          stroke-linecap="round" stroke-linejoin="round" filter="url(#snakeGlow)"/>
-    <path d="{snake_path}" stroke="#7ee787" stroke-width="9" fill="none"
-          stroke-linecap="round" stroke-linejoin="round" opacity="0.55"
-          stroke-dasharray="34 700">
-      <animate attributeName="stroke-dashoffset" from="734" to="0" dur="2.6s" repeatCount="indefinite"/>
-    </path>
-    <g filter="url(#snakeGlow)">
-      <circle r="6.5" fill="#ff4d4d" stroke="#c62828" stroke-width="1.5"/>
-      <circle cx="2.6" cy="-2.6" r="1.6" fill="#fff"/>
-      <circle cx="2.6" cy="2.6" r="1.6" fill="#fff"/>
-      <circle cx="3.4" cy="-2.6" r="0.8" fill="#111"/>
-      <circle cx="3.4" cy="2.6" r="0.8" fill="#111"/>
-      <animateMotion path="{snake_path}" dur="{dur}s" repeatCount="indefinite" rotate="auto"/>
-    </g>
+    {''.join(snake_parts)}
+    {head}
   </g>
 </svg>'''
     generate_svg(svg, "snake.svg")
