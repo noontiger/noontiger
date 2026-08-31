@@ -49,126 +49,98 @@ def generate_svg(content, filename):
 # ==================== EXISTING FUNCTIONS ====================
 
 def generate_snake():
-    """Snake moves strictly orthogonally (up/down/left/right) on a grid of
-    randomly-scattered contribution cells. Each cell 'appears' just before the
-    snake head reaches it, then gets eaten (dimmed); the whole loop repeats."""
+    """GitHub-style contribution grid (53x7, real greens) with a snake that
+    moves strictly orthogonally, eating squares as it passes."""
     import random
-    random.seed(23)
-    cols, rows = 50, 12
-    step = 13
-    cell_size = 10
-    start_x, start_y = 30, 25
-    dur = 22
+    random.seed(7)
+    cols, rows = 53, 7
+    cell_size, gap = 11, 3
+    step = cell_size + gap
+    start_x, start_y = 18, 35
+    dur = 20
 
-    base_colors = ["#ebedf0", "#9be9a8", "#40c463", "#30a14e", "#216e39"]
+    gh_colors = ["#ebedf0", "#9be9a8", "#40c463", "#30a14e", "#216e39"]
 
     def center(c, r):
         return (start_x + c * step + cell_size // 2,
                 start_y + r * step + cell_size // 2)
 
-    # --- randomly scattered cells (not a uniform block) ---
-    K = 42
-    cells = []
-    seen = set()
-    while len(cells) < K:
-        c = random.randint(0, cols - 1)
-        r = random.randint(0, rows - 1)
-        if (c, r) not in seen:
-            seen.add((c, r))
-            cells.append((c, r))
+    # realistic contribution level per cell
+    level = {}
+    for c in range(cols):
+        for r in range(rows):
+            roll = random.random()
+            lvl = 0 if roll < 0.45 else 1 if roll < 0.72 else 2 if roll < 0.88 else 3 if roll < 0.96 else 4
+            level[(c, r)] = lvl
 
-    # --- order cells by nearest-neighbour for an organic snake path ---
-    order = [cells[0]]
-    remaining = set(cells[1:])
-    while remaining:
-        cur = order[-1]
-        nxt = min(remaining, key=lambda x: abs(x[0] - cur[0]) + abs(x[1] - cur[1]))
-        order.append(nxt)
-        remaining.discard(nxt)
+    # orthogonal Hamiltonian path: snake through each column, alternating direction
+    order = []
+    direction = 1
+    for c in range(cols):
+        rseq = list(range(rows)) if direction == 1 else list(range(rows - 1, -1, -1))
+        for r in rseq:
+            order.append((c, r))
+        direction *= -1
 
-    # --- build ORTHOGONAL path (only H/V segments, no diagonals) ---
-    # points[2*i] = center of cell i
-    points = [center(*order[0])]
-    for cell in order[1:]:
-        px, py = points[-1]
-        tx, ty = center(*cell)
-        points.append((tx, py))   # horizontal move
-        points.append((tx, ty))   # vertical move
-
-    # cumulative arc length -> eat fraction for each cell
-    cum = [0.0]
-    for k in range(1, len(points)):
-        dx = points[k][0] - points[k - 1][0]
-        dy = points[k][1] - points[k - 1][1]
-        cum.append(cum[-1] + abs(dx) + abs(dy))
-    total = cum[-1] or 1.0
-
+    points = [center(c, r) for (c, r) in order]
     snake_path = "M " + " L ".join(f"{x},{y}" for x, y in points)
+    total = len(points)
 
-    # --- render scattered cells with appear + eaten behaviour ---
+    # render contribution squares; a dark overlay "eats" each as the head passes
     cell_rects = []
     for i, (c, r) in enumerate(order):
         x = start_x + c * step
         y = start_y + r * step
-        color = random.choice(base_colors)
-        eat_frac = cum[2 * i] / total
-
+        color = gh_colors[level[(c, r)]]
+        eat_frac = i / total
         if eat_frac <= 0.004:
-            base_anim = (f'<animate attributeName="opacity" values="1;0" '
-                         f'keyTimes="0.985;1" dur="{dur}s" repeatCount="indefinite"/>')
-            overlay_anim = (f'<animate attributeName="opacity" values="0.92;0.92;0" '
+            overlay_anim = (f'<animate attributeName="opacity" values="0.9;0.9;0" '
                             f'keyTimes="0;0.985;1" dur="{dur}s" repeatCount="indefinite"/>')
         elif eat_frac >= 0.999:
-            # last cell: eaten right at loop end
-            base_anim = (f'<animate attributeName="opacity" values="0;0;1;1;0" '
-                         f'keyTimes="0;0.950;0.951;0.999;1" dur="{dur}s" repeatCount="indefinite"/>')
-            overlay_anim = (f'<animate attributeName="opacity" values="0;0;0.92;0.92" '
+            overlay_anim = (f'<animate attributeName="opacity" values="0;0;0.9;0.9" '
                             f'keyTimes="0;0.9985;0.999;1" dur="{dur}s" repeatCount="indefinite"/>')
         else:
-            appear = max(0.003, eat_frac - 0.05)
-            base_anim = (f'<animate attributeName="opacity" values="0;0;1;1;0" '
-                         f'keyTimes="0;{appear:.5f};{appear + 0.001:.5f};{eat_frac:.5f};1" '
-                         f'dur="{dur}s" repeatCount="indefinite"/>')
-            overlay_anim = (f'<animate attributeName="opacity" values="0;0;0.92;0.92" '
+            overlay_anim = (f'<animate attributeName="opacity" values="0;0;0.9;0.9" '
                             f'keyTimes="0;{eat_frac - 0.0005:.5f};{eat_frac:.5f};1" '
                             f'dur="{dur}s" repeatCount="indefinite"/>')
-
         cell_rects.append(f'''<g>
-    <rect x="{x}" y="{y}" width="{cell_size}" height="{cell_size}" fill="{color}" rx="2" opacity="0">{base_anim}</rect>
+    <rect x="{x}" y="{y}" width="{cell_size}" height="{cell_size}" fill="{color}" rx="2"/>
     <rect x="{x}" y="{y}" width="{cell_size}" height="{cell_size}" fill="#161b22" rx="2" opacity="0">{overlay_anim}</rect>
   </g>''')
 
-    snake_segments = 40
-    snake_parts = []
-    for i in range(snake_segments):
-        delay = i * 0.10
-        if i == 0:
-            color, r = "#ff4d4d", 6.5
-        elif i < 8:
-            color, r = "#3fb950", 5.6 - (i * 0.12)
-        else:
-            color, r = "#2ea043", max(4.0, 5.6 - (i * 0.07))
-        snake_parts.append(
-            f'<circle cx="0" cy="0" r="{r}" fill="{color}" filter="url(#snakeGlow)">'
-            f'<animateMotion path="{snake_path}" dur="{dur}s" repeatCount="indefinite" begin="{delay}s" fill="freeze" rotate="auto"/>'
-            f'<animate attributeName="opacity" values="1;0.92;1" dur="1.2s" repeatCount="indefinite" begin="{delay}s"/>'
-            f'</circle>'
-        )
-
+    # snake body: thick rounded green stroke + travelling shimmer, moving red head w/ eyes
     svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="800" height="220" viewBox="0 0 800 220">
   <defs>
     <filter id="snakeGlow">
-      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
       <feMerge>
         <feMergeNode in="blur"/>
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
+    <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"  style="stop-color:#2ea043"/>
+      <stop offset="100%" style="stop-color:#238636"/>
+    </linearGradient>
   </defs>
   <rect width="800" height="220" fill="#ffffff" rx="12"/>
-  <g transform="translate(62, 26)">
+  <g transform="translate(22, 50)">
     {''.join(cell_rects)}
-    {''.join(snake_parts)}
+    <path d="{snake_path}" stroke="url(#bodyGrad)" stroke-width="9" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" filter="url(#snakeGlow)"/>
+    <path d="{snake_path}" stroke="#7ee787" stroke-width="9" fill="none"
+          stroke-linecap="round" stroke-linejoin="round" opacity="0.55"
+          stroke-dasharray="34 700">
+      <animate attributeName="stroke-dashoffset" from="734" to="0" dur="2.6s" repeatCount="indefinite"/>
+    </path>
+    <g filter="url(#snakeGlow)">
+      <circle r="6.5" fill="#ff4d4d" stroke="#c62828" stroke-width="1.5"/>
+      <circle cx="2.6" cy="-2.6" r="1.6" fill="#fff"/>
+      <circle cx="2.6" cy="2.6" r="1.6" fill="#fff"/>
+      <circle cx="3.4" cy="-2.6" r="0.8" fill="#111"/>
+      <circle cx="3.4" cy="2.6" r="0.8" fill="#111"/>
+      <animateMotion path="{snake_path}" dur="{dur}s" repeatCount="indefinite" rotate="auto"/>
+    </g>
   </g>
 </svg>'''
     generate_svg(svg, "snake.svg")
