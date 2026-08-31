@@ -86,27 +86,27 @@ def generate_snake():
     snake_path = "M " + " L ".join(f"{x},{y}" for x, y in points)
     total = len(points)
 
-    # render contribution squares; a dark overlay "eats" each as the head passes
+    # render contribution squares; when the head passes, the green square simply
+    # disappears (opacity -> 0), instead of turning black
     cell_rects = []
     for i, (c, r) in enumerate(order):
         x = start_x + c * step
         y = start_y + r * step
         color = gh_colors[level[(c, r)]]
         eat_frac = i / total
-        if eat_frac <= 0.004:
-            overlay_anim = (f'<animate attributeName="opacity" values="0.9;0.9;0" '
-                            f'keyTimes="0;0.985;1" dur="{dur}s" repeatCount="indefinite"/>')
+        if eat_frac <= 0.001:
+            base_anim = (f'<animate attributeName="opacity" values="1;0" '
+                         f'keyTimes="0;0.001" dur="{dur}s" repeatCount="indefinite"/>')
         elif eat_frac >= 0.999:
-            overlay_anim = (f'<animate attributeName="opacity" values="0;0;0.9;0.9" '
-                            f'keyTimes="0;0.9985;0.999;1" dur="{dur}s" repeatCount="indefinite"/>')
+            base_anim = (f'<animate attributeName="opacity" values="1;1;0" '
+                         f'keyTimes="0;0.999;1" dur="{dur}s" repeatCount="indefinite"/>')
         else:
-            overlay_anim = (f'<animate attributeName="opacity" values="0;0;0.9;0.9" '
-                            f'keyTimes="0;{eat_frac - 0.0005:.5f};{eat_frac:.5f};1" '
-                            f'dur="{dur}s" repeatCount="indefinite"/>')
-        cell_rects.append(f'''<g>
-    <rect x="{x}" y="{y}" width="{cell_size}" height="{cell_size}" fill="{color}" rx="2"/>
-    <rect x="{x}" y="{y}" width="{cell_size}" height="{cell_size}" fill="#161b22" rx="2" opacity="0">{overlay_anim}</rect>
-  </g>''')
+            base_anim = (f'<animate attributeName="opacity" values="1;1;0;0" '
+                         f'keyTimes="0;{eat_frac - 0.0005:.5f};{eat_frac:.5f};1" '
+                         f'dur="{dur}s" repeatCount="indefinite"/>')
+        cell_rects.append(
+            f'<rect x="{x}" y="{y}" width="{cell_size}" height="{cell_size}" fill="{color}" rx="2">{base_anim}</rect>'
+        )
 
     # moving snake: red head with eyes + a trailing green body of finite length,
     # so the contribution grid stays visible (not "all snake")
