@@ -167,11 +167,11 @@ def generate_radar_scan():
     cx, cy = 400, 160
     radius = 110
     
-    # Cohesive binary rain - organized in vertical streams
+    # Cohesive binary rain - organized in vertical streams covering full width
     binary_drops = []
-    stream_count = 24
+    stream_count = 26
     for i in range(stream_count):
-        x = 50 + i * 30
+        x = 10 + i * (780 / (stream_count - 1))
         stream_len = random.randint(8, 15)
         for j in range(stream_len):
             char = random.choice(['0', '1'])
