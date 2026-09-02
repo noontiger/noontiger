@@ -73,40 +73,62 @@ def generate_snake():
             lvl = 0 if roll < 0.45 else 1 if roll < 0.72 else 2 if roll < 0.88 else 3 if roll < 0.96 else 4
             level[(c, r)] = lvl
 
-    # orthogonal Hamiltonian path: snake through each column, alternating direction
+    # order: eat all green squares first (nearest-neighbor within greens), then grays
+    all_cells = [(c, r) for c in range(cols) for r in range(rows)]
+    greens = [cell for cell in all_cells if level[cell] > 0]
+    grays = [cell for cell in all_cells if level[cell] == 0]
+
     order = []
-    direction = 1
-    for c in range(cols):
-        rseq = list(range(rows)) if direction == 1 else list(range(rows - 1, -1, -1))
-        for r in rseq:
-            order.append((c, r))
-        direction *= -1
+    for pool in [greens, grays]:
+        if not pool:
+            continue
+        pool_order = [pool[0]]
+        remaining = set(pool[1:])
+        while remaining:
+            cur = pool_order[-1]
+            nxt = min(remaining, key=lambda x: abs(x[0] - cur[0]) + abs(x[1] - cur[1]))
+            pool_order.append(nxt)
+            remaining.discard(nxt)
+        order.extend(pool_order)
 
-    points = [center(c, r) for (c, r) in order]
+    # build ORTHOGONAL path (only H/V segments, no diagonals) through the order
+    # points[2*i] = center of cell i
+    points = [center(*order[0])]
+    for cell in order[1:]:
+        px, py = points[-1]
+        tx, ty = center(*cell)
+        points.append((tx, py))   # horizontal move
+        points.append((tx, ty))   # vertical move
+
     snake_path = "M " + " L ".join(f"{x},{y}" for x, y in points)
-    total = len(points)
+    total = len(order)
 
-    # render contribution squares; when the head passes, the green square simply
-    # disappears (opacity -> 0), instead of turning black
+    # render contribution squares; green squares fade to gray when eaten,
+    # gray squares stay gray (never disappear)
     cell_rects = []
     for i, (c, r) in enumerate(order):
         x = start_x + c * step
         y = start_y + r * step
         color = gh_colors[level[(c, r)]]
         eat_frac = i / total
-        if eat_frac <= 0.001:
-            base_anim = (f'<animate attributeName="opacity" values="1;0" '
-                         f'keyTimes="0;0.001" dur="{dur}s" repeatCount="indefinite"/>')
-        elif eat_frac >= 0.999:
-            base_anim = (f'<animate attributeName="opacity" values="1;1;0" '
-                         f'keyTimes="0;0.999;1" dur="{dur}s" repeatCount="indefinite"/>')
+        if level[(c, r)] == 0:
+            cell_rects.append(
+                f'<rect x="{x}" y="{y}" width="{cell_size}" height="{cell_size}" fill="{color}" rx="2"/>'
+            )
         else:
-            base_anim = (f'<animate attributeName="opacity" values="1;1;0;0" '
-                         f'keyTimes="0;{eat_frac - 0.0005:.5f};{eat_frac:.5f};1" '
-                         f'dur="{dur}s" repeatCount="indefinite"/>')
-        cell_rects.append(
-            f'<rect x="{x}" y="{y}" width="{cell_size}" height="{cell_size}" fill="{color}" rx="2">{base_anim}</rect>'
-        )
+            if eat_frac <= 0.001:
+                anim = (f'<animate attributeName="fill" values="{color};#ebedf0" '
+                        f'keyTimes="0;0.001" dur="{dur}s" repeatCount="indefinite"/>')
+            elif eat_frac >= 0.999:
+                anim = (f'<animate attributeName="fill" values="{color};{color};#ebedf0" '
+                        f'keyTimes="0;0.999;1" dur="{dur}s" repeatCount="indefinite"/>')
+            else:
+                anim = (f'<animate attributeName="fill" values="{color};{color};#ebedf0;#ebedf0" '
+                        f'keyTimes="0;{eat_frac - 0.0005:.5f};{eat_frac:.5f};1" '
+                        f'dur="{dur}s" repeatCount="indefinite"/>')
+            cell_rects.append(
+                f'<rect x="{x}" y="{y}" width="{cell_size}" height="{cell_size}" fill="{color}" rx="2">{anim}</rect>'
+            )
 
     # moving snake: red head with eyes + a trailing green body of finite length,
     # so the contribution grid stays visible (not "all snake")
